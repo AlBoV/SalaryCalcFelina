@@ -7,7 +7,6 @@ from tkinter import messagebox
 from tkinter import *
 
 from tkinter import filedialog
-from tkinter import ttk
 
 def last_day_of_month(any_day):
     # The day 28 exists in every month. 4 days later, it's always next month
@@ -46,6 +45,11 @@ def click_button():
         worktable['UnitWork'] = worktable['UnitWork'].fillna(worktable['UnitName'])
         worktable.loc[:, 'UnitName'] = 'x'
         worktable['TAJCode'] = worktable['TAJCode'].astype(str)
+
+        worktable['StartDate'] = pandas.to_datetime(worktable['StartDate'])
+        worktable['EndDate'] = pandas.to_datetime(worktable['EndDate'])
+        worktable['QuitDate'] = pandas.to_datetime(worktable['QuitDate'])
+
     except:
         messagebox.showerror(title="Error",
                          message="File not found 'data/dolgadatnap.csv'!\nPlace a file with this name in the specified directory.")
@@ -184,12 +188,28 @@ btnRead.grid(sticky="NEWS", padx=10, pady=10)
 
 # Button to create a file for import into NEXON
 def click_button_export():
+
+    currentdate = cal.get_date()
+    firstdayofmonth = currentdate.replace(day=1)
+    lastdayofmonth = last_day_of_month(currentdate)
+
     worktable['TAJCode'] = worktable['TAJCode'].astype(str)
+    filtredworktable = worktable[(worktable.StartDate.dt.date <= firstdayofmonth) & (((worktable.EndDate.dt.date >= firstdayofmonth) & (worktable.EndDate.dt.date <= lastdayofmonth)) | (worktable.EndDate.isnull())) & ((worktable.QuitDate.dt.date >= firstdayofmonth) | (worktable.QuitDate.isnull()))]
+
     workingmonth['TAJCode'] = workingmonth['TAJCode'].astype(str)
+    workingmonth['WorkHours'] = workingmonth['WorkHours'].str.replace(',', '.')
+    workingmonth['OtherHours'] = workingmonth['OtherHours'].str.replace(',', '.')
+    workingmonth['OverHours'] = workingmonth['OverHours'].str.replace(',', '.')
+    workingmonth['AbsenceHours'] = workingmonth['AbsenceHours'].str.replace(',', '.')
+    workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours']] = workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours']].astype(float)
+    summaryworkingmonth = workingmonth.groupby(by=['TAJCode', 'Name', 'Unit', 'SiteName', 'Datum', 'NormaMinutes'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0)]
+
     EmployeesWithCategory['TAJCode'] = EmployeesWithCategory['TAJCode'].astype(str)
 
     worktableresult = pandas.merge(worktable, workingmonth, how='inner', on='TAJCode', suffixes=('', '_work'))
     worktableresult = pandas.merge(worktableresult, EmployeesWithCategory, how='inner', on='TAJCode', suffixes=('', '_emp'))
+
 
 btnExport = Button(mainframe, text="NEXON end of month import LOGIN", command=click_button_export)
 btnExport.grid(sticky="NEWS", padx=10, pady=10)
