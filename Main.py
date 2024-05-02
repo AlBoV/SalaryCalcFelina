@@ -190,7 +190,6 @@ def click_button_export():
 
     worktableresult = pandas.merge(worktable, workingmonth, how='inner', on='TAJCode', suffixes=('', '_work'))
     worktableresult = pandas.merge(worktableresult, EmployeesWithCategory, how='inner', on='TAJCode', suffixes=('', '_emp'))
-    n=1
 
 btnExport = Button(mainframe, text="NEXON end of month import LOGIN", command=click_button_export)
 btnExport.grid(sticky="NEWS", padx=10, pady=10)
