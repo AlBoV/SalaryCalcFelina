@@ -2,6 +2,7 @@ import pandas
 import tkinter
 import tkcalendar
 import datetime
+import numpy as np
 
 from tkinter import messagebox
 from tkinter import *
@@ -190,8 +191,11 @@ btnRead.grid(sticky="NEWS", padx=10, pady=10)
 def click_button_export():
 
     currentdate = cal.get_date()
+    curentdatestr = currentdate.strftime("%Y%m")
     firstdayofmonth = currentdate.replace(day=1)
     lastdayofmonth = last_day_of_month(currentdate)
+
+    UnitFactorUsage = pandas.DataFrame(arrayxlsx, columns=['UnitWork', 'useage', 'mp', 'mpfel', 'kap', 'kapfel'])
 
     worktable['TAJCode'] = worktable['TAJCode'].astype(str)
     filtredworktable = worktable[(worktable.StartDate.dt.date <= firstdayofmonth) & (((worktable.EndDate.dt.date >= firstdayofmonth) & (worktable.EndDate.dt.date <= lastdayofmonth)) | (worktable.EndDate.isnull())) & ((worktable.QuitDate.dt.date >= firstdayofmonth) | (worktable.QuitDate.isnull()))]
@@ -201,15 +205,89 @@ def click_button_export():
     workingmonth['OtherHours'] = workingmonth['OtherHours'].str.replace(',', '.')
     workingmonth['OverHours'] = workingmonth['OverHours'].str.replace(',', '.')
     workingmonth['AbsenceHours'] = workingmonth['AbsenceHours'].str.replace(',', '.')
-    workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours']] = workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours']].astype(float)
+    workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
     summaryworkingmonth = workingmonth.groupby(by=['TAJCode', 'Name', 'Unit', 'SiteName', 'Datum', 'NormaMinutes'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
     summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0)]
+    summaryworkingmonth = workingmonth.groupby(by=['Name', 'Unit', 'TAJCode'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
 
     EmployeesWithCategory['TAJCode'] = EmployeesWithCategory['TAJCode'].astype(str)
 
-    worktableresult = pandas.merge(worktable, workingmonth, how='inner', on='TAJCode', suffixes=('', '_work'))
+    worktableresult = pandas.merge(filtredworktable, summaryworkingmonth, how='inner', on='TAJCode', suffixes=('', '_work'))
     worktableresult = pandas.merge(worktableresult, EmployeesWithCategory, how='inner', on='TAJCode', suffixes=('', '_emp'))
+    worktableresult = worktableresult.groupby(by=['Name', 'UnitWork', 'TAJCode', 'Category'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
 
+    worktableresult['WorkHours'] = worktableresult['WorkHours'] - worktableresult['OtherHours']
+    worktableresult['AvgEfficiencyFactor'] = round(worktableresult['NormaMinutes']/worktableresult['WorkHours']/10, 2)
+    worktableresult = pandas.merge(worktableresult, UnitFactorUsage, how='inner', on='UnitWork', suffixes=('', '_param'))
+    worktableresult['AccrueOverhead'] = np.where(worktableresult['AbsenceHours'] > 2, 0, 1)
+    worktableresult['mpsum'] = 0
+    worktableresult['jpsum'] = 0
+    worktableresult['kapsum'] = 0
+
+    Categories['kat'] = Categories['kat'].astype(str)
+    Categories['ervhotol'] = Categories['ervhotol'].astype(str)
+    Categories['ervhoig'] = Categories['ervhoig'].astype(str)
+    worktableresult['Category'] = worktableresult['Category'].astype(str)
+    date_time = currentdate.strftime("%Y%m")
+    for row in worktableresult.iterrows():
+        LineForMP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+                               & (Categories['pot'] == 'MP')
+                               & (Categories['ervhotol']<=curentdatestr)
+                               & (Categories['ervhoig']>=curentdatestr)
+                               & (Categories['szazmin']<=row[1]['AvgEfficiencyFactor'])
+                               & (Categories['szazmax']>=row[1]['AvgEfficiencyFactor'])
+                               )]
+        try:
+            LineForMPSum = LineForMP.iloc[0]['osszeg']
+        except:
+            LineForMPSum = 0
+
+        worktableresult.at[row[0], 'mpsum'] = LineForMPSum
+
+        if row[1]['mpfel'] != 0 :
+            worktableresult.at[row[0], 'mpsum'] = LineForMPSum/2
+
+        LineForJP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+                               & (Categories['pot'] == 'JP')
+                               & (Categories['ervhotol']<=curentdatestr)
+                               & (Categories['ervhoig']>=curentdatestr)
+                               & (Categories['szazmin']<=row[1]['AvgEfficiencyFactor'])
+                               & (Categories['szazmax']>=row[1]['AvgEfficiencyFactor'])
+                               )]
+        try:
+            LineForJPSum = LineForJP.iloc[0]['osszeg']
+        except:
+            LineForJPSum = 0
+
+        worktableresult.at[row[0], 'jpsum'] = row[1]['AccrueOverhead'] * LineForJPSum
+
+        LineForKAP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+                                    & (Categories['pot'] == 'KAP')
+                                    & (Categories['ervhotol'] <= curentdatestr)
+                                    & (Categories['ervhoig'] >= curentdatestr)
+                                    & (Categories['szazmin'] <= row[1]['AvgEfficiencyFactor'])
+                                    & (Categories['szazmax'] >= row[1]['AvgEfficiencyFactor'])
+                                    )]
+        try:
+            LineForKAPSum = LineForKAP.iloc[0]['osszeg']
+        except:
+            LineForKAPSum = 0
+
+        worktableresult.at[row[0], 'kapsum'] = LineForKAPSum
+        if row[1]['kapfel'] != 0:
+            worktableresult.at[row[0], 'kapsum'] = LineForKAPSum / 2
+
+    try:
+        worktableresult.to_excel('data/monthly_supplements_'+curentdatestr+'.xlsx',
+                             index=False,
+                             columns=['Name', 'UnitWork', 'TAJCode', 'Category', 'NormaMinutes', 'WorkHours',
+                                      'OtherHours', 'AbsenceHours', 'AvgEfficiencyFactor', 'mpsum', 'jpsum',
+                                      'kapsum', 'AccrueOverhead'])
+        messagebox.showinfo(title="Success",
+                            message="File was been successfully saved in 'data/monthly_supplements_"+curentdatestr+"'.xlsx'!.")
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/monthly_supplements_"+curentdatestr+"'.xlsx'!.\nThe file is probably already in use.")
 
 btnExport = Button(mainframe, text="NEXON end of month import LOGIN", command=click_button_export)
 btnExport.grid(sticky="NEWS", padx=10, pady=10)
