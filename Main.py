@@ -199,16 +199,18 @@ def click_button_export():
 
     worktable['TAJCode'] = worktable['TAJCode'].astype(str)
     filtredworktable = worktable[(worktable.StartDate.dt.date <= firstdayofmonth) & (((worktable.EndDate.dt.date >= firstdayofmonth) & (worktable.EndDate.dt.date <= lastdayofmonth)) | (worktable.EndDate.isnull())) & ((worktable.QuitDate.dt.date >= firstdayofmonth) | (worktable.QuitDate.isnull()))]
+    workingmonthcopy = workingmonth.copy()
 
-    workingmonth['TAJCode'] = workingmonth['TAJCode'].astype(str)
-    workingmonth['WorkHours'] = workingmonth['WorkHours'].str.replace(',', '.')
-    workingmonth['OtherHours'] = workingmonth['OtherHours'].str.replace(',', '.')
-    workingmonth['OverHours'] = workingmonth['OverHours'].str.replace(',', '.')
-    workingmonth['AbsenceHours'] = workingmonth['AbsenceHours'].str.replace(',', '.')
-    workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonth[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
-    summaryworkingmonth = workingmonth.groupby(by=['TAJCode', 'Name', 'Unit', 'SiteName', 'Datum', 'NormaMinutes'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
-    summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0)]
-    summaryworkingmonth = workingmonth.groupby(by=['Name', 'Unit', 'TAJCode'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    summaryworkingmonth = workingmonthcopy.groupby(by=['TAJCode', 'Name', 'Datum', 'NormaMinutes'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    summaryworkingmonth.loc[((summaryworkingmonth.WorkHours==0) & (summaryworkingmonth.OverHours>0)), 'WorkHours'] = 8
+    summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0) | (summaryworkingmonth.AbsenceHours > 0)]
+    summaryworkingmonth = summaryworkingmonth.groupby(by=['Name', 'TAJCode'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
 
     EmployeesWithCategory['TAJCode'] = EmployeesWithCategory['TAJCode'].astype(str)
 
@@ -216,8 +218,8 @@ def click_button_export():
     worktableresult = pandas.merge(worktableresult, EmployeesWithCategory, how='inner', on='TAJCode', suffixes=('', '_emp'))
     worktableresult = worktableresult.groupby(by=['Name', 'UnitWork', 'TAJCode', 'Category'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
 
-    worktableresult['WorkHours'] = worktableresult['WorkHours'] - worktableresult['OtherHours']
-    worktableresult['AvgEfficiencyFactor'] = round(worktableresult['NormaMinutes']/worktableresult['WorkHours']/10, 2)
+    worktableresult['WorkHours'] = worktableresult['WorkHours'] - worktableresult['OtherHours'] - worktableresult['AbsenceHours'] + worktableresult['OverHours']
+    worktableresult['AvgEfficiencyFactor'] = round(worktableresult['NormaMinutes']/(worktableresult['WorkHours'])/10, 2)
     worktableresult = pandas.merge(worktableresult, UnitFactorUsage, how='inner', on='UnitWork', suffixes=('', '_param'))
     worktableresult['AccrueOverhead'] = np.where(worktableresult['AbsenceHours'] > 2, 0, 1)
     worktableresult['mpsum'] = 0
@@ -228,7 +230,7 @@ def click_button_export():
     Categories['ervhotol'] = Categories['ervhotol'].astype(str)
     Categories['ervhoig'] = Categories['ervhoig'].astype(str)
     worktableresult['Category'] = worktableresult['Category'].astype(str)
-    date_time = currentdate.strftime("%Y%m")
+
     for row in worktableresult.iterrows():
         LineForMP = Categories.loc[((Categories['kat'] == row[1]['Category'])
                                & (Categories['pot'] == 'MP')
@@ -242,8 +244,8 @@ def click_button_export():
         except:
             LineForMPSum = 0
 
-        worktableresult.at[row[0], 'mpsum'] = LineForMPSum
-
+        if row[1]['mp'] != 0:
+            worktableresult.at[row[0], 'mpsum'] = LineForMPSum
         if row[1]['mpfel'] != 0 :
             worktableresult.at[row[0], 'mpsum'] = LineForMPSum/2
 
@@ -273,11 +275,13 @@ def click_button_export():
         except:
             LineForKAPSum = 0
 
-        worktableresult.at[row[0], 'kapsum'] = LineForKAPSum
+        if row[1]['kap'] != 0:
+            worktableresult.at[row[0], 'kapsum'] = LineForKAPSum
         if row[1]['kapfel'] != 0:
             worktableresult.at[row[0], 'kapsum'] = LineForKAPSum / 2
 
     try:
+        worktableresult.sort_values(['Name', 'UnitWork', 'Category'])
         worktableresult.to_excel('data/monthly_supplements_'+curentdatestr+'.xlsx',
                              index=False,
                              columns=['Name', 'UnitWork', 'TAJCode', 'Category', 'NormaMinutes', 'WorkHours',
