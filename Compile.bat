@@ -1,0 +1,1 @@
+pyinstaller -F --hidden-import "babel.numbers" -w -i salarycalc.ico main.py
