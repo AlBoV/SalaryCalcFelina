@@ -3,11 +3,15 @@ import tkinter
 import tkcalendar
 import datetime
 import numpy as np
+import os
+
+from xhtml2pdf import pisa
 
 from tkinter import messagebox
 from tkinter import *
 
 from tkinter import filedialog
+
 
 # Service procedure to get end of month by date
 def last_day_of_month(any_day):
@@ -15,6 +19,7 @@ def last_day_of_month(any_day):
     next_month = any_day.replace(day=28) + datetime.timedelta(days=4)
     # subtracting the number of the current day brings us back one month
     return next_month - datetime.timedelta(days=next_month.day)
+
 
 # Procedure when the window close button is pressed
 def on_closing():
@@ -39,6 +44,7 @@ def on_closing():
         # Closing the main window
         root.destroy()
 
+
 # Procedure for processing a press of the button to read data
 def click_button_read_all_data():
     # Pass global variables to the procedure
@@ -56,7 +62,7 @@ def click_button_read_all_data():
                                     names=headers,
                                     dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str', 4: 'str', 5: 'str', 6: 'str', 7: 'str'},
                                     sep=';',
-                                    encoding='latin-1')
+                                    encoding='latin_1')
         worktable['UnitWork'] = worktable['UnitWork'].fillna(worktable['UnitName'])
         worktable.loc[:, 'UnitName'] = 'x'
         worktable['TAJCode'] = worktable['TAJCode'].astype(str)
@@ -78,7 +84,7 @@ def click_button_read_all_data():
                                     names=headersCOE,
                                     dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str'},
                                     sep=';',
-                                    encoding='latin-1')
+                                    encoding='latin_1')
         EmployeesWithCategory['TAJCode'] = EmployeesWithCategory['TAJCode'].astype(str)
     except:
         messagebox.showerror(title="Error",
@@ -105,7 +111,7 @@ def click_button_read_all_data():
                                       names=headersWT,
                                       dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str', 4: 'str', 5: 'str', 6: 'str', 7: 'str', 8: 'str', 9: 'str', 10: 'str', 11: 'str'},
                                       sep=';',
-                                      encoding='latin-1')
+                                      encoding='latin_1')
         # set the DATUM column to the Date type
         DatumCol = workingtime.columns[4]
         workingtime[DatumCol] = pandas.to_datetime(workingtime[DatumCol])
@@ -116,7 +122,7 @@ def click_button_read_all_data():
         firstdayofmonth = currentdate.replace(day=1)
         lastdayofmonth = last_day_of_month(currentdate)
 
-        # Filter the working time table by dates within the selected month
+        # Filter the working timetable by dates within the selected month
         workingmonth = workingtime.loc[(workingtime[DatumCol].dt.date >= firstdayofmonth) & (workingtime[DatumCol].dt.date <= lastdayofmonth)]
 
         # If nothing is found, we inform you that the selected file does not contain the searched data
@@ -137,6 +143,8 @@ workingtime = pandas.DataFrame()            # VARRSOR FILE
 Categories = pandas.DataFrame()             # KATEGORIAK FILE
 EmployeesWithCategory = pandas.DataFrame()  # nbesorolas file
 workingmonth = pandas.DataFrame()           # LLOGIN FILE FILTERED
+workingtableforreports = pandas.DataFrame()
+workingtableforreportssum = pandas.DataFrame()
 
 # Create the main program window
 root = tkinter.Tk()
@@ -205,13 +213,18 @@ if not tablexls.empty:
 btnRead = Button(mainframe, text="Read all data", command=click_button_read_all_data)
 btnRead.grid(sticky="NEWS", padx=10, pady=10)
 
+
 # Button to create a file for import into NEXON
 def click_button_export():
+    global workingtableforreportssum
+    global workingtableforreports
+
     # Read the selected date from the form
     currentdate = cal.get_date()
     curentdatestr = currentdate.strftime("%Y%m")
     firstdayofmonth = currentdate.replace(day=1)
     lastdayofmonth = last_day_of_month(currentdate)
+
 
     # Read user-defined accrual data
     UnitFactorUsage = pandas.DataFrame(arrayxlsx, columns=['UnitWork', 'useage', 'mp', 'mpfel', 'kap', 'kapfel'])
@@ -248,13 +261,15 @@ def click_button_export():
 
     summaryworkingmonth = workingmonthcopy.groupby(by=['TAJCode', 'Name', 'Datum', 'NormaMinutes', 'AbsenceType'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
     summaryworkingmonth = summaryworkingmonth.sort_values(['Name', 'Datum'])
-    # Populate the WorkHours column with a 8 hours if there are hours in the OverHours column
+    # Populate the WorkHours column with 8 hours if there are hours in the OverHours column
     # summaryworkingmonth.loc[((summaryworkingmonth.WorkHours==0) & (summaryworkingmonth.OverHours>0)), 'WorkHours'] = 8
     # summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('szabadság', case=False))), 'WorkHours'] = 8
     summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('Táppénz', case=False))), 'AbsenceDays'] = 1
     summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('nem fizetett', case=False))), 'AbsenceDays'] = 1
     summaryworkingmonth['AbsenceDays'] = summaryworkingmonth['AbsenceDays'].fillna(0)
     summaryworkingmonth.loc[(((summaryworkingmonth.AbsenceHours>0) & (summaryworkingmonth.OverHours>0))), 'AbsenceHours'] = 0
+
+    workingtableforreports = summaryworkingmonth.copy()
 
     # Filter the table by those rows where there are filled hours, we don't need other rows
     # summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0) | (summaryworkingmonth.AbsenceHours > 0) | (summaryworkingmonth.AbsenceType.isnull() != True)]
@@ -273,7 +288,7 @@ def click_button_export():
 
     # Calculate the working hours in the WorkHours column using the formula
     worktableresult['WorkHours'] = worktableresult['WorkHours'] - worktableresult['OtherHours']  + worktableresult['OverHours'] - worktableresult['AbsenceHours']
-    # Сalculate the value of efficiency coefficient by the formula (the formula is correct)
+    # ?alculate the value of efficiency coefficient by the formula (the formula is correct)
     worktableresult['AvgEfficiencyFactor'] = round(worktableresult['NormaMinutes']/(worktableresult['WorkHours'])/10, 2)
     worktableresult['AvgEfficiencyFactor'] = worktableresult['AvgEfficiencyFactor'].fillna(0)
 
@@ -349,7 +364,9 @@ def click_button_export():
                 & (row[1]['AvgEfficiencyFactor'] >= float(80))):
             worktableresult.at[row[0], 'KAP'] = LineForKAPSum / 2
 
-    # Write the obtained result of the main result table into an excel file for checking
+    workingtableforreportssum = worktableresult.copy()
+
+    # Write the obtained result of the main result table into an Excel file for checking
     try:
         worktableresult = worktableresult.sort_values(['Name', 'UnitWork', 'Category'])
         worktableresult.to_excel('data/monthly_supplements_'+curentdatestr+'.xlsx',
@@ -364,7 +381,7 @@ def click_button_export():
         messagebox.showerror(title="Error",
                              message="File can't be saved in 'data/monthly_supplements_"+curentdatestr+"'.xlsx'!.\nThe file is probably already in use.")
 
-    # Write the obtained result of the main result table into an excel file where mistakes appear
+    # Write the obtained result of the main result table into an Excel file where mistakes appear
     if worktablewithmistakes.__len__()>0:
         try:
             worktablewithmistakes = worktablewithmistakes.sort_values(['Name', 'Unit', 'SiteName'])
@@ -380,33 +397,159 @@ def click_button_export():
                                  message="File can't be saved in 'data/Mistakes_"+curentdatestr+"'.xlsx'!.\nThe file is probably already in use.")
 
     # Write the obtained result of the main result table into an CSV file for importing in NEXON
-    try:
-        worktableresultforNBKifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
-        worktableresultforNBKifiz = worktableresultforNBKifiz.melt(id_vars=['TAJCode'], var_name='Code',
-                                                                   value_name='Sum')
-        worktableresultforNBKifiz['Active'] = 0
-        worktableresultforNBKifiz['Percentage'] = 0
-        worktableresultforNBKifiz['Time'] = 0
-        worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
-        worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
+    # try:
+    #     worktableresultforNBKifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
+    #     worktableresultforNBKifiz = worktableresultforNBKifiz.melt(id_vars=['TAJCode'], var_name='Code',
+    #                                                                value_name='Sum')
+    #     worktableresultforNBKifiz['Active'] = 0
+    #     worktableresultforNBKifiz['Percentage'] = 0
+    #     worktableresultforNBKifiz['Time'] = 0
+    #     worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
+    #     worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
+    #
+    #     worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
+    #                                      index=False,
+    #                                      header=False,
+    #                                      sep=';',
+    #                                      columns=['TAJCode', 'Active', 'Code', 'Sum', 'Percentage',
+    #                                               'Time', 'StartFrom', 'StartTill'],
+    #                                      date_format='%Y.%m.%d.',
+    #                                      decimal=',',
+    #                                      float_format='%.2f')
+    #     messagebox.showinfo(title="Success",
+    #                         message="Files was been successfully saved in '//10.3.1.1/bér/import/NBkifiz.csv'!")
+    # except:
+    #     messagebox.showerror(title="Error",
+    #                          message="File can't be saved in '//10.3.1.1/bér/import/NBkifiz.csv'!.\nThe file is probably already in use or no access to this catalog.")
 
-        worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
-                                         index=False,
-                                         header=False,
-                                         sep=';',
-                                         columns=['TAJCode', 'Active', 'Code', 'Sum', 'Percentage',
-                                                  'Time', 'StartFrom', 'StartTill'],
-                                         date_format='%Y.%m.%d.',
-                                         decimal=',',
-                                         float_format='%.2f')
-        messagebox.showinfo(title="Success",
-                            message="Files was been successfully saved in '//10.3.1.1/bér/import/NBkifiz.csv'!")
-    except:
-        messagebox.showerror(title="Error",
-                             message="File can't be saved in '//10.3.1.1/bér/import/NBkifiz.csv'!.\nThe file is probably already in use or no access to this catalog.")
+
+def convert_html_to_pdf(html_string, pdf_path):
+    with open(pdf_path, "wb") as pdf_file:
+        pisa_status = pisa.CreatePDF(html_string, dest=pdf_file)
+
+    return not pisa_status.err
+
+
+def filling_page_header(pagedata, textdata: str):
+
+    textdata = textdata.replace('{{Name}}', pagedata[1]['Name'])
+    textdata = textdata.replace('{{TAJCode}}', pagedata[1]['TAJCode'])
+    textdata = textdata.replace('{{Unit}}', pagedata[1]['UnitWork'])
+    return textdata
+
+
+def filling_page_footer(pagedata, textdata: str, currentmonth: str):
+
+    textdata = textdata.replace('{{TotalMonth}}', currentmonth)
+    textdata = textdata.replace('{{TotalHours}}', str(pagedata[1]['WorkHours']+pagedata[1]['OtherHours']+pagedata[1]['OverHours']))
+    textdata = textdata.replace('{{TotalOtherHours}}', str(pagedata[1]['OtherHours']))
+    textdata = textdata.replace('{{TotalNormaMinutes}}', str(pagedata[1]['NormaMinutes']))
+    textdata = textdata.replace('{{TotalPerfHours}}', str(pagedata[1]['WorkHours']))
+    textdata = textdata.replace('{{TotalProcent}}', str(pagedata[1]['AvgEfficiencyFactor']))
+
+    textdata = textdata.replace('{{Category}}', pagedata[1]['Category'])
+    CategorySum = 0
+    if pagedata[1]['Category'] == 'A':
+        CategorySum = 266800
+    if pagedata[1]['Category'] == 'B':
+        CategorySum = 281175
+    if pagedata[1]['Category'] == 'C':
+        CategorySum = 295550
+
+    textdata = textdata.replace('{{CategorySum}}', str(CategorySum))
+    textdata = textdata.replace('{{AbsenceDays}}', str(pagedata[1]['AbsenceDays']))
+    textdata = textdata.replace('{{AbsenceSum}}', str(pagedata[1]['JP']))
+
+    UnitWork = pagedata[1]['UnitWork']
+    if pagedata[1]['AccrueOverhead'] == 0:
+        UnitWork = 'sok a hiányzás.'
+
+    textdata = textdata.replace('{{Unit}}', UnitWork)
+    textdata = textdata.replace('{{UnitSum}}', str(pagedata[1]['MP']))
+    textdata = textdata.replace('{{ProductivitySum}}', str(pagedata[1]['KAP']))
+
+    return textdata
+
+
+def filling_line(linedata, textdata: str):
+
+    textdata = textdata.replace('{{Date}}', linedata[1]['Datum'].strftime("%Y.%m.%d."))
+
+    if linedata[1]['AbsenceType'] != '':
+        textdata = textdata.replace('{{Hours}}', linedata[1]['AbsenceType'])
+        textdata = textdata.replace('{{PerfHours}}', '')
+        Procent = ''
+    else:
+        textdata = textdata.replace('{{Hours}}', str('8'))
+        textdata = textdata.replace('{{PerfHours}}', str(linedata[1]['WorkHours']-linedata[1]['OtherHours']))
+        if linedata[1]['WorkHours'] - linedata[1]['OtherHours']!=0:
+            Procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours'] - linedata[1]['OtherHours']) / 10, 2)
+        else:
+            Procent = ''
+
+    textdata = textdata.replace('{{OtherHours}}', str(linedata[1]['OtherHours']))
+    textdata = textdata.replace('{{NormaMinutes}}', str(linedata[1]['NormaMinutes']))
+    textdata = textdata.replace('{{Procent}}', str(Procent))
+
+    return textdata
+
+
+# Button to Create a button for employee report
+def click_button_reports():
+    global workingtableforreportssum
+    global workingtableforreports
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y.%m")
+
+    # Specify HTML string
+    html = open('data/template.html', 'r', encoding='latin_1').read()
+
+    html = html.replace('{{PicturePath}}', os.path.abspath(os.curdir)+"\\data\\SalaryScale.bmp")
+
+    FirstSplit = html.rsplit(sep='<!--page-->')
+
+    NewHTML = ""
+
+    Header = FirstSplit[0]
+    PageText = FirstSplit[1]
+    Footer = FirstSplit[2]
+
+    SecondSplit = PageText.rsplit(sep='<!--tableline-->')
+
+    PageHeader = SecondSplit[0]
+    TableLine = SecondSplit[1]
+    PageFooter = SecondSplit[2]
+
+    NewHTML = Header
+    
+    for page in workingtableforreportssum.iterrows():
+
+        NewHTML = NewHTML+filling_page_header(page, PageHeader)
+        PageText = ''
+
+        for line in workingtableforreports[workingtableforreports['TAJCode'] == page[1]['TAJCode']].iterrows():
+
+            PageText = PageText + filling_line(line, TableLine)
+
+        NewHTML = NewHTML + PageText + filling_page_footer(page, PageFooter, currentmonth)
+
+    NewHTML = NewHTML + Footer
+
+    with open('data/HtmlTable.html', 'w', encoding='Latin_1') as f:
+         f.write(NewHTML)
+
+    os.startfile(os.path.abspath(os.curdir)+"\\data\\HtmlTable.html")
+
+    #convert_html_to_pdf(NewHTML, 'data/HtmlTable.pdf')
+
 
 # Create a button for uploading data to NEXON
 btnExport = Button(mainframe, text="NEXON end of month import LOGIN", command=click_button_export)
+btnExport.grid(sticky="NEWS", padx=10, pady=10)
+
+# Create a button for employee report
+btnExport = Button(mainframe, text="Salary scales sheets for employee", command=click_button_reports)
 btnExport.grid(sticky="NEWS", padx=10, pady=10)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)

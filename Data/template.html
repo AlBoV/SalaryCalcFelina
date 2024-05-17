@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+	<head>
+    <meta charset="Latin 1">
+  </head>
+<body>
+<!--page-->
+<div style="page-break-after: always">
+<hr />
+<p><span style="font-size:16px"><strong>Teljesítményadatok</strong></span></p>
+<table border="1" cellpadding="1" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td style="width:50%"><strong>{{Name}}</strong></td>
+			<td style="width:20%"><strong>{{TAJCode}}</strong></td>
+			<td style="width:40%">{{Unit}}</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+<table border="1" cellpadding="1" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td><strong>Munkanap</strong></td>
+			<td><strong>Munkaid?</strong></td>
+			<td style="text-align:right"><strong>Id?bér/Egyéb</strong></td>
+			<td style="text-align:right"><strong>Normaperc</strong></td>
+			<td style="text-align:right"><strong>Teljesítmény-óra</strong></td>
+			<td style="text-align:right"><strong>Telj.százalék</strong></td>
+		</tr>
+		<!--tableline-->
+		<tr>
+			<td>{{Date}}</td>
+			<td>{{Hours}}</td>
+			<td style="text-align:right">{{OtherHours}}</td>
+			<td style="text-align:right"><strong>{{NormaMinutes}}</strong></td>
+			<td style="text-align:right">{{PerfHours}}</td>
+			<td style="text-align:right">{{Procent}}</td>
+		</tr>
+		<!--tableline-->
+		<tr>
+			<td><strong>{{TotalMonth}}</strong></td>
+			<td><strong>{{TotalHours}}</strong></td>
+			<td style="text-align:right"><strong>{{TotalOtherHours}}</strong></td>
+			<td style="text-align:right"><strong>{{TotalNormaMinutes}}</strong></td>
+			<td style="text-align:right"><strong>{{TotalPerfHours}}</strong></td>
+			<td style="text-align:right"><strong>{{TotalProcent}}</strong></td>
+		</tr>
+	</tbody>
+</table>
+<p><img alt="" src="{{PicturePath}}" /></p>
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td>Beosolási kategória: {{Category}}</td>
+			<td style="text-align:right">{{CategorySum}} Ft</td>
+		</tr>
+		<tr>
+			<td>Jár a jelenléti pótlék, mert a havi hiányzás nem több mint 2 nap ({{AbsenceDays}}):</td>
+			<td style="text-align:right">{{AbsenceSum}} Ft</td>
+		</tr>
+		<tr>
+			<td>Jár a min?ségi pótlék: [{{Unit}}]:</td>
+			<td style="text-align:right">{{UnitSum}} Ft</td>
+		</tr>
+		<tr>
+			<td>Nem jár kapacitás-pótlék: kevés a százalék, vagy sok a hiányzás.</td>
+			<td style="text-align:right">{{ProductivitySum}} Ft</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<!--page-->
+</body>
+</html>
