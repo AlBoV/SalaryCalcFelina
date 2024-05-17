@@ -5,8 +5,6 @@ import datetime
 import numpy as np
 import os
 
-from xhtml2pdf import pisa
-
 from tkinter import messagebox
 from tkinter import *
 
@@ -62,7 +60,7 @@ def click_button_read_all_data():
                                     names=headers,
                                     dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str', 4: 'str', 5: 'str', 6: 'str', 7: 'str'},
                                     sep=';',
-                                    encoding='latin_1')
+                                    encoding='latin2')
         worktable['UnitWork'] = worktable['UnitWork'].fillna(worktable['UnitName'])
         worktable.loc[:, 'UnitName'] = 'x'
         worktable['TAJCode'] = worktable['TAJCode'].astype(str)
@@ -84,7 +82,7 @@ def click_button_read_all_data():
                                     names=headersCOE,
                                     dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str'},
                                     sep=';',
-                                    encoding='latin_1')
+                                    encoding='latin2')
         EmployeesWithCategory['TAJCode'] = EmployeesWithCategory['TAJCode'].astype(str)
     except:
         messagebox.showerror(title="Error",
@@ -111,7 +109,7 @@ def click_button_read_all_data():
                                       names=headersWT,
                                       dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str', 4: 'str', 5: 'str', 6: 'str', 7: 'str', 8: 'str', 9: 'str', 10: 'str', 11: 'str'},
                                       sep=';',
-                                      encoding='latin_1')
+                                      encoding='latin2')
         # set the DATUM column to the Date type
         DatumCol = workingtime.columns[4]
         workingtime[DatumCol] = pandas.to_datetime(workingtime[DatumCol])
@@ -397,37 +395,30 @@ def click_button_export():
                                  message="File can't be saved in 'data/Mistakes_"+curentdatestr+"'.xlsx'!.\nThe file is probably already in use.")
 
     # Write the obtained result of the main result table into an CSV file for importing in NEXON
-    # try:
-    #     worktableresultforNBKifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
-    #     worktableresultforNBKifiz = worktableresultforNBKifiz.melt(id_vars=['TAJCode'], var_name='Code',
-    #                                                                value_name='Sum')
-    #     worktableresultforNBKifiz['Active'] = 0
-    #     worktableresultforNBKifiz['Percentage'] = 0
-    #     worktableresultforNBKifiz['Time'] = 0
-    #     worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
-    #     worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
-    #
-    #     worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
-    #                                      index=False,
-    #                                      header=False,
-    #                                      sep=';',
-    #                                      columns=['TAJCode', 'Active', 'Code', 'Sum', 'Percentage',
-    #                                               'Time', 'StartFrom', 'StartTill'],
-    #                                      date_format='%Y.%m.%d.',
-    #                                      decimal=',',
-    #                                      float_format='%.2f')
-    #     messagebox.showinfo(title="Success",
-    #                         message="Files was been successfully saved in '//10.3.1.1/bér/import/NBkifiz.csv'!")
-    # except:
-    #     messagebox.showerror(title="Error",
-    #                          message="File can't be saved in '//10.3.1.1/bér/import/NBkifiz.csv'!.\nThe file is probably already in use or no access to this catalog.")
+    try:
+        worktableresultforNBKifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
+        worktableresultforNBKifiz = worktableresultforNBKifiz.melt(id_vars=['TAJCode'], var_name='Code',
+                                                                   value_name='Sum')
+        worktableresultforNBKifiz['Active'] = 0
+        worktableresultforNBKifiz['Percentage'] = 0
+        worktableresultforNBKifiz['Time'] = 0
+        worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
+        worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
 
-
-def convert_html_to_pdf(html_string, pdf_path):
-    with open(pdf_path, "wb") as pdf_file:
-        pisa_status = pisa.CreatePDF(html_string, dest=pdf_file)
-
-    return not pisa_status.err
+        worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
+                                         index=False,
+                                         header=False,
+                                         sep=';',
+                                         columns=['TAJCode', 'Active', 'Code', 'Sum', 'Percentage',
+                                                  'Time', 'StartFrom', 'StartTill'],
+                                         date_format='%Y.%m.%d.',
+                                         decimal=',',
+                                         float_format='%.2f')
+        messagebox.showinfo(title="Success",
+                            message="Files was been successfully saved in '//10.3.1.1/bér/import/NBkifiz.csv'!")
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in '//10.3.1.1/bér/import/NBkifiz.csv'!.\nThe file is probably already in use or no access to this catalog.")
 
 
 def filling_page_header(pagedata, textdata: str):
@@ -441,20 +432,21 @@ def filling_page_header(pagedata, textdata: str):
 def filling_page_footer(pagedata, textdata: str, currentmonth: str):
 
     textdata = textdata.replace('{{TotalMonth}}', currentmonth)
-    textdata = textdata.replace('{{TotalHours}}', str(pagedata[1]['WorkHours']+pagedata[1]['OtherHours']+pagedata[1]['OverHours']))
+    textdata = textdata.replace('{{TotalHours}}', str(pagedata[1]['WorkHours']+pagedata[1]['OtherHours']))
     textdata = textdata.replace('{{TotalOtherHours}}', str(pagedata[1]['OtherHours']))
     textdata = textdata.replace('{{TotalNormaMinutes}}', str(pagedata[1]['NormaMinutes']))
     textdata = textdata.replace('{{TotalPerfHours}}', str(pagedata[1]['WorkHours']))
     textdata = textdata.replace('{{TotalProcent}}', str(pagedata[1]['AvgEfficiencyFactor']))
 
     textdata = textdata.replace('{{Category}}', pagedata[1]['Category'])
-    CategorySum = 0
-    if pagedata[1]['Category'] == 'A':
-        CategorySum = 266800
-    if pagedata[1]['Category'] == 'B':
-        CategorySum = 281175
-    if pagedata[1]['Category'] == 'C':
-        CategorySum = 295550
+
+    LineForBase = Categories.loc[((Categories['kat'] == pagedata[1]['Category'] )
+                                 & (Categories['pot'] == 'BASE')
+                                )]
+    try:
+        CategorySum = LineForBase.iloc[0]['osszeg']
+    except:
+        CategorySum = 0
 
     textdata = textdata.replace('{{CategorySum}}', str(CategorySum))
     textdata = textdata.replace('{{AbsenceDays}}', str(pagedata[1]['AbsenceDays']))
@@ -503,7 +495,7 @@ def click_button_reports():
     currentmonth = currentdate.strftime("%Y.%m")
 
     # Specify HTML string
-    html = open('data/template.html', 'r', encoding='latin_1').read()
+    html = open('data/template.html', 'r', encoding='latin2').read()
 
     html = html.replace('{{PicturePath}}', os.path.abspath(os.curdir)+"\\data\\SalaryScale.bmp")
 
@@ -536,12 +528,10 @@ def click_button_reports():
 
     NewHTML = NewHTML + Footer
 
-    with open('data/HtmlTable.html', 'w', encoding='Latin_1') as f:
+    with open('data/HtmlTable.html', 'w', encoding='latin2') as f:
          f.write(NewHTML)
 
     os.startfile(os.path.abspath(os.curdir)+"\\data\\HtmlTable.html")
-
-    #convert_html_to_pdf(NewHTML, 'data/HtmlTable.pdf')
 
 
 # Create a button for uploading data to NEXON
