@@ -143,11 +143,13 @@ EmployeesWithCategory = pandas.DataFrame()  # nbesorolas file
 workingmonth = pandas.DataFrame()           # LLOGIN FILE FILTERED
 workingtableforreports = pandas.DataFrame()
 workingtableforreportssum = pandas.DataFrame()
+worktableresult = pandas.DataFrame()
+numberofemployees = pandas.DataFrame()
 
 # Create the main program window
 root = tkinter.Tk()
 root.title('From Login to Nexon crating a file import of bonuses')
-root.geometry('600x400')
+root.geometry('600x600')
 
 # Interface creation
 mainframe = Frame(root)
@@ -216,6 +218,9 @@ btnRead.grid(sticky="NEWS", padx=10, pady=10)
 def click_button_export():
     global workingtableforreportssum
     global workingtableforreports
+    global worktableresult
+    global filtredworktable
+    global numberofemployees
 
     # Read the selected date from the form
     currentdate = cal.get_date()
@@ -268,6 +273,8 @@ def click_button_export():
     summaryworkingmonth.loc[(((summaryworkingmonth.AbsenceHours>0) & (summaryworkingmonth.OverHours>0))), 'AbsenceHours'] = 0
 
     workingtableforreports = summaryworkingmonth.copy()
+    # Copying the table for further application in reports
+    numberofemployees = summaryworkingmonth.copy()
 
     # Filter the table by those rows where there are filled hours, we don't need other rows
     # summaryworkingmonth = summaryworkingmonth[(summaryworkingmonth.WorkHours > 0) | (summaryworkingmonth.OtherHours > 0) | (summaryworkingmonth.OverHours > 0) | (summaryworkingmonth.AbsenceHours > 0) | (summaryworkingmonth.AbsenceType.isnull() != True)]
@@ -282,6 +289,7 @@ def click_button_export():
     # Merge the tables of working result and employees with categories by TAJCode column
     worktableresult = pandas.merge(worktableresult, EmployeesWithCategory, how='inner', on='TAJCode', suffixes=('', '_emp'))
     # IT3. Group the table by major columns and summarize the hours, in the second iteration NormaMinutes goes on the right.
+
     worktableresult = worktableresult.groupby(by=['Name', 'UnitWork', 'TAJCode', 'Category'], as_index=False).agg({'NormaMinutes': 'sum', 'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum', 'AbsenceDays': 'sum'})
 
     # Calculate the working hours in the WorkHours column using the formula
@@ -491,6 +499,11 @@ def click_button_reports():
     global workingtableforreportssum
     global workingtableforreports
 
+    if workingtableforreports.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
+
     currentdate = cal.get_date()
     currentmonth = currentdate.strftime("%Y.%m")
 
@@ -534,13 +547,114 @@ def click_button_reports():
     os.startfile(os.path.abspath(os.curdir)+"\\data\\HtmlTable.html")
 
 
+# Button to Create a button for Number of people per group
+def click_button_reports_1():
+    global numberofemployees
+
+    if numberofemployees.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
+
+    # Merge the tables of working time and the main table of work by employees by TAJCode column
+    numberofemployeeswithunites = pandas.merge(numberofemployees, filtredworktable, how='inner', on='TAJCode', suffixes=('', '_work'))
+    numberofemployeeswithunites.sort_values(by=['UnitWork', 'Datum'])
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y-%m")
+
+    numberofemployeeswithunites['evho'] = currentmonth
+    numberofemployeeswithunites['nap'] = numberofemployeeswithunites['Datum'].dt.strftime('%d')
+    list_of_unites = ['Dévaványa teljesítménybéres', 'Varroda 1', 'Varroda 2', 'Varroda 3', 'Varroda 4', 'Varroda 5']
+    list_of_vocations = ['Szabadság', 'Rendkívüli szabadság']
+    list_of_dayoffs = ['Táppénz', 'Igazolt de nem fizetett']
+
+    def InListOfWorkingDays(row, sign=True):
+        if sign:
+            if row['UnitWork'] in list_of_unites:
+                val = 1
+            else:
+                val = 0
+        else:
+            if not row['UnitWork'] in list_of_unites:
+                val = 1
+            else:
+                val = 0
+        return val
+
+    def InListOfWorkingDaysAndVocation(row, sign=True):
+        if sign:
+            if (row['UnitWork'] in list_of_unites
+                 and row['AbsenceType'] in list_of_vocations):
+                val = 1
+            else:
+                val = 0
+        else:
+            if (not row['UnitWork'] in list_of_unites
+                 and row['AbsenceType'] in list_of_vocations):
+                val = 1
+            else:
+                val = 0
+        return val
+
+    def InListOfDayOffs(row, sign=True):
+        if sign:
+            if (row['UnitWork'] in list_of_unites
+                and row['AbsenceType'] in list_of_dayoffs):
+                val = 1
+            else:
+                val = 0
+        else:
+            if (not row['UnitWork'] in list_of_unites
+                and row['AbsenceType'] in list_of_dayoffs):
+                val = 1
+            else:
+                val = 0
+        return val
+
+    numberofemployeeswithunites['vworked'] = numberofemployeeswithunites.apply(lambda this_row: InListOfWorkingDays(this_row), axis=1)
+
+    numberofemployeeswithunites['vvacation'] = numberofemployeeswithunites.apply(lambda this_row: InListOfWorkingDaysAndVocation(this_row), axis=1)
+
+    numberofemployeeswithunites['vaway'] = numberofemployeeswithunites.apply(lambda this_row: InListOfDayOffs(this_row), axis=1)
+
+    numberofemployeeswithunites['vsum'] = numberofemployeeswithunites['vworked'] + numberofemployeeswithunites['vvacation'] + numberofemployeeswithunites['vaway']
+
+    numberofemployeeswithunites['oworked'] = numberofemployeeswithunites.apply(lambda this_row: InListOfWorkingDays(this_row, False), axis=1)
+
+    numberofemployeeswithunites['ovacation'] = numberofemployeeswithunites.apply(lambda this_row: InListOfWorkingDaysAndVocation(this_row, False), axis=1)
+
+    numberofemployeeswithunites['oaway'] = numberofemployeeswithunites.apply(lambda this_row: InListOfDayOffs(this_row, False), axis=1)
+
+    numberofemployeeswithunites['osum'] = numberofemployeeswithunites['oworked'] + numberofemployeeswithunites['ovacation'] + numberofemployeeswithunites['oaway']
+
+    numberofemployeeswithunites['allsum'] = numberofemployeeswithunites['vsum'] + numberofemployeeswithunites['osum']
+
+    numberofemployeeswithunites = numberofemployeeswithunites.groupby(by=['UnitWork', 'Datum', 'evho', 'nap'], as_index=False).agg({'NormaMinutes': 'sum', 'vworked': 'sum', 'vvacation': 'sum', 'vaway': 'sum', 'vsum': 'sum', 'oworked': 'sum', 'ovacation': 'sum', 'oaway': 'sum', 'osum': 'sum', 'allsum': 'sum'})
+    try:
+        numberofemployeeswithunites.to_excel('data/Number of people per group_' + currentmonth + '.xlsx',
+                                   index=False,
+                                   header=['egység', 'munkanap', 'evho', 'nap', 'vdolgozott', 'vszabadság', 'vtávol', 'vnp', 'vössz',
+                                           'odolgozott', 'oszabadság', 'otávol', 'oössz', 'összesen'],
+                                   columns=['UnitWork', 'Datum', 'evho', 'nap', 'vworked', 'vvacation',
+                                            'vaway', 'NormaMinutes', 'vsum', 'oworked', 'ovacation', 'oaway', 'osum', 'allsum'])
+        messagebox.showinfo(title="Warning of incorrect data",
+                           message="Files was been successfully saved in 'data/Number of people per group_" + currentmonth + "'.xlsx'!")
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/Number of people per group_" + currentmonth + "'.xlsx'!.\nThe file is probably already in use or no access to this catalog.")
+
 # Create a button for uploading data to NEXON
 btnExport = Button(mainframe, text="NEXON end of month import LOGIN", command=click_button_export)
 btnExport.grid(sticky="NEWS", padx=10, pady=10)
 
 # Create a button for employee report
-btnExport = Button(mainframe, text="Salary scales sheets for employee", command=click_button_reports)
-btnExport.grid(sticky="NEWS", padx=10, pady=10)
+btnReport = Button(mainframe, text="Salary scales sheets for employee", command=click_button_reports)
+btnReport.grid(sticky="NEWS", padx=10, pady=10)
+
+# Create a button for employee report
+btnReport1 = Button(mainframe, text="Number of people per group", command=click_button_reports_1)
+btnReport1.grid(sticky="NEWS", padx=10, pady=10)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
