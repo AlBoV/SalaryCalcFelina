@@ -599,22 +599,42 @@ def click_button_reports_1():
 
 # Button to Create a button for Time wages per driver "Idõbérek vezetõnként"
 def click_button_reports_2():
-    i = 1
+    global workingtableforreports
+
+    if workingtableforreports.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
 
 
 # Button to Create a button for Breakdown of time wages "Idõbérmegbontás"
 def click_button_reports_3():
-    i = 1
+    global workingtableforreports
+
+    if workingtableforreports.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
 
 
 # Button to Create a button for Performance percentages total "Teljesítményszázalékok összesen"
 def click_button_reports_4():
-    i = 1
+    global workingtableforreports
+
+    if workingtableforreports.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
 
 
 # Button to Create a button for Individual performance percentages / month "Egyéni teljesítményszázalékok / hó"
 def click_button_reports_5():
-    i = 1
+    global workingtableforreports
+
+    if workingtableforreports.empty:
+        messagebox.showerror(title="Error",
+                             message="No data! Please first perform the steps to read data and send data to Nexon!")
+        return
 
 
 # Main dict initialisation
