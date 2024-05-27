@@ -599,12 +599,54 @@ def click_button_reports_1():
 
 # Button to Create a button for Time wages per driver "Idõbérek vezetõnként"
 def click_button_reports_2():
+    global filtredworktable
+    global workingtime
     global workingtableforreports
 
-    if workingtableforreports.empty:
+    if workingtime.empty:
         messagebox.showerror(title="Error",
                              message="No data! Please first perform the steps to read data and send data to Nexon!")
         return
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y-%m")
+
+    workingmonthcopy = workingtime.copy()
+    workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
+    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    # Translate the WorkHours,OtherHours,OverHours,AbsenceHours  column to the string value for further useage
+    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
+    workingmonthcopy['AbsenceDays'] = 0
+
+    # Convert column values to a float
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
+
+    worktable_group_by_change = workingmonthcopy.groupby(by=['TAJCode', 'ChangeBy', 'AbsenceType'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    worktable_group_by_all = pandas.merge(filtredworktable, worktable_group_by_change, how='inner', on='TAJCode',
+                 suffixes=('', '_work'))
+    worktable_group_by_unitdriver = worktable_group_by_all.groupby(by=['ChangeBy', 'UnitWork', 'UnitCode'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    worktable_group_by_unitdriver = worktable_group_by_unitdriver.sort_values(by=['UnitWork', 'UnitCode', 'ChangeBy'])
+    worktable_group_by_unitdriver['evho'] = currentmonth
+
+    try:
+        worktable_group_by_unitdriver.to_excel('data/Time wages per driver_' + currentmonth + '.xlsx',
+                                             index=False,
+                                             header=['evho', 'UnitWork', 'UnitCode', 'driver', 'WorkHours', 'OtherHours',
+                                                     'OverHours', 'AbsenceHours'],
+                                             columns=['evho', 'UnitWork', 'UnitCode', 'ChangeBy', 'WorkHours', 'OtherHours',
+                                                     'OverHours', 'AbsenceHours'])
+        messagebox.showinfo(title="Warning of incorrect data",
+                            message="Files was been successfully saved in 'data/Time wages per driver_" + currentmonth + "'.xlsx'!")
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/Time wages per driver_" + currentmonth + "'.xlsx'!.\nThe file is probably already in use or no access to this catalog.")
 
 
 # Button to Create a button for Breakdown of time wages "Idõbérmegbontás"
@@ -651,8 +693,8 @@ numberofemployees = pandas.DataFrame()
 
 # Create the main program window
 root = tkinter.Tk()
-root.title('From Login to Nexon crating a file import of bonuses')
-root.geometry('600x600')
+root.title('From Login to Nexon creating a file import of bonuses')
+root.geometry('900x560')
 
 # Interface creation
 mainframe = Frame(root)
@@ -662,7 +704,7 @@ mainframe.pack()
 main_data_frame = LabelFrame(mainframe, text="Main data")
 main_data_frame.grid(sticky="NEWS", padx=10, pady=10)
 
-lable_1 = Label(main_data_frame, text="Enter month of salary calculation ")
+lable_1 = Label(main_data_frame, text="Enter month of salary calculation (Adja meg a fizetés kiszámításának hónapját)")
 lable_1.grid(row=0, column=1, sticky="W")
 
 cal = tkcalendar.DateEntry(main_data_frame, width=12, borderwidth=2, date_pattern='MM/dd/yyyy')
@@ -671,7 +713,7 @@ cal.grid(row=0, column=3, sticky="E")
 for widget in main_data_frame.winfo_children():
     widget.grid_configure(padx=10, pady=5)
 
-user_data_frame = LabelFrame(mainframe, text="User entered data")
+user_data_frame = LabelFrame(mainframe, text="User entered data (A felhasználó által megadott adatok)")
 user_data_frame.grid(sticky="NEWS", padx=10, pady=10)
 
 # Reading the settings file for application of additional bonuses by subdivisions
@@ -680,8 +722,11 @@ tablexls = pandas.DataFrame()
 try:
     tablexls = pandas.read_excel('data/nexkell.xlsx')
 except:
-    messagebox.showerror(title="Error",
-                         message="File not found 'data/nexkell.xlsx'!\nPlace a file with this name in the specified directory.")
+    messagebox.showerror(title="Error (Hiba)",
+                         message="""File not found 'data/nexkell.xlsx'!
+                         \rPlace a file with this name in the specified directory.
+                         \r\rNem találtuk meg a 'data/nexkell.xlsx' fájlt!
+                         \rTegyen be egy ilyen nevű fájlt a megadott könyvtárba.""")
     root.destroy()
 
 # Create an array of values based on the read data of the table
@@ -694,17 +739,17 @@ if not tablexls.empty:
     j=0
     for header in tablexls.columns:
             l = tkinter.Label(user_data_frame, text=header.upper(), relief=tkinter.FLAT, font=('Arial', 10, 'bold'))
-            l.grid(row=0, column=j, sticky="NSEW")
+            l.grid(row=0, column=j, sticky="NEWS")
             j=j+1
 
     for i in range(total_rows):
         for j in range(total_columns):
             if j==0:
-                e = Entry(user_data_frame, width=20,
+                e = Entry(user_data_frame, width=30,
                                 font=('Arial', 10, 'bold'))
                 e.config(state='normal')
             else:
-                e = Entry(user_data_frame, width=10,
+                e = Entry(user_data_frame, width=15,
                           font=('Arial', 10))
             id = f'{i+1}{j}'
             e.grid(row=i+1, column=j)
@@ -713,42 +758,42 @@ if not tablexls.empty:
             cells[e] = [arrayxlsx[i][j], i, j]
 
 
-prepexport_frame = LabelFrame(mainframe, text="Data preparation and export")
+prepexport_frame = LabelFrame(mainframe, text="Data preparation and export (Adatelőkészítés és exportálás)")
 prepexport_frame.grid(sticky="NEWS",  padx=10, pady=10)
 
 # Button for reading all auxiliary data along the set paths
-btnRead = Button(prepexport_frame, text="1. Read all data (first action)", command=click_button_read_all_data)
+btnRead = Button(prepexport_frame, text="1. Read all data (Minden adat beolvasása)", command=click_button_read_all_data)
 btnRead.grid(sticky="NEWS", row=0, column=0, padx=10, pady=10)
 
 # Create a button for uploading data to NEXON
-btnExport = Button(prepexport_frame, text="2. NEXON end of month import LOGIN (second action)", command=click_button_export)
+btnExport = Button(prepexport_frame, text="2. NEXON end of month import LOGIN (NEXON hó végi import LOGIN)", command=click_button_export)
 btnExport.grid(sticky="NEWS", row=0, column=1, padx=10, pady=10)
 
 reports_frame = LabelFrame(mainframe, text="Reports")
 reports_frame.grid(sticky="NEWS",  padx=10, pady=10)
 
 # Create a button for employee report
-btnReport = Button(reports_frame, text="Salary scales sheets for employee", command=click_button_reports)
+btnReport = Button(reports_frame, text="Salary scales sheets for employee (Bértáblák a munkavállaló számára)", command=click_button_reports)
 btnReport.grid(sticky="NEWS", row=0, column=0, padx=10, pady=10)
 
 # Create a button for employee report
-btnReport1 = Button(reports_frame, text="Number of people per group", command=click_button_reports_1)
+btnReport1 = Button(reports_frame, text="Number of people per group (Személyek száma csoportonként)", command=click_button_reports_1)
 btnReport1.grid(sticky="NEWS", row=1, column=0, padx=10, pady=10)
 
 # Create a button for Time wages per driver report
-btnReport1 = Button(reports_frame, text="Time wages per driver", command=click_button_reports_2)
+btnReport1 = Button(reports_frame, text="Time wages per driver (Vezetőnkénti időbérek)", command=click_button_reports_2)
 btnReport1.grid(sticky="NEWS", row=2, column=0, padx=10, pady=10)
 
 # Create a button for Breakdown of time wages report
-btnReport1 = Button(reports_frame, text="Breakdown of time wages", command=click_button_reports_3)
+btnReport1 = Button(reports_frame, text="Breakdown of time wages (Az időbérek bontása)", command=click_button_reports_3)
 btnReport1.grid(sticky="NEWS", row=0, column=1, padx=10, pady=10)
 
 # Create a button for Performance percentages total report
-btnReport1 = Button(reports_frame, text="Performance percentages total", command=click_button_reports_4)
+btnReport1 = Button(reports_frame, text="Performance percentages total (Teljesítmény százalékok összesen)", command=click_button_reports_4)
 btnReport1.grid(sticky="NEWS", row=1, column=1, padx=10, pady=10)
 
 # Create a button for Individual performance percentages / month report
-btnReport1 = Button(reports_frame, text="Individual performance percentages / month", command=click_button_reports_5)
+btnReport1 = Button(reports_frame, text="Individual performance percentages / month (Egyéni teljesítményszázalékok / hónap)", command=click_button_reports_5)
 btnReport1.grid(sticky="NEWS", row=2, column=1, padx=10, pady=10)
 
 # Create a button for Individual performance percentages / month report
