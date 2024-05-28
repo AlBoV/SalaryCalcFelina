@@ -581,6 +581,16 @@ def click_button_reports_1():
                                                                       as_index=False).agg(
         {'NormaMinutes': 'sum', 'vworked': 'sum', 'vvacation': 'sum', 'vaway': 'sum', 'vsum': 'sum', 'oworked': 'sum',
          'ovacation': 'sum', 'oaway': 'sum', 'osum': 'sum', 'allsum': 'sum'})
+
+    numberofemployeeswithunitestotal = numberofemployeeswithunites[['NormaMinutes', 'vworked', 'vvacation', 'vaway', 'vsum', 'oworked',
+         'ovacation', 'oaway', 'osum', 'allsum']].sum()
+    numberofemployeeswithunitestotal['UnitWork'] = 'TOTAL'
+    numberofemployeeswithunitestotal['Datum'] = ''
+    numberofemployeeswithunitestotal['evho'] = currentmonth
+    numberofemployeeswithunitestotal['nap'] = ''
+
+    numberofemployeeswithunites.loc[len(numberofemployeeswithunites)] = numberofemployeeswithunitestotal
+
     try:
         numberofemployeeswithunites.to_excel('data/Number of people per group_' + currentmonth + '.xlsx',
                                              index=False,
