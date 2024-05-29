@@ -715,7 +715,6 @@ def click_button_reports_3():
             lambda this_row: Calc_M_column(this_row, row[1]['Unit']), axis=1)
 
     worktable_group_by_total = worktable_group_by_all.groupby(by=['UnitWork','UnitCode'], as_index=False)[list_of_unites['Num_Index']].agg(func=['sum'])
-    #worktable_group_by_total.set_index(['UnitWork','UnitCode'], inplace=True)
     worktable_group_by_total.columns = worktable_group_by_total.columns.droplevel(1)
     worktable_group_by_total.insert(loc=0, column='evho', value=currentmonth)
 
