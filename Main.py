@@ -1,3 +1,4 @@
+import numpy
 import pandas
 import tkinter
 import tkcalendar
@@ -661,12 +662,83 @@ def click_button_reports_2():
 
 # Button to Create a button for Breakdown of time wages "Idõbérmegbontás"
 def click_button_reports_3():
-    global workingtableforreports
+    global workingtime
 
-    if workingtableforreports.empty:
+    if workingtime.empty:
         messagebox.showerror(title="Error",
                              message="No data! Please first perform the steps to read data and send data to Nexon!")
         return
+
+    workingtimesorted = workingtime.sort_values('Unit')
+    list_of_unites = pandas.DataFrame()
+    list_of_unites['Unit'] = workingtimesorted['Unit'].unique()
+    list_of_unites['Num_Index'] = ''
+    N=1
+    for row in list_of_unites.iterrows():
+        list_of_unites.at[row[0], 'Num_Index'] = 'm'+str(N)
+        N += 1
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y-%m")
+
+    workingmonthcopy = workingtime.copy()
+    workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
+    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    # Translate the WorkHours,OtherHours,OverHours,AbsenceHours  column to the string value for further useage
+    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
+    workingmonthcopy['AbsenceDays'] = 0
+
+    # Convert column values to a float
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
+
+    worktable_group_by_taj = workingmonthcopy.groupby(by=['TAJCode', 'Unit'], as_index=False).agg(
+        {'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
+    worktable_group_by_all = pandas.merge(filtredworktable, worktable_group_by_taj, how='inner', on='TAJCode',
+                                          suffixes=('', '_work'))
+
+    def Calc_M_column(row, unit):
+        if row['Unit'] == unit:
+            val = row['WorkHours'] + row['OtherHours'] + row['OverHours']
+        else:
+            val = 0
+        return val
+
+    for row in list_of_unites.iterrows():
+        worktable_group_by_all[row[1]['Num_Index']] = worktable_group_by_all.apply(
+            lambda this_row: Calc_M_column(this_row, row[1]['Unit']), axis=1)
+
+    worktable_group_by_total = worktable_group_by_all.groupby(by=['UnitWork','UnitCode'], as_index=False)[list_of_unites['Num_Index']].agg(func=['sum'])
+    #worktable_group_by_total.set_index(['UnitWork','UnitCode'], inplace=True)
+    worktable_group_by_total.columns = worktable_group_by_total.columns.droplevel(1)
+    worktable_group_by_total.insert(loc=0, column='evho', value=currentmonth)
+
+    try:
+        with pandas.ExcelWriter('data/Breakdown of time wages_' + currentmonth + '.xlsx') as writer:
+            worktable_group_by_total.to_excel(writer, sheet_name='Main', index=False)
+            for column in worktable_group_by_total.columns:
+                column_length = max(worktable_group_by_total[column].astype(str).map(len).max(), len(column))
+                col_idx = worktable_group_by_total.columns.get_loc(column)
+                writer.sheets['Main'].set_column(col_idx,  col_idx, column_length)
+
+            list_of_unites.to_excel(writer, sheet_name='Desc', index=False)
+            for column in list_of_unites.columns:
+                column_length = max(list_of_unites[column].astype(str).map(len).max(), len(column))
+                col_idx = list_of_unites.columns.get_loc(column)
+                writer.sheets['Desc'].set_column(col_idx, col_idx, column_length)
+
+        messagebox.showinfo(title="Warning of incorrect data",
+                            message="Files was been successfully saved in 'data/Breakdown of time wages_" + currentmonth + "'.xlsx'!")
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/Breakdown of time wages_" + currentmonth + "'.xlsx'!.\nThe file is probably already in use or no access to this catalog.")
+
 
 
 # Button to Create a button for Performance percentages total "Teljesítményszázalékok összesen"
@@ -791,24 +863,24 @@ btnReport1 = Button(reports_frame, text="Number of people per group (Személyek 
 btnReport1.grid(sticky="NEWS", row=1, column=0, padx=10, pady=10)
 
 # Create a button for Time wages per driver report
-btnReport1 = Button(reports_frame, text="Time wages per driver (Vezetőnkénti időbérek)", command=click_button_reports_2)
-btnReport1.grid(sticky="NEWS", row=2, column=0, padx=10, pady=10)
+btnReport2 = Button(reports_frame, text="Time wages per driver (Vezetőnkénti időbérek)", command=click_button_reports_2)
+btnReport2.grid(sticky="NEWS", row=2, column=0, padx=10, pady=10)
 
 # Create a button for Breakdown of time wages report
-btnReport1 = Button(reports_frame, text="Breakdown of time wages (Az időbérek bontása)", command=click_button_reports_3)
-btnReport1.grid(sticky="NEWS", row=0, column=1, padx=10, pady=10)
+btnReport3 = Button(reports_frame, text="Breakdown of time wages (Az időbérek bontása)", command=click_button_reports_3)
+btnReport3.grid(sticky="NEWS", row=0, column=1, padx=10, pady=10)
 
 # Create a button for Performance percentages total report
-btnReport1 = Button(reports_frame, text="Performance percentages total (Teljesítmény százalékok összesen)", command=click_button_reports_4)
-btnReport1.grid(sticky="NEWS", row=1, column=1, padx=10, pady=10)
+btnReport4 = Button(reports_frame, text="Performance percentages total (Teljesítmény százalékok összesen)", command=click_button_reports_4)
+btnReport4.grid(sticky="NEWS", row=1, column=1, padx=10, pady=10)
 
 # Create a button for Individual performance percentages / month report
-btnReport1 = Button(reports_frame, text="Individual performance percentages / month (Egyéni teljesítményszázalékok / hónap)", command=click_button_reports_5)
-btnReport1.grid(sticky="NEWS", row=2, column=1, padx=10, pady=10)
+btnReport5 = Button(reports_frame, text="Individual performance percentages / month (Egyéni teljesítményszázalékok / hónap)", command=click_button_reports_5)
+btnReport5.grid(sticky="NEWS", row=2, column=1, padx=10, pady=10)
 
 # Create a button for Individual performance percentages / month report
-btnReport1 = Button(mainframe, text="Exit", command=on_closing)
-btnReport1.grid(sticky="NEWS", padx=10, pady=10)
+btnReportExit = Button(mainframe, text="Exit", command=on_closing)
+btnReportExit.grid(sticky="NEWS", padx=10, pady=10)
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
