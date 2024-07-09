@@ -743,21 +743,123 @@ def click_button_reports_3():
 # Button to Create a button for Performance percentages total "Teljesítményszázalékok összesen"
 def click_button_reports_4():
     global workingtableforreports
+    global workingtime
+    global filtredworktable
 
     if workingtableforreports.empty:
         messagebox.showerror(title="Error",
                              message="No data! Please first perform the steps to read data and send data to Nexon!")
         return
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y-%m")
+
+    workingmonthcopy = workingtime.copy()
+    workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
+    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    # Translate the WorkHours,OtherHours,OverHours,AbsenceHours  column to the string value for further useage
+    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
+    workingmonthcopy['AbsenceDays'] = 0
+
+    # Convert column values to a float
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
+
+    Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
+                                               suffixes=('', '_work'))
+    Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
+
+    Perfomance_precentage_by_unit = Perfomance_precentage.groupby(by=['UnitWork'], as_index=False).agg(
+        {'WorkHours': 'sum', 'NormaMinutes': 'sum', 'OtherHours': 'sum'})
+    Perfomance_precentage_by_unit['evho'] = currentmonth
+    Perfomance_precentage_by_unit['avgperfperc'] = round(Perfomance_precentage_by_unit['NormaMinutes']
+                                                        / Perfomance_precentage_by_unit['WorkHours'] / 10, 2)
+    Perfomance_precentage_by_unit['avgperfperc'] = Perfomance_precentage_by_unit['avgperfperc'].fillna(0)
+
+    try:
+        Perfomance_precentage_by_unit.to_excel('data/havi_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
+                                               index=False,
+                                               header=['egység', 'hónap', 'teljóra', 'normaperc',
+                                                       'idöbér', 'teljszáz'],
+                                               columns=[ 'UnitWork', 'evho', 'WorkHours', 'NormaMinutes',
+                                                       'OtherHours', 'avgperfperc'])
+        messagebox.showinfo(title="Warning of incorrect data",
+                            message="Files was been successfully saved in 'data/havi_teljesitmenyszazalekok_" + currentmonth + "'.xlsx'!")
+
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/havi_teljesitmenyszazalekok_" + currentmonth + "'.xlsx'!.\nThe file is probably already in use or no access to this catalog.")
 
 
 # Button to Create a button for Individual performance percentages / month "Egyéni teljesítményszázalékok / hó"
 def click_button_reports_5():
     global workingtableforreports
+    global workingtime
+    global filtredworktable
+    global EmployeesWithCategory
 
     if workingtableforreports.empty:
         messagebox.showerror(title="Error",
                              message="No data! Please first perform the steps to read data and send data to Nexon!")
         return
+
+    currentdate = cal.get_date()
+    currentmonth = currentdate.strftime("%Y-%m")
+
+    workingmonthcopy = workingtime.copy()
+    workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
+    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    # Translate the WorkHours,OtherHours,OverHours,AbsenceHours  column to the string value for further useage
+    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
+    workingmonthcopy['AbsenceDays'] = 0
+
+    # Convert column values to a float
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
+
+    Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
+                                        suffixes=('', '_work'))
+    Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
+
+    PerfomancePercwntage_by_unit_taj = Perfomance_precentage.groupby(by=['UnitWork', 'TAJCode', 'Name', 'NormaMinutes'],
+        as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum'})
+    PerfomancePercwntage_by_unit_taj['WorkHours'] = (PerfomancePercwntage_by_unit_taj['WorkHours']
+                                                     + PerfomancePercwntage_by_unit_taj['OverHours']
+                                                     - PerfomancePercwntage_by_unit_taj['OtherHours'])
+    PerfomancePercwntage_by_unit_taj = PerfomancePercwntage_by_unit_taj.groupby(by=['UnitWork', 'TAJCode', 'Name'],
+        as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum', 'NormaMinutes': 'sum'})
+
+    PerfomancePercwntage_by_unit_taj['evho'] = currentmonth
+    PerfomancePercwntage_by_unit_taj['avgperfperc'] = round(PerfomancePercwntage_by_unit_taj['NormaMinutes']
+                                                            / PerfomancePercwntage_by_unit_taj['WorkHours'] / 10, 2)
+    PerfomancePercwntage_by_unit_taj['avgperfperc'] = PerfomancePercwntage_by_unit_taj['avgperfperc'].fillna(0)
+    PerfomancePercwntage_by_unit_taj_cat = pandas.merge(PerfomancePercwntage_by_unit_taj, EmployeesWithCategory,
+                                                        how='inner', on='TAJCode', suffixes=('', '_cat'))
+    try:
+        PerfomancePercwntage_by_unit_taj_cat.to_excel('data/egyéni_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
+                                              index=False,
+                                              header=['egység', 'hónap', 'taj', 'név', 'besorolas',
+                                                      'teljóra', 'normaperc', 'idöbér', 'teljszáz'],
+                                              columns=['UnitWork', 'evho', 'TAJCode', 'Name', 'Category',
+                                                       'WorkHours', 'NormaMinutes', 'OtherHours', 'avgperfperc'])
+        messagebox.showinfo(title="Warning of incorrect data",
+                            message="Files was been successfully saved in 'data/egyéni_teljesitmenyszazalekok_" + currentmonth + "'.xlsx'!")
+
+    except:
+        messagebox.showerror(title="Error",
+                             message="File can't be saved in 'data/egyéni_teljesitmenyszazalekok_" + currentmonth + "'.xlsx'!.\nThe file is probably already in use or no access to this catalog.")
 
 
 # Main dict initialisation
