@@ -1,15 +1,14 @@
-import numpy
-import pandas
-import tkinter
-import tkcalendar
 import datetime
-import numpy as np
 import os
-
-from tkinter import messagebox
+import tkinter
 from tkinter import *
-
 from tkinter import filedialog
+from tkinter import messagebox
+
+import numpy as np
+import pandas
+import tkcalendar
+
 
 # Version 2.0
 # Service procedure to get end of month by date
@@ -25,14 +24,14 @@ def on_closing():
     # Opening a warning about closing the window, if the answer is yes, then execute, otherwise return to the main window without action
     if messagebox.askokcancel("Quit", "Do you want to quit?", parent=user_data_frame):
         # Loop through all subordinate elements of the main program window
-        for widget in user_data_frame.winfo_children():
+        for widget_set in user_data_frame.winfo_children():
             # Try to get the data of subitems, if it is an element of the table of values on accruals
             try:
-                t = widget.get()
+                t = widget_set.get()
             except:
                 continue
             # Then read the value from the element
-            cell = cells.get(widget)
+            cell = cells.get(widget_set)
             # If the value is filled, write it to the array cell by index
             if cell is not None:
                 arrayxlsx[cell[1]][cell[2]] = t
@@ -77,10 +76,10 @@ def click_button_read_all_data():
 
     # Reading the employee list file with categories
     try:
-        headersCOE = ['ADO', 'TAJCode', 'Name', 'Category']
+        headers_coe = ['ADO', 'TAJCode', 'Name', 'Category']
         EmployeesWithCategory = pandas.read_csv('data/nbesorolas.csv',
                                     header=None,
-                                    names=headersCOE,
+                                    names=headers_coe,
                                     dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str'},
                                     sep=';',
                                     encoding='latin2')
@@ -104,16 +103,16 @@ def click_button_read_all_data():
                                               filetypes=[("Csv files", ".csv")])
     if filename_csv != "":
         # read the working time data file
-        headersWT = ['TAJCode', 'Name', 'Unit', 'SiteName', 'Datum', 'WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'AbsenceType', 'NormaMinutes', 'ChangeBy']
+        headers_wt = ['TAJCode', 'Name', 'Unit', 'SiteName', 'Datum', 'WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'AbsenceType', 'NormaMinutes', 'ChangeBy']
         workingtime = pandas.read_csv(filename_csv,
                                       header=0,
-                                      names=headersWT,
+                                      names=headers_wt,
                                       dtype={0: 'str', 1: 'str', 2: 'str', 3: 'str', 4: 'str', 5: 'str', 6: 'str', 7: 'str', 8: 'str', 9: 'str', 10: 'str', 11: 'str'},
                                       sep=';',
                                       encoding='latin2')
         # set the DATUM column to the Date type
-        DatumCol = workingtime.columns[4]
-        workingtime[DatumCol] = pandas.to_datetime(workingtime[DatumCol])
+        datum_col = workingtime.columns[4]
+        workingtime[datum_col] = pandas.to_datetime(workingtime[datum_col])
         workingtime['TAJCode'] = workingtime['TAJCode'].astype(str)
 
         # Get the date from the form and determine the start date of the month and end date of the month
@@ -122,7 +121,7 @@ def click_button_read_all_data():
         lastdayofmonth = last_day_of_month(currentdate)
 
         # Filter the working timetable by dates within the selected month
-        workingmonth = workingtime.loc[(workingtime[DatumCol].dt.date >= firstdayofmonth) & (workingtime[DatumCol].dt.date <= lastdayofmonth)]
+        workingmonth = workingtime.loc[(workingtime[datum_col].dt.date >= firstdayofmonth) & (workingtime[datum_col].dt.date <= lastdayofmonth)]
 
         # If nothing is found, we inform you that the selected file does not contain the searched data
         if workingmonth.empty:
@@ -151,7 +150,7 @@ def click_button_export():
     lastdayofmonth = last_day_of_month(currentdate)
 
     # Read user-defined accrual data
-    UnitFactorUsage = pandas.DataFrame(arrayxlsx, columns=['UnitWork', 'useage', 'mp', 'mpfel', 'kap', 'kapfel'])
+    unit_factor_usage = pandas.DataFrame(arrayxlsx, columns=['UnitWork', 'useage', 'mp', 'mpfel', 'kap', 'kapfel'])
 
     # Translate the TAJCode column to the string value for further use in connections
     worktable['TAJCode'] = worktable['TAJCode'].astype(str)
@@ -196,12 +195,12 @@ def click_button_export():
     # Populate the WorkHours column with 8 hours if there are hours in the OverHours column
     # summaryworkingmonth.loc[((summaryworkingmonth.WorkHours==0) & (summaryworkingmonth.OverHours>0)), 'WorkHours'] = 8
     # summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('szabadság', case=False))), 'WorkHours'] = 8
-    summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('Táppénz', case=False))), 'AbsenceDays'] = 1
+    summaryworkingmonth.loc[(summaryworkingmonth.AbsenceType.str.contains('Táppénz', case=False)), 'AbsenceDays'] = 1
     summaryworkingmonth.loc[
-        ((summaryworkingmonth.AbsenceType.str.contains('nem fizetett', case=False))), 'AbsenceDays'] = 1
+        (summaryworkingmonth.AbsenceType.str.contains('nem fizetett', case=False)), 'AbsenceDays'] = 1
     summaryworkingmonth['AbsenceDays'] = summaryworkingmonth['AbsenceDays'].fillna(0)
     summaryworkingmonth.loc[
-        (((summaryworkingmonth.AbsenceHours > 0) & (summaryworkingmonth.OverHours > 0))), 'AbsenceHours'] = 0
+        ((summaryworkingmonth.AbsenceHours > 0) & (summaryworkingmonth.OverHours > 0)), 'AbsenceHours'] = 0
 
     workingtableforreports = summaryworkingmonth.copy()
     # Copying the table for further application in reports
@@ -238,7 +237,7 @@ def click_button_export():
     worktableresult['AvgEfficiencyFactor'] = worktableresult['AvgEfficiencyFactor'].fillna(0)
 
     # Merge the tables of working result and user-defined usage parameters by UnitWork column
-    worktableresult = pandas.merge(worktableresult, UnitFactorUsage, how='inner', on='UnitWork',
+    worktableresult = pandas.merge(worktableresult, unit_factor_usage, how='inner', on='UnitWork',
                                    suffixes=('', '_param'))
     # Calculate the value of overtime accrual by time of absence
     worktableresult['AccrueOverhead'] = np.where(worktableresult['AbsenceDays'] > 2, 0, 1)
@@ -255,7 +254,7 @@ def click_button_export():
 
     # For each row of the main result table we fill the columns according to the following conditions
     for row in worktableresult.iterrows():
-        LineForMP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+        line_for_mp = Categories.loc[((Categories['kat'] == row[1]['Category'])
                                     & (Categories['pot'] == 'MP')
                                     & (Categories['ervhotol'] <= curentdatestr)
                                     & (Categories['ervhoig'] >= curentdatestr)
@@ -263,18 +262,18 @@ def click_button_export():
                                     & (Categories['szazmax'] > row[1]['AvgEfficiencyFactor'])
                                     )]
         try:
-            LineForMPSum = LineForMP.iloc[0]['osszeg']
+            line_for_mp_sum = line_for_mp.iloc[0]['osszeg']
         except:
-            LineForMPSum = 0
+            line_for_mp_sum = 0
         # column MP
         if ((row[1]['mp'] != 0)
                 & (row[1]['AccrueOverhead'] == 1)):
-            worktableresult.at[row[0], 'MP'] = LineForMPSum
+            worktableresult.at[row[0], 'MP'] = line_for_mp_sum
         if ((row[1]['mpfel'] != 0)
                 & (row[1]['AccrueOverhead'] == 1)):
-            worktableresult.at[row[0], 'MP'] = LineForMPSum / 2
+            worktableresult.at[row[0], 'MP'] = line_for_mp_sum / 2
 
-        LineForJP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+        line_for_jp = Categories.loc[((Categories['kat'] == row[1]['Category'])
                                     & (Categories['pot'] == 'JP')
                                     & (Categories['ervhotol'] <= curentdatestr)
                                     & (Categories['ervhoig'] >= curentdatestr)
@@ -282,14 +281,14 @@ def click_button_export():
                                     & (Categories['szazmax'] > row[1]['AvgEfficiencyFactor'])
                                     )]
         try:
-            LineForJPSum = LineForJP.iloc[0]['osszeg']
+            line_for_jp_sum = line_for_jp.iloc[0]['osszeg']
         except:
-            LineForJPSum = 0
+            line_for_jp_sum = 0
         # column JP
         if row[1]['AccrueOverhead'] == 1:
-            worktableresult.at[row[0], 'JP'] = LineForJPSum
+            worktableresult.at[row[0], 'JP'] = line_for_jp_sum
 
-        LineForKAP = Categories.loc[((Categories['kat'] == row[1]['Category'])
+        line_for_kap = Categories.loc[((Categories['kat'] == row[1]['Category'])
                                      & (Categories['pot'] == 'KAP')
                                      & (Categories['ervhotol'] <= curentdatestr)
                                      & (Categories['ervhoig'] >= curentdatestr)
@@ -297,18 +296,18 @@ def click_button_export():
                                      & (Categories['szazmax'] > row[1]['AvgEfficiencyFactor'])
                                      )]
         try:
-            LineForKAPSum = LineForKAP.iloc[0]['osszeg']
+            line_for_kap_sum = line_for_kap.iloc[0]['osszeg']
         except:
-            LineForKAPSum = 0
+            line_for_kap_sum = 0
         # column KAP
         if ((row[1]['kap'] != 0)
                 & (row[1]['AccrueOverhead'] == 1)
                 & (row[1]['AvgEfficiencyFactor'] >= float(80))):
-            worktableresult.at[row[0], 'KAP'] = LineForKAPSum
+            worktableresult.at[row[0], 'KAP'] = line_for_kap_sum
         if ((row[1]['kapfel'] != 0)
                 & (row[1]['AccrueOverhead'] == 1)
                 & (row[1]['AvgEfficiencyFactor'] >= float(80))):
-            worktableresult.at[row[0], 'KAP'] = LineForKAPSum / 2
+            worktableresult.at[row[0], 'KAP'] = line_for_kap_sum / 2
 
     workingtableforreportssum = worktableresult.copy()
 
@@ -346,16 +345,16 @@ def click_button_export():
 
     # Write the obtained result of the main result table into an CSV file for importing in NEXON
     try:
-        worktableresultforNBKifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
-        worktableresultforNBKifiz = worktableresultforNBKifiz.melt(id_vars=['TAJCode'], var_name='Code',
+        worktableresultfor_nb_kifiz = worktableresult[['TAJCode', 'MP', 'JP', 'KAP']].copy()
+        worktableresultfor_nb_kifiz = worktableresultfor_nb_kifiz.melt(id_vars=['TAJCode'], var_name='Code',
                                                                    value_name='Sum')
-        worktableresultforNBKifiz['Active'] = 0
-        worktableresultforNBKifiz['Percentage'] = 0
-        worktableresultforNBKifiz['Time'] = 0
-        worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
-        worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
+        worktableresultfor_nb_kifiz['Active'] = 0
+        worktableresultfor_nb_kifiz['Percentage'] = 0
+        worktableresultfor_nb_kifiz['Time'] = 0
+        worktableresultfor_nb_kifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
+        worktableresultfor_nb_kifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
 
-        worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
+        worktableresultfor_nb_kifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
                                          index=False,
                                          header=False,
                                          sep=';',
@@ -388,23 +387,23 @@ def filling_page_footer(pagedata, textdata: str, currentmonth: str):
 
     textdata = textdata.replace('{{Category}}', pagedata[1]['Category'])
 
-    LineForBase = Categories.loc[((Categories['kat'] == pagedata[1]['Category'])
+    line_for_base = Categories.loc[((Categories['kat'] == pagedata[1]['Category'])
                                   & (Categories['pot'] == 'BASE')
                                   )]
     try:
-        CategorySum = LineForBase.iloc[0]['osszeg']
+        category_sum = line_for_base.iloc[0]['osszeg']
     except:
-        CategorySum = 0
+        category_sum = 0
 
-    textdata = textdata.replace('{{CategorySum}}', str(CategorySum))
+    textdata = textdata.replace('{{CategorySum}}', str(category_sum))
     textdata = textdata.replace('{{AbsenceDays}}', str(pagedata[1]['AbsenceDays']))
     textdata = textdata.replace('{{AbsenceSum}}', str(pagedata[1]['JP']))
 
-    UnitWork = pagedata[1]['UnitWork']
+    unit_work = pagedata[1]['UnitWork']
     if pagedata[1]['AccrueOverhead'] == 0:
-        UnitWork = 'sok a hiányzás.'
+        unit_work = 'sok a hiányzás.'
 
-    textdata = textdata.replace('{{Unit}}', UnitWork)
+    textdata = textdata.replace('{{Unit}}', unit_work)
     textdata = textdata.replace('{{UnitSum}}', str(pagedata[1]['MP']))
     textdata = textdata.replace('{{ProductivitySum}}', str(pagedata[1]['KAP']))
 
@@ -417,19 +416,19 @@ def filling_line(linedata, textdata: str):
     if linedata[1]['AbsenceType'] != '':
         textdata = textdata.replace('{{Hours}}', linedata[1]['AbsenceType'])
         textdata = textdata.replace('{{PerfHours}}', '')
-        Procent = ''
+        procent = ''
     else:
         textdata = textdata.replace('{{Hours}}', str('8'))
         textdata = textdata.replace('{{PerfHours}}', str(linedata[1]['WorkHours'] - linedata[1]['OtherHours']))
         if linedata[1]['WorkHours'] - linedata[1]['OtherHours'] != 0:
-            Procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours'] - linedata[1]['OtherHours']) / 10,
+            procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours'] - linedata[1]['OtherHours']) / 10,
                             2)
         else:
-            Procent = ''
+            procent = ''
 
     textdata = textdata.replace('{{OtherHours}}', str(linedata[1]['OtherHours']))
     textdata = textdata.replace('{{NormaMinutes}}', str(linedata[1]['NormaMinutes']))
-    textdata = textdata.replace('{{Procent}}', str(Procent))
+    textdata = textdata.replace('{{Procent}}', str(procent))
 
     return textdata
 
@@ -452,36 +451,34 @@ def click_button_reports():
 
     html = html.replace('{{PicturePath}}', os.path.abspath(os.curdir) + "\\data\\SalaryScale.bmp")
 
-    FirstSplit = html.rsplit(sep='<!--page-->')
+    first_split = html.rsplit(sep='<!--page-->')
 
-    NewHTML = ""
+    header_new = first_split[0]
+    page_text = first_split[1]
+    footer = first_split[2]
 
-    Header = FirstSplit[0]
-    PageText = FirstSplit[1]
-    Footer = FirstSplit[2]
+    second_split = page_text.rsplit(sep='<!--tableline-->')
 
-    SecondSplit = PageText.rsplit(sep='<!--tableline-->')
+    page_header = second_split[0]
+    table_line = second_split[1]
+    page_footer = second_split[2]
 
-    PageHeader = SecondSplit[0]
-    TableLine = SecondSplit[1]
-    PageFooter = SecondSplit[2]
-
-    NewHTML = Header
+    new_html = header_new
 
     for page in workingtableforreportssum.iterrows():
 
-        NewHTML = NewHTML + filling_page_header(page, PageHeader)
-        PageText = ''
+        new_html = new_html + filling_page_header(page, page_header)
+        page_text = ''
 
         for line in workingtableforreports[workingtableforreports['TAJCode'] == page[1]['TAJCode']].iterrows():
-            PageText = PageText + filling_line(line, TableLine)
+            page_text = page_text + filling_line(line, table_line)
 
-        NewHTML = NewHTML + PageText + filling_page_footer(page, PageFooter, currentmonth)
+        new_html = new_html + page_text + filling_page_footer(page, page_footer, currentmonth)
 
-    NewHTML = NewHTML + Footer
+    new_html = new_html + footer
 
     with open('data/HtmlTable.html', 'w', encoding='latin2') as f:
-        f.write(NewHTML)
+        f.write(new_html)
 
     os.startfile(os.path.abspath(os.curdir) + "\\data\\HtmlTable.html")
 
@@ -509,7 +506,7 @@ def click_button_reports_1():
     list_of_vocations = ['Szabadság', 'Rendkívüli szabadság']
     list_of_dayoffs = ['Táppénz', 'Igazolt de nem fizetett', 'Fizetett igazolt']
 
-    def InListOfWorkingDays(row, sign=True):
+    def in_list_of_working_days(row, sign=True):
         if sign:
             if row['UnitWork'] in list_of_unites:
                 val = 1
@@ -522,7 +519,7 @@ def click_button_reports_1():
                 val = 0
         return val
 
-    def InListOfWorkingDaysAndVocation(row, sign=True):
+    def in_list_of_working_days_and_vocation(row, sign=True):
         if sign:
             if (row['UnitWork'] in list_of_unites
                     and row['AbsenceType'] in list_of_vocations):
@@ -537,7 +534,7 @@ def click_button_reports_1():
                 val = 0
         return val
 
-    def InListOfDayOffs(row, sign=True):
+    def in_list_of_day_offs(row, sign=True):
         if sign:
             if (row['UnitWork'] in list_of_unites
                     and row['AbsenceType'] in list_of_dayoffs):
@@ -553,25 +550,25 @@ def click_button_reports_1():
         return val
 
     numberofemployeeswithunites['vworked'] = numberofemployeeswithunites.apply(
-        lambda this_row: InListOfWorkingDays(this_row), axis=1)
+        lambda this_row: in_list_of_working_days(this_row), axis=1)
 
     numberofemployeeswithunites['vvacation'] = numberofemployeeswithunites.apply(
-        lambda this_row: InListOfWorkingDaysAndVocation(this_row), axis=1)
+        lambda this_row: in_list_of_working_days_and_vocation(this_row), axis=1)
 
-    numberofemployeeswithunites['vaway'] = numberofemployeeswithunites.apply(lambda this_row: InListOfDayOffs(this_row),
+    numberofemployeeswithunites['vaway'] = numberofemployeeswithunites.apply(lambda this_row: in_list_of_day_offs(this_row),
                                                                              axis=1)
 
     numberofemployeeswithunites['vsum'] = numberofemployeeswithunites['vworked'] + numberofemployeeswithunites[
         'vvacation'] + numberofemployeeswithunites['vaway']
 
     numberofemployeeswithunites['oworked'] = numberofemployeeswithunites.apply(
-        lambda this_row: InListOfWorkingDays(this_row, False), axis=1)
+        lambda this_row: in_list_of_working_days(this_row, False), axis=1)
 
     numberofemployeeswithunites['ovacation'] = numberofemployeeswithunites.apply(
-        lambda this_row: InListOfWorkingDaysAndVocation(this_row, False), axis=1)
+        lambda this_row: in_list_of_working_days_and_vocation(this_row, False), axis=1)
 
     numberofemployeeswithunites['oaway'] = numberofemployeeswithunites.apply(
-        lambda this_row: InListOfDayOffs(this_row, False), axis=1)
+        lambda this_row: in_list_of_day_offs(this_row, False), axis=1)
 
     numberofemployeeswithunites['osum'] = numberofemployeeswithunites['oworked'] + numberofemployeeswithunites[
         'ovacation'] + numberofemployeeswithunites['oaway']
@@ -641,7 +638,7 @@ def click_button_reports_2():
 
     worktable_group_by_change = workingmonthcopy.groupby(by=['TAJCode', 'ChangeBy', 'AbsenceType'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
     worktable_group_by_all = pandas.merge(filtredworktable, worktable_group_by_change, how='inner', on='TAJCode',
-                 suffixes=('', '_work'))
+                                          suffixes=('', '_work'))
     worktable_group_by_unitdriver = worktable_group_by_all.groupby(by=['ChangeBy', 'UnitWork', 'UnitCode'], as_index=False).agg({'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
     worktable_group_by_unitdriver = worktable_group_by_unitdriver.sort_values(by=['UnitWork', 'UnitCode', 'ChangeBy'])
     worktable_group_by_unitdriver['evho'] = currentmonth
@@ -673,10 +670,10 @@ def click_button_reports_3():
     list_of_unites = pandas.DataFrame()
     list_of_unites['Unit'] = workingtimesorted['Unit'].unique()
     list_of_unites['Num_Index'] = ''
-    N=1
+    n=1
     for row in list_of_unites.iterrows():
-        list_of_unites.at[row[0], 'Num_Index'] = 'm'+str(N)
-        N += 1
+        list_of_unites.at[row[0], 'Num_Index'] = 'm'+str(n)
+        n += 1
 
     currentdate = cal.get_date()
     currentmonth = currentdate.strftime("%Y-%m")
@@ -703,7 +700,7 @@ def click_button_reports_3():
     worktable_group_by_all = pandas.merge(filtredworktable, worktable_group_by_taj, how='inner', on='TAJCode',
                                           suffixes=('', '_work'))
 
-    def Calc_M_column(row, unit):
+    def calc_m_column(row, unit):
         if row['Unit'] == unit:
             val = row['WorkHours'] + row['OtherHours'] + row['OverHours']
         else:
@@ -712,7 +709,7 @@ def click_button_reports_3():
 
     for row in list_of_unites.iterrows():
         worktable_group_by_all[row[1]['Num_Index']] = worktable_group_by_all.apply(
-            lambda this_row: Calc_M_column(this_row, row[1]['Unit']), axis=1)
+            lambda this_row: calc_m_column(this_row, row[1]['Unit']), axis=1)
 
     worktable_group_by_total = worktable_group_by_all.groupby(by=['UnitWork','UnitCode'], as_index=False)[list_of_unites['Num_Index']].agg(func=['sum'])
     worktable_group_by_total.columns = worktable_group_by_total.columns.droplevel(1)
@@ -771,19 +768,19 @@ def click_button_reports_4():
     workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
         ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
 
-    Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
-                                               suffixes=('', '_work'))
-    Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
+    perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
+                                         suffixes=('', '_work'))
+    perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
 
-    Perfomance_precentage_by_unit = Perfomance_precentage.groupby(by=['UnitWork'], as_index=False).agg(
+    perfomance_precentage_by_unit = perfomance_precentage.groupby(by=['UnitWork'], as_index=False).agg(
         {'WorkHours': 'sum', 'NormaMinutes': 'sum', 'OtherHours': 'sum'})
-    Perfomance_precentage_by_unit['evho'] = currentmonth
-    Perfomance_precentage_by_unit['avgperfperc'] = round(Perfomance_precentage_by_unit['NormaMinutes']
-                                                        / Perfomance_precentage_by_unit['WorkHours'] / 10, 2)
-    Perfomance_precentage_by_unit['avgperfperc'] = Perfomance_precentage_by_unit['avgperfperc'].fillna(0)
+    perfomance_precentage_by_unit['evho'] = currentmonth
+    perfomance_precentage_by_unit['avgperfperc'] = round(perfomance_precentage_by_unit['NormaMinutes']
+                                                        / perfomance_precentage_by_unit['WorkHours'] / 10, 2)
+    perfomance_precentage_by_unit['avgperfperc'] = perfomance_precentage_by_unit['avgperfperc'].fillna(0)
 
     try:
-        Perfomance_precentage_by_unit.to_excel('data/havi_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
+        perfomance_precentage_by_unit.to_excel('data/havi_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
                                                index=False,
                                                header=['egység', 'hónap', 'teljóra', 'normaperc',
                                                        'idöbér', 'teljszáz'],
@@ -829,26 +826,26 @@ def click_button_reports_5():
     workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
         ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
 
-    Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
-                                        suffixes=('', '_work'))
-    Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
+    perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
+                                         suffixes=('', '_work'))
+    perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
 
-    PerfomancePercwntage_by_unit_taj = Perfomance_precentage.groupby(by=['UnitWork', 'TAJCode', 'Name', 'NormaMinutes'],
+    perfomance_percwntage_by_unit_taj = perfomance_precentage.groupby(by=['UnitWork', 'TAJCode', 'Name', 'NormaMinutes'],
         as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum'})
-    PerfomancePercwntage_by_unit_taj['WorkHours'] = (PerfomancePercwntage_by_unit_taj['WorkHours']
-                                                     + PerfomancePercwntage_by_unit_taj['OverHours']
-                                                     - PerfomancePercwntage_by_unit_taj['OtherHours'])
-    PerfomancePercwntage_by_unit_taj = PerfomancePercwntage_by_unit_taj.groupby(by=['UnitWork', 'TAJCode', 'Name'],
+    perfomance_percwntage_by_unit_taj['WorkHours'] = (perfomance_percwntage_by_unit_taj['WorkHours']
+                                                     + perfomance_percwntage_by_unit_taj['OverHours']
+                                                     - perfomance_percwntage_by_unit_taj['OtherHours'])
+    perfomance_percwntage_by_unit_taj = perfomance_percwntage_by_unit_taj.groupby(by=['UnitWork', 'TAJCode', 'Name'],
         as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum', 'NormaMinutes': 'sum'})
 
-    PerfomancePercwntage_by_unit_taj['evho'] = currentmonth
-    PerfomancePercwntage_by_unit_taj['avgperfperc'] = round(PerfomancePercwntage_by_unit_taj['NormaMinutes']
-                                                            / PerfomancePercwntage_by_unit_taj['WorkHours'] / 10, 2)
-    PerfomancePercwntage_by_unit_taj['avgperfperc'] = PerfomancePercwntage_by_unit_taj['avgperfperc'].fillna(0)
-    PerfomancePercwntage_by_unit_taj_cat = pandas.merge(PerfomancePercwntage_by_unit_taj, EmployeesWithCategory,
+    perfomance_percwntage_by_unit_taj['evho'] = currentmonth
+    perfomance_percwntage_by_unit_taj['avgperfperc'] = round(perfomance_percwntage_by_unit_taj['NormaMinutes']
+                                                            / perfomance_percwntage_by_unit_taj['WorkHours'] / 10, 2)
+    perfomance_percwntage_by_unit_taj['avgperfperc'] = perfomance_percwntage_by_unit_taj['avgperfperc'].fillna(0)
+    perfomance_percwntage_by_unit_taj_cat = pandas.merge(perfomance_percwntage_by_unit_taj, EmployeesWithCategory,
                                                         how='inner', on='TAJCode', suffixes=('', '_cat'))
     try:
-        PerfomancePercwntage_by_unit_taj_cat.to_excel('data/egyéni_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
+        perfomance_percwntage_by_unit_taj_cat.to_excel('data/egyéni_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
                                               index=False,
                                               header=['egység', 'hónap', 'taj', 'név', 'besorolas',
                                                       'teljóra', 'normaperc', 'idöbér', 'teljszáz'],
