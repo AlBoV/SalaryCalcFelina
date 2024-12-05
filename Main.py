@@ -11,7 +11,7 @@ from tkinter import *
 
 from tkinter import filedialog
 
-
+# Version 2.0
 # Service procedure to get end of month by date
 def last_day_of_month(any_day):
     # The day 28 exists in every month. 4 days later, it's always next month
