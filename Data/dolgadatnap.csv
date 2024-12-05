@@ -5,9 +5,10 @@
 062717645;Adácsi Sándorné;;;;2008.12.31;Belföldi ért.;65100
 084936868;Adamcsikné Lukács Enikõ;;;;2008.05.07;Szabászat;71001
 091438906;Adamecz Csilla;;;;2013.08.29;Dévaványa Varroda;68500
-076271951;Adamecz Gyuláné;2006.09.04;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-076271951;Adamecz Gyuláné;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-076271951;Adamecz Gyuláné;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+076271951;Adamecz Gyuláné;2006.09.04;2014.08.31;Varroda 1;;Varroda 1;70001
+076271951;Adamecz Gyuláné;2014.09.01;2020.06.30;Varroda 13;;Varroda 1;70001
+076271951;Adamecz Gyuláné;2020.07.01;2024.08.31;Varroda 11;;Varroda 1;70001
+076271951;Adamecz Gyuláné;2024.09.01;;Varroda 2;;Varroda 1;70001
 077989567;Adamik Magdolna;;;;2022.05.27;Varroda;70001
 084468873;Adamikné Elek Brigitta;;;;2011.02.02;Tart.távol.;700011
 078095005;Ádámné Máté Andrea;;;;2009.04.19;Üzemvezetõ Dévaványa;61210
@@ -63,7 +64,7 @@
 072810365;Bagó Sándorné;2014.04.01;2014.12.31;Vállpánt.készítés;2016.05.13;Vállpánt.készítés;72000
 072810365;Bagó Sándorné;2015.01.01;;Vállpánt.készítés;2016.05.13;Vállpánt.készítés;72000
 090632644;Bagosi Mária;2013.08.05;;Varroda 7;2013.08.23;Varroda 7;70001
-074415526;Bajics Imréné;;;;;Dévaványa.ált;61200
+074415526;Bajics Imréné;;;;;Szegh.ált.;61100
 089070138;Bajicsné Hajdú Tímea;2014.09.01;2015.12.31;Dévaványa Varroda;2022.11.12;Dévaványa Varroda;68500
 089070138;Bajicsné Hajdú Tímea;2016.01.01;2021.01.31;Dévaványa Varroda;2022.11.12;Dévaványa Varroda;68500
 089070138;Bajicsné Hajdú Tímea;2021.02.01;;Dévaványa Varroda;2022.11.12;Dévaványa Varroda;68500
@@ -120,7 +121,7 @@
 082866888;Balla Vilmosné;2012.03.01;2012.10.31;Varroda 6;2019.10.03;Varroda 1;70001
 082866888;Balla Vilmosné;2012.11.01;2018.10.31;Varroda 1;2019.10.03;Varroda 1;70001
 082866888;Balla Vilmosné;2018.11.01;;Varroda 4;2019.10.03;Varroda 1;70001
-042940913;Ballai László;;;;;Dévaványa.ált;61200
+042940913;Ballai László;;;;2024.05.24;Dévaványa.ált;61200
 071111755;Ballai László Sándorné;;;;2018.07.06;Szegh.ált.;61100
 109422084;Balog Bernadett;;;;2014.11.03;Ipari tanulók;63100
 093312017;Balog Cintia;;;;2023.12.11;Dévaványa  MEO.;78002
@@ -131,7 +132,7 @@
 074658743;Balog Kálmánné;2016.01.04;;Varroda 1;2016.07.17;Varroda 1;70001
 112996819;Balog Klaudia;2013.07.22;;Varroda 7;2013.08.23;Varroda 7;70001
 073401003;Balog Mihályné;;;;2020.08.23;Szegh. Csomagoló;73000
-085122118;Balog Tiborné;2022.02.23;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+085122118;Balog Tiborné;2022.02.23;;Varroda 11;2024.07.25;Varroda 11;70001
 084354521;Balog Zsuzsanna;2008.01.01;2015.08.31;Varroda 4;;Varroda 4;70001
 084354521;Balog Zsuzsanna;2015.09.01;2020.04.30;Varroda 3;;Varroda 4;70001
 084354521;Balog Zsuzsanna;2020.05.01;2020.06.30;Varroda 2;;Varroda 4;70001
@@ -195,7 +196,7 @@
 077338192;Barna Józsefné;;;;2006.07.18;Varroda;70001
 043963308;Barna Norbert;;;;2007.08.17;Szabászat;71001
 039295561;Barna Péter;;;;2008.03.31;Szegh. Log.;61130
-041002847;Barna Rajmund;;;;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+041002847;Barna Rajmund;;;;2024.06.28;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 073116213;Barna Sándorné;;;;2020.10.09;Szabászat;71001
 084916594;Barócziné Kapás Márta Nóra;;;;2023.06.02;BESZERZÉS;61135
 081042153;Bársony Mária;;;;2009.04.04;Üzlet Érd;65305
@@ -243,8 +244,9 @@
 083683507;Benedek Judit;2008.01.01;2015.07.31;Varroda 4;;Varroda 4;70001
 083683507;Benedek Judit;2015.08.01;2015.08.31;Varroda 5;;Varroda 4;70001
 083683507;Benedek Judit;2015.09.01;;Varroda 4;;Varroda 4;70001
-085444078;Berczi Ferencné;2008.09.01;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-085444078;Berczi Ferencné;2014.09.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+085444078;Berczi Ferencné;2008.09.01;2014.08.31;Varroda 1;;Varroda 1;70001
+085444078;Berczi Ferencné;2014.09.01;2024.08.31;Varroda 11;;Varroda 1;70001
+085444078;Berczi Ferencné;2024.09.01;;Varroda 3;;Varroda 1;70001
 087056145;Bere Ferencné;2008.10.27;2014.08.31;Dévaványa teljesítménybéres;2016.08.31;Dévaványa teljesítménybéres;70002
 087056145;Bere Ferencné;2014.09.01;;Dévaványa teljesítménybéres;2016.08.31;Dévaványa teljesítménybéres;70002
 091133474;Bere Gabriella;2008.01.01;2009.12.31;Varroda 3;;Varroda 3;70001
@@ -293,7 +295,7 @@
 081174256;Bíróné Pintye Ilona;2019.10.01;2020.04.30;Varroda 4;;Varroda 1;70001
 081174256;Bíróné Pintye Ilona;2020.05.01;2020.06.30;Varroda 3;;Varroda 1;70001
 081174256;Bíróné Pintye Ilona;2020.07.01;;Varroda 2;;Varroda 1;70001
-122181568;Blaskó Réka;;;;;Szabászat;71001
+122181568;Blaskó Réka;;;;2024.09.20;Szabászat;71001
 093335485;Bocskov Ágnes;;;;2021.08.23;Szegh. MEO.;78000
 090806104;Boda Beatrix;2008.05.13;;Varroda 3;2008.08.08;Varroda 3;70001
 027675182;Boda János;;;;2013.08.02;Szegh.ált.;61100
@@ -395,11 +397,11 @@
 060628312;Czeglédi Ferencné;;;;2012.12.31;Utazó technikus;68600
 042195917;Czeglédi Imre Attila;;;;;Szabászat;71001
 071495837;Czeglédi Imréné;;;;2017.09.30;Szegh. Szabászat;68160
-072942365;Czeglédi Imréné;2008.09.15;2011.12.31;Szegh. MEO.;;Szegh. MEO.;78000
-072942365;Czeglédi Imréné;2012.01.01;2014.03.31;Szegh. MEO.;;Szegh. MEO.;78000
-072942365;Czeglédi Imréné;2014.04.01;2020.04.30;Szegh. MEO.;;Szegh. MEO.;78000
-072942365;Czeglédi Imréné;2020.05.01;2021.01.31;Szegh. MEO.;;Szegh. MEO.;78000
-072942365;Czeglédi Imréné;2021.02.01;;Szegh. MEO.;;Szegh. MEO.;78000
+072942365;Czeglédi Imréné;2008.09.15;2011.12.31;Szegh. MEO.;2024.05.22;Szegh. MEO.;78000
+072942365;Czeglédi Imréné;2012.01.01;2014.03.31;Szegh. MEO.;2024.05.22;Szegh. MEO.;78000
+072942365;Czeglédi Imréné;2014.04.01;2020.04.30;Szegh. MEO.;2024.05.22;Szegh. MEO.;78000
+072942365;Czeglédi Imréné;2020.05.01;2021.01.31;Szegh. MEO.;2024.05.22;Szegh. MEO.;78000
+072942365;Czeglédi Imréné;2021.02.01;;Szegh. MEO.;2024.05.22;Szegh. MEO.;78000
 028649823;Czeglédi László Attila;2020.06.01;;Varroda 3;2020.07.31;Varroda 3;70001
 084881830;Czeglédi Marianna;2008.01.01;2015.08.31;Varroda 5;;Varroda 5;70001
 084881830;Czeglédi Marianna;2015.09.01;2020.04.30;Varroda 4;;Varroda 5;70001
@@ -529,9 +531,10 @@
 086846750;Darvasi Anikó;2006.01.01;2014.08.31;Dévaványa teljesítménybéres;2023.01.19;Dévaványa teljesítménybéres;70002
 086846750;Darvasi Anikó;2014.09.01;;Dévaványa teljesítménybéres;2023.01.19;Dévaványa teljesítménybéres;70002
 107889832;Darvasi Diána;;;;2015.09.22;Dévaványa teljesítménybéres;70002
-074688759;Darvasi Jolán;2006.01.01;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-074688759;Darvasi Jolán;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-074688759;Darvasi Jolán;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+074688759;Darvasi Jolán;2006.01.01;2014.08.31;Varroda 1;;Varroda 1;70001
+074688759;Darvasi Jolán;2014.09.01;2020.06.30;Varroda 13;;Varroda 1;70001
+074688759;Darvasi Jolán;2020.07.01;2024.08.31;Varroda 11;;Varroda 1;70001
+074688759;Darvasi Jolán;2024.09.01;;Varroda 1;;Varroda 1;70001
 112345554;Dávid Ádám;2013.07.22;;Szegh.TMK;2013.08.09;Szegh.TMK;61150
 083449802;Dávid Zoltánné;2008.01.01;2015.08.31;Varroda 4;2015.12.27;Varroda 4;70001
 083449802;Dávid Zoltánné;2015.09.01;;Varroda 3;2015.12.27;Varroda 4;70001
@@ -553,14 +556,14 @@
 091642372;Dékány Andrea;2020.07.01;;Varroda 2;;Varroda 6;70001
 081326572;Dékány Rózsa;2006.01.01;2014.08.31;Dévaványa teljesítménybéres;2018.11.23;Dévaványa teljesítménybéres;70002
 081326572;Dékány Rózsa;2014.09.01;;Dévaványa teljesítménybéres;2018.11.23;Dévaványa teljesítménybéres;70002
-084193577;Dékány Zsoltné;2009.07.06;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084193577;Dékány Zsoltné;2014.09.01;2015.05.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084193577;Dékány Zsoltné;2015.06.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+084193577;Dékány Zsoltné;2009.07.06;2014.08.31;Dévaványa teljesítménybéres;2024.06.07;Dévaványa teljesítménybéres;70002
+084193577;Dékány Zsoltné;2014.09.01;2015.05.31;Dévaványa teljesítménybéres;2024.06.07;Dévaványa teljesítménybéres;70002
+084193577;Dékány Zsoltné;2015.06.01;;Dévaványa teljesítménybéres;2024.06.07;Dévaványa teljesítménybéres;70002
 081426232;Dér Ágnes Zsuzsanna;2019.05.13;2020.06.30;Dévaványa teljesítménybéres;2020.08.30;Dévaványa teljesítménybéres;70002
 081426232;Dér Ágnes Zsuzsanna;2020.07.01;;Dévaványa teljesítménybéres;2020.08.30;Dévaványa teljesítménybéres;70002
 089957990;Diószegi Ilona;;;;2005.08.19;Varroda;70001
 063834839;Diriczi Imréné;;;;2006.06.15;Szegh. MEO.;78000
-035415480;Diriczi Zoltán;;;;;Szegh. Log.;61130
+035415480;Diriczi Zoltán;;;;;Szegh. Csomagoló;73000
 076955811;Dobi Lajosné;2008.07.01;2014.03.31;Varroda 2;;Varroda 2;70001
 076955811;Dobi Lajosné;2014.04.01;2015.09.30;Varroda 6;;Varroda 2;70001
 076955811;Dobi Lajosné;2015.10.01;2019.09.30;Varroda 5;;Varroda 2;70001
@@ -642,7 +645,7 @@
 085922963;Fábián Annamária;;;;2006.07.12;Szegh. Gyárt. E.;68120
 084571032;Fábián Szilvia;2014.09.01;2021.01.31;Dévaványa  MEO.;2023.06.14;Dévaványa  MEO.;78002
 084571032;Fábián Szilvia;2021.02.01;;Dévaványa  MEO.;2023.06.14;Dévaványa  MEO.;78002
-077182902;Fábiánné Horváth Katalin;;;;;Szegh. Csomagoló;73000
+077182902;Fábiánné Horváth Katalin;;;;2024.07.02;Szegh. Csomagoló;73000
 061332078;Faragó Gyuláné;;;;2012.02.29;Dévaványa.ált;61200
 090115912;Faragó Mónika;;;;2007.05.23;Varroda;70001
 075611556;Faragó Pálné;2008.01.01;;Varroda 3;2008.04.28;Varroda 3;70001
@@ -651,7 +654,8 @@
 076658529;Faragóné Korán Judit;;;;2016.01.15;Dévaványa teljesítménybéres;70002
 082832032;Faránki Hajnalka;;;;2013.05.22;Tart.távol.;700011
 110804516;Faránki Ildikó;2018.01.08;;Varroda 1;2018.02.02;Varroda 1;70001
-091061599;Faránki Ilona;;;;2016.01.04;Varroda;70001
+091061599;Faránki Ilona;2024.06.05;2024.06.30;Varroda 11;;Varroda 11;70001
+091061599;Faránki Ilona;2024.07.01;;Varroda 1;;Varroda 11;70001
 064965165;Faránki Jánosné;;;;2007.12.07;Szegh. MEO.;78000
 086284505;Faránki-Mile Beatrix;2008.01.01;;Tart.távol.;2018.01.25;Tart.távol.;700011
 114497460;Farkas Botond;;;;2023.05.08;Szabászat;71001
@@ -679,6 +683,7 @@
 095957115;Farkas Tünde;;;;2021.07.12;Varroda;70001
 084386531;Farkas Zoltánné;2019.03.04;;Varroda 2;2019.05.29;Varroda 2;70001
 070799101;Farkas Zoltánné;2008.01.01;;Varroda 4;2012.07.13;Varroda 4;70001
+118611697;Farkasfalvi Mónika;2024.06.05;;Varroda 11;2024.07.15;Varroda 11;70001
 090372078;Farkasné Andrejsi Katalin;2022.10.10;2023.04.30;Tart.távol.;;Tart.távol.;700011
 090372078;Farkasné Andrejsi Katalin;2023.05.01;;Tart.távol.;;Tart.távol.;700011
 090442791;Farkasné Benke Rita;2021.09.20;;Dévaványa teljesítménybéres;2022.10.16;Dévaványa teljesítménybéres;70002
@@ -697,11 +702,12 @@
 076430815;Fazekas Tibor Józsefné;2012.06.01;2012.10.31;Varroda 6;2014.08.08;Varroda 5;70001
 076430815;Fazekas Tibor Józsefné;2012.11.01;;Varroda 5;2014.08.08;Varroda 5;70001
 043641352;Fazekas Zoltán Zsigmond;;;;2021.08.11;Szegh. Csomagoló;73000
-115672583;Fazekasné Lantos Dóra;2017.07.01;2020.04.30;Varroda 4;;Varroda 4;70001
-115672583;Fazekasné Lantos Dóra;2020.05.01;;Varroda 2;;Varroda 4;70001
+115672583;Fazekasné Lantos Dóra;2017.07.01;2020.04.30;Tart.távol.;;Tart.távol.;700011
+115672583;Fazekasné Lantos Dóra;2020.05.01;2024.07.31;Tart.távol.;;Tart.távol.;700011
+115672583;Fazekasné Lantos Dóra;2024.08.01;;Tart.távol.;;Tart.távol.;700011
 095722007;Fegyver Mónika;2013.07.22;;Varroda 7;2013.08.23;Varroda 7;70001
 085743955;Fehér Béláné;;;;;Szegh.ált.;61100
-109953793;Fehér Orsolya;2022.10.03;;Varroda 5;;Varroda 5;70001
+109953793;Fehér Orsolya;2022.10.03;;Varroda 5;2024.10.27;Varroda 5;70001
 109953535;Fehér Réka;;;;2014.06.12;Ipari tanulók;63100
 083677612;Fehér Virág;;;;2013.01.31;Üzlet Obuda;65302
 082815271;Fehérné Horváth Hajnalka;2011.01.10;;Varroda 3;2013.01.14;Varroda 3;70001
@@ -720,10 +726,8 @@
 080518598;Feke Mária;2014.09.01;2021.01.31;Tart.távol.;2022.07.26;Tart.távol.;700011
 080518598;Feke Mária;2021.02.01;;Tart.távol.;2022.07.26;Tart.távol.;700011
 117177314;Feke Vivien;;;;2019.07.08;Vállpánt.készítés;72000
-085320345;Feke Zsoltné;2006.09.04;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-085320345;Feke Zsoltné;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-085320345;Feke Zsoltné;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084621979;Fekéné Takács Anett;;;;;Dévaványa  MEO.;78002
+085320345;Feke Zsoltné;2024.11.20;;Varroda 5;;Varroda 5;70001
+084621979;Fekéné Takács Anett;;;;;Szegh. MEO.;78000
 066789116;Fekete Gyuláné;;;;2011.12.31;Szabászat;71001
 076768653;Fekete Ildikó Julianna;2008.01.01;2015.08.31;Varroda 5;;Varroda 5;70001
 076768653;Fekete Ildikó Julianna;2015.09.01;;Varroda 4;;Varroda 5;70001
@@ -749,8 +753,9 @@
 080053765;Forrásné Juhász Irma;2013.07.01;2020.09.30;Varroda 3;;Varroda 3;70001
 080053765;Forrásné Juhász Irma;2020.10.01;;Varroda 2;;Varroda 3;70001
 083456921;Földesi Imréné;;;;2006.01.16;Tart.távol.;700011
-077527725;Földesi Imréné;2006.01.01;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-077527725;Földesi Imréné;2014.09.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+077527725;Földesi Imréné;2006.01.01;2014.08.31;Varroda 3;;Varroda 3;70001
+077527725;Földesi Imréné;2014.09.01;2024.08.31;Varroda 11;;Varroda 3;70001
+077527725;Földesi Imréné;2024.09.01;;Varroda 2;;Varroda 3;70001
 076993053;Földesi Imréné;2008.01.01;2009.12.31;Varroda 3;2020.11.05;Varroda 3;70001
 076993053;Földesi Imréné;2010.01.01;2018.10.31;Varroda 1;2020.11.05;Varroda 3;70001
 076993053;Földesi Imréné;2018.11.01;2020.04.30;Varroda 3;2020.11.05;Varroda 3;70001
@@ -772,12 +777,14 @@
 117099386;Fûfa Fatima;2020.05.01;;Szegh. Varroda;2020.06.21;Szegh. Varroda;68150
 090042511;Fûfáné Szekeres Renáta;;;;2007.07.30;Varroda;70001
 073018179;Fülemen Edit;;;;2006.01.20;Dévaványa teljesítménybéres;70002
+120843532;Fülöp Gréta;2024.06.05;;Varroda 11;2024.06.21;Varroda 11;70001
 090279465;Fülöp Piroska;;;;;Szabászat;71001
 087308183;Fülöp Zoltánné;2014.09.01;;Varroda 1;2015.02.19;Varroda 1;70001
 085627761;Füzi Erzsébet;2019.08.12;;Varroda 13;2019.08.12;Varroda 13;70001
-079183819;Gáborné Kürti Eszter;2008.10.27;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-079183819;Gáborné Kürti Eszter;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-079183819;Gáborné Kürti Eszter;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+079183819;Gáborné Kürti Eszter;2008.10.27;2014.08.31;Varroda 5;;Varroda 5;70001
+079183819;Gáborné Kürti Eszter;2014.09.01;2020.06.30;Varroda 13;;Varroda 5;70001
+079183819;Gáborné Kürti Eszter;2020.07.01;2024.08.31;Varroda 11;;Varroda 5;70001
+079183819;Gáborné Kürti Eszter;2024.09.01;;Varroda 1;;Varroda 5;70001
 085726091;Gáborné Turbucz Katalin;;;;2007.09.18;Varroda;70001
 092421330;Gajda Anett;;;;2007.08.17;Szabászat;71001
 075792602;Gajda Mihályné;2008.07.01;2013.09.30;Varroda 1;2020.04.05;Varroda 1;70001
@@ -848,7 +855,7 @@
 065643239;Gorgyán Lajos Istvánné;2009.07.01;2012.02.29;Varroda 3;2013.10.18;Varroda 6;70001
 065643239;Gorgyán Lajos Istvánné;2012.03.01;2012.10.31;Varroda 6;2013.10.18;Varroda 6;70001
 065643239;Gorgyán Lajos Istvánné;2012.11.01;;Varroda 1;2013.10.18;Varroda 6;70001
-092352229;Gönczi Angéla;2022.02.14;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+092352229;Gönczi Angéla;2022.02.14;;Varroda 11;2024.09.11;Varroda 11;70001
 088274027;Guba-Keszeli Enikõ;2018.10.15;;Varroda 2;2018.11.07;Varroda 2;70001
 078627866;Gulyás Csabáné;;;;2007.07.17;Tart.távol.;700011
 089705148;Gulyás Margit;2008.10.01;2012.02.29;Varroda 1;;Varroda 1;70001
@@ -885,10 +892,10 @@
 081336582;Gyenge Gyöngyi;2016.05.01;2020.04.30;Varroda 2;2020.12.10;Varroda 4;70001
 081336582;Gyenge Gyöngyi;2020.05.01;2020.06.30;Varroda 5;2020.12.10;Varroda 4;70001
 081336582;Gyenge Gyöngyi;2020.07.01;;Varroda 2;2020.12.10;Varroda 4;70001
-091908270;Gyöngyösi Barbara Jolán;2019.10.07;2020.04.30;Tart.távol.;;Tart.távol.;700011
-091908270;Gyöngyösi Barbara Jolán;2020.05.01;2020.06.30;Tart.távol.;;Tart.távol.;700011
-091908270;Gyöngyösi Barbara Jolán;2020.07.01;2021.01.31;Tart.távol.;;Tart.távol.;700011
-091908270;Gyöngyösi Barbara Jolán;2021.02.01;;Tart.távol.;;Tart.távol.;700011
+091908270;Gyöngyösi Barbara Jolán;2019.10.07;2020.04.30;Tart.távol.;2024.04.30;Tart.távol.;700011
+091908270;Gyöngyösi Barbara Jolán;2020.05.01;2020.06.30;Tart.távol.;2024.04.30;Tart.távol.;700011
+091908270;Gyöngyösi Barbara Jolán;2020.07.01;2021.01.31;Tart.távol.;2024.04.30;Tart.távol.;700011
+091908270;Gyöngyösi Barbara Jolán;2021.02.01;;Tart.távol.;2024.04.30;Tart.távol.;700011
 111257238;Gyöngyösi Emerencia;;;;2016.02.29;Dévaványa teljesítménybéres;70002
 087422809;Gyöngyösi Katalin;;;;2007.05.09;Szegh. Gyárt. E.;68120
 118929518;Gyöngyösi Petra;;;;2018.07.06;Ipari tanulók;63100
@@ -1038,11 +1045,11 @@
 086092005;Herczegné Balogh Éva;;;;2007.12.16;Tart.távol.;700011
 070144460;Herda Imréné;;;;2006.09.15;Dévaványa teljesítménybéres;70002
 086209812;Hermann Noémi;2008.07.01;;Tart.távol.;2017.07.25;Tart.távol.;700011
-093295675;Hermeczi Henrietta;2013.05.13;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-093295675;Hermeczi Henrietta;2014.09.01;2015.05.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-093295675;Hermeczi Henrietta;2015.06.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-089902426;Hermeczi Józsefné;2023.01.30;2023.04.30;Dévaványa  MEO.;;Dévaványa  MEO.;78002
-089902426;Hermeczi Józsefné;2023.05.01;;Dévaványa  MEO.;;Dévaványa  MEO.;78002
+093295675;Hermeczi Henrietta;2013.05.13;2014.08.31;Varroda 3;2024.08.09;Varroda 3;70001
+093295675;Hermeczi Henrietta;2014.09.01;2015.05.31;Varroda 12;2024.08.09;Varroda 3;70001
+093295675;Hermeczi Henrietta;2015.06.01;;Varroda 11;2024.08.09;Varroda 3;70001
+089902426;Hermeczi Józsefné;2023.01.30;2023.04.30;Dévaványa  MEO.;2024.06.14;Dévaványa  MEO.;78002
+089902426;Hermeczi Józsefné;2023.05.01;;Dévaványa  MEO.;2024.06.14;Dévaványa  MEO.;78002
 091879769;Herpai Brigitta;2019.02.11;;Dévaványa teljesítménybéres;2020.07.26;Dévaványa teljesítménybéres;70002
 081472040;Herpainé Hugyák Ildikó;2018.01.08;;Varroda 2;2018.07.13;Varroda 2;70001
 070083255;Hidasiné Balaskó Rozália;;;;2020.07.26;Szegh. Csomagoló;73000
@@ -1068,13 +1075,14 @@
 093074434;Horváth Kinga;;;;2014.08.22;Szegh. Log.;61130
 101299206;Horváth Lászlóné;;;;2015.04.30;Bp-i kp.ir.ált.;66000
 036315637;Horváth Zoltán;;;;2007.07.09;Szegh. Log.;61130
-024588070;Horváth Zoltán;;;;;Szegh.ált.;61100
+024588070;Horváth Zoltán;;;;2024.08.14;Szegh.ált.;61100
 072792438;Horváthné Ignácz Erzsébet;;;;2006.06.29;Varroda;70001
 080454942;Horváthné Nagy Eszter;;;;2007.02.16;Varroda;70001
 075111836;Hõgye Józsefné;2015.08.10;;Varroda 5;2017.08.31;Varroda 5;70001
 079846099;Hõgyéné Túri Mária;2013.05.13;2014.08.31;Dévaványa teljesítménybéres;2020.10.26;Dévaványa teljesítménybéres;70002
 079846099;Hõgyéné Túri Mária;2014.09.01;;Dévaványa teljesítménybéres;2020.10.26;Dévaványa teljesítménybéres;70002
 020895765;Hõgyes Ferenc;;;;2023.06.15;Szegh. Log.;61130
+123264123;Hupczej Henrietta;2024.11.01;;Varroda 5;;Varroda 5;70001
 083348671;Hustyik Erzsébet;2013.06.17;2015.08.31;Varroda 4;;Varroda 4;70001
 083348671;Hustyik Erzsébet;2015.09.01;2016.04.30;Varroda 7;;Varroda 4;70001
 083348671;Hustyik Erzsébet;2016.05.01;2020.04.30;Varroda 2;;Varroda 4;70001
@@ -1161,8 +1169,8 @@
 091928379;Juhász Diána;;;;2008.06.27;Varroda;70001
 115725191;Juhász Dóra Ágota;2019.02.04;;Varroda 3;2019.03.11;Varroda 3;70001
 112377681;Juhász Enikõ;;;;2007.08.03;Varroda;70001
-083324794;Juhász Erika;2003.09.22;2021.01.31;Szegh. MEO.;;Szegh. MEO.;78000
-083324794;Juhász Erika;2021.02.01;;Szegh. MEO.;;Szegh. MEO.;78000
+083324794;Juhász Erika;2003.09.22;2021.01.31;Szegh. Statisztikai  MEO.;;Szegh. Statisztikai  MEO.;78001
+083324794;Juhász Erika;2021.02.01;;Szegh. Statisztikai  MEO.;;Szegh. Statisztikai  MEO.;78001
 086555700;Juhász Eszter;2008.01.01;2009.12.31;Vállpánt.készítés;;Vállpánt.készítés;72000
 086555700;Juhász Eszter;2010.01.01;2020.05.31;Vállpánt.készítés;;Vállpánt.készítés;72000
 086555700;Juhász Eszter;2020.06.01;2020.06.30;Vállpánt.készítés;;Vállpánt.készítés;72000
@@ -1224,11 +1232,11 @@
 081112845;Kardos Judit;2019.10.01;2020.04.30;Varroda 2;2020.10.16;Varroda 1;70001
 081112845;Kardos Judit;2020.05.01;2020.06.30;Varroda 4;2020.10.16;Varroda 1;70001
 081112845;Kardos Judit;2020.07.01;;Varroda 1;2020.10.16;Varroda 1;70001
-106661699;Kardos Sándorné;2008.01.01;2015.08.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-106661699;Kardos Sándorné;2015.09.01;2020.06.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-106661699;Kardos Sándorné;2020.07.01;2021.06.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-106661699;Kardos Sándorné;2021.07.01;2023.12.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-106661699;Kardos Sándorné;2024.01.01;;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
+106661699;Kardos Sándorné;2008.01.01;2015.08.31;Szegh. Gyárt. E.;2024.08.07;Szegh. Gyárt. E.;68120
+106661699;Kardos Sándorné;2015.09.01;2020.06.30;Szegh. Gyárt. E.;2024.08.07;Szegh. Gyárt. E.;68120
+106661699;Kardos Sándorné;2020.07.01;2021.06.30;Szegh. Gyárt. E.;2024.08.07;Szegh. Gyárt. E.;68120
+106661699;Kardos Sándorné;2021.07.01;2023.12.31;Szegh. Gyárt. E.;2024.08.07;Szegh. Gyárt. E.;68120
+106661699;Kardos Sándorné;2024.01.01;;Szegh. Gyárt. E.;2024.08.07;Szegh. Gyárt. E.;68120
 084677000;Károlyi Lászlóné Sütõ Márta;2008.01.01;;Varroda 3;2008.02.29;Varroda 3;70001
 075915421;Károlyi Mihályné;2008.09.15;2012.02.29;Varroda 1;2013.09.13;Varroda 1;70001
 075915421;Károlyi Mihályné;2012.03.01;;Varroda 1;2013.09.13;Varroda 1;70001
@@ -1246,7 +1254,6 @@
 064234816;Kaszás Lászlóné;;;;2011.06.30;Üzlet Ujpest;65303
 085559475;Kászonyiné Eke Ágnes;;;;2015.09.01;Varroda;70001
 091790143;Kati Sára;;;;2007.08.03;Varroda;70001
-089351594;Kató-Pocsai Gyöngyi;;;;;BESZERZÉS;61135
 088952837;Kecse Erzsébet;;;;2007.05.31;Dévaványa teljesítménybéres;70002
 078457139;Kecskés Mihályné;2008.01.01;2009.04.30;Varroda 3;;Varroda 3;70001
 078457139;Kecskés Mihályné;2009.05.01;2009.06.30;Varroda 6;;Varroda 3;70001
@@ -1255,7 +1262,8 @@
 078457139;Kecskés Mihályné;2020.07.01;;Varroda 1;;Varroda 3;70001
 092531756;Kéki Beáta;;;;2008.08.16;Dévaványa teljesítménybéres;70002
 079186212;Kéki Istvánné;;;;2009.11.11;Dévaványa teljesítménybéres;70002
-081659573;Kéki Józsefné;2021.06.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+081659573;Kéki Józsefné;2021.06.01;2024.08.31;Vállpánt.készítés;2024.10.02;Vállpánt.készítés;72000
+081659573;Kéki Józsefné;2024.09.01;;Vállpánt.készítés;2024.10.02;Vállpánt.készítés;72000
 072743447;Kelemen Imréné;2008.01.01;;Varroda 5;2017.04.07;Varroda 5;70001
 074892833;Képesné Tüzes Emese;2008.01.01;2009.04.30;Varroda 3;2018.06.30;Varroda 3;70001
 074892833;Képesné Tüzes Emese;2009.05.01;2009.06.30;Varroda 6;2018.06.30;Varroda 3;70001
@@ -1282,7 +1290,8 @@
 044526319;Kincsem Bence;;;;2014.08.22;Szegh. Log.;61130
 090981313;Kincses Eliza;;;;2010.01.30;Szegh. Log.;61130
 076024094;Kincses Istvánné;;;;2006.04.04;Varroda;70001
-081834686;Kincses Róza;2023.01.09;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+081834686;Kincses Róza;2023.01.09;2024.08.31;Varroda 11;;Varroda 11;70001
+081834686;Kincses Róza;2024.09.01;;Varroda 1;;Varroda 11;70001
 088682842;Kincses Veronika;;;;2005.07.29;Varroda;70001
 084374149;Kiripóczki Ágnes;;;;2006.10.30;Varroda;70001
 093239235;Kis Ilona;2023.04.24;;Dévaványa teljesítménybéres;2023.05.10;Dévaványa teljesítménybéres;70002
@@ -1327,7 +1336,8 @@
 089682728;Kiss Viktória;;;;2008.08.29;Szegh. Log.;61130
 087625615;Kissné Antal Ágnes;;;;2012.07.16;Bp.log.;66020
 081562484;Kissné Fekete Edit;;;;;Vállpánt.készítés;72000
-075855055;Kissné Halasi Aranka;2023.01.09;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+075855055;Kissné Halasi Aranka;2023.01.09;2024.08.31;Varroda 11;;Varroda 11;70001
+075855055;Kissné Halasi Aranka;2024.09.01;;Varroda 4;;Varroda 11;70001
 081731729;Kissné Szabó Anikó;;;;2007.11.25;Tart.távol.;700011
 081529175;Kissné Szebenyi Katalin;2010.09.06;2012.05.31;Varroda 5;2023.02.05;Varroda 5;70001
 081529175;Kissné Szebenyi Katalin;2012.06.01;2015.08.31;Varroda 5;2023.02.05;Varroda 5;70001
@@ -1350,8 +1360,8 @@
 090370469;Kocsis Krisztina;2021.02.01;2022.09.30;Varroda 0 üres;2023.08.11;Varroda 6;70001
 090370469;Kocsis Krisztina;2022.10.01;;Varroda 4;2023.08.11;Varroda 6;70001
 076621624;Kocsisné Bakos Mária;;;;2009.04.04;Üzlet Érd;65305
-084573861;Kocsisné Erdõs Anikó;2011.10.03;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084573861;Kocsisné Erdõs Anikó;2014.09.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+084573861;Kocsisné Erdõs Anikó;2011.10.03;2014.08.31;Varroda 5;2024.06.14;Varroda 5;70001
+084573861;Kocsisné Erdõs Anikó;2014.09.01;;Varroda 11;2024.06.14;Varroda 5;70001
 075172408;Kocsubé Józsefné;2008.07.01;;Varroda 1;2013.05.13;Varroda 1;70001
 091683319;Kocsubé Renáta;;;;2008.06.05;Ipari tanulók;63100
 068601830;Kókai Gyuláné;;;;2009.03.26;Dévaványa teljesítménybéres;70002
@@ -1382,8 +1392,8 @@
 080696272;Korcsok Katalin Ilona;2018.01.08;2020.04.30;Varroda 5;2020.08.30;Varroda 5;70001
 080696272;Korcsok Katalin Ilona;2020.05.01;2020.06.30;Varroda 4;2020.08.30;Varroda 5;70001
 080696272;Korcsok Katalin Ilona;2020.07.01;;Varroda 2;2020.08.30;Varroda 5;70001
-114374370;Korda Kitti;2019.11.11;2021.01.31;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-114374370;Korda Kitti;2021.02.01;;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+114374370;Korda Kitti;2019.11.11;2021.01.31;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.12;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+114374370;Korda Kitti;2021.02.01;;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.12;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 124125052;Kordé Ivett;;;;2023.01.23;Varroda;70001
 107757409;Kordó Irén Edit;2011.10.17;;Varroda 1;2012.09.14;Varroda 1;70001
 077540935;Kormányos Ágnes;2020.05.01;2020.06.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
@@ -1403,7 +1413,7 @@
 116443339;Kóti Nikoletta Erzsébet;2020.07.01;2021.01.31;Tart.távol.;;Tart.távol.;700011
 116443339;Kóti Nikoletta Erzsébet;2021.02.01;;Tart.távol.;;Tart.távol.;700011
 088007339;Kóti Tünde;;;;;Szabászat;71001
-089136568;Kovács Ágnes;;;;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+089136568;Kovács Ágnes;;;;2024.09.06;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 117689945;Kovács Ákos;;;;2016.07.01;Szegh. Rendszergazda;62100
 090224056;Kovács Andrea;;;;2008.12.23;Fürdõruha  Log.;61131
 091200172;Kovács Annamária;2013.06.17;2013.09.30;Varroda 1;2014.06.30;Varroda 1;70001
@@ -1422,9 +1432,10 @@
 083504149;Kovács Eszter;;;;2019.10.18;Dévaványa.ált;61200
 080313317;Kovács Ferencné;2012.09.03;2014.06.30;Szegh. MEO.;2015.01.31;Szegh. MEO.;78000
 080313317;Kovács Ferencné;2014.07.01;;Szegh. MEO.;2015.01.31;Szegh. MEO.;78000
-079773258;Kovács Ferencné;2010.09.06;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-079773258;Kovács Ferencné;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-079773258;Kovács Ferencné;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+079773258;Kovács Ferencné;2010.09.06;2014.08.31;Varroda 3;;Varroda 3;70001
+079773258;Kovács Ferencné;2014.09.01;2020.06.30;Varroda 13;;Varroda 3;70001
+079773258;Kovács Ferencné;2020.07.01;2024.08.31;Varroda 11;;Varroda 3;70001
+079773258;Kovács Ferencné;2024.09.01;;Varroda 1;;Varroda 3;70001
 088506980;Kovács Gergõ Jánosné;2023.02.06;;Varroda 5;2023.03.24;Varroda 5;70001
 065420362;Kovács Gyuláné;2008.01.01;;Varroda 3;2008.07.08;Varroda 3;70001
 065004201;Kovács Gyuláné;;;;2007.12.27;Vállpánt.készítés;72000
@@ -1455,10 +1466,11 @@
 067317013;Kovács Józsefné;2009.07.01;2009.12.31;Varroda 3;2012.05.25;Varroda 1;70001
 067317013;Kovács Józsefné;2010.01.01;;Varroda 1;2012.05.25;Varroda 1;70001
 082686969;Kovács Józsefné;;;;2008.12.27;Tart.távol.;700011
-085000788;Kovács Józsefné;2011.09.12;2012.09.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-085000788;Kovács Józsefné;2012.10.01;2015.08.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-085000788;Kovács Józsefné;2015.09.01;2022.05.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-085000788;Kovács Józsefné;2022.06.01;;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
+085000788;Kovács Józsefné;2011.09.12;2012.09.30;Varroda 6;2024.08.24;Varroda 6;70001
+085000788;Kovács Józsefné;2012.10.01;2015.08.31;Varroda 5;2024.08.24;Varroda 6;70001
+085000788;Kovács Józsefné;2015.09.01;2022.05.31;Varroda 4;2024.08.24;Varroda 6;70001
+085000788;Kovács Józsefné;2022.06.01;2024.06.30;Varroda 0 üres;2024.08.24;Varroda 6;70001
+085000788;Kovács Józsefné;2024.07.01;;Varroda 11;2024.08.24;Varroda 6;70001
 072414891;Kovács Józsefné TIM;;;;;Szegh. Csomagoló;73000
 085078046;Kovács Katalin;2008.10.15;2012.02.29;Varroda 1;;Varroda 1;70001
 085078046;Kovács Katalin;2012.03.01;2012.10.31;Varroda 6;;Varroda 1;70001
@@ -1476,7 +1488,7 @@
 107968049;Kovács Katalin Ágnes;2015.09.01;2016.12.31;Szabászat;;Szabászat;71001
 107968049;Kovács Katalin Ágnes;2017.01.01;;Szabászat;;Szabászat;71001
 093560799;Kovács Katalin Kitti;2015.09.14;;Dévaványa teljesítménybéres;2016.03.29;Dévaványa teljesítménybéres;70002
-085054217;Kovács Krisztina;2022.10.25;;Varroda 3;;Varroda 3;70001
+085054217;Kovács Krisztina;2022.10.25;;Varroda 3;2024.08.17;Varroda 3;70001
 091855820;Kovács Krisztina;;;;2008.08.01;Szegh. Csomagoló;73000
 079079756;Kovács Lajosné;;;;2006.04.27;Varroda;70001
 069505906;Kovács Lászlóné;2008.01.01;2009.06.30;Varroda 6;2012.07.08;Varroda 6;70001
@@ -1510,7 +1522,7 @@
 042209362;Kovács Zsolt;;;;2008.12.17;Szabászat;71001
 091070928;Kovács-Csillag Réka;2019.03.21;;Dévaványa teljesítménybéres;2019.05.31;Dévaványa teljesítménybéres;70002
 026502128;Kovácsevics András;;;;2012.11.01;Értékesítés ügyv.ig;65110
-090917479;Kovács-Lengyel Ilona;;;;;Szegh. Log.;61130
+090917479;Kovács-Lengyel Ilona;;;;;Szegh. MEO.;78000
 080543853;Kovácsné Koncsik Nicolette;;;;2009.11.23;Üzlet Gyõr;65306
 081423097;Kovácsné Ács Angéla;;;;2011.07.26;Dévaványa teljesítménybéres;70002
 077858911;Kovácsné Balog Katalin;2021.09.27;;Dévaványa teljesítménybéres;2021.12.29;Dévaványa teljesítménybéres;70002
@@ -1520,7 +1532,7 @@
 087263608;Kovácsné Dobos Szilvia;2015.09.01;2020.04.30;Varroda 5;;Varroda 4;70001
 087263608;Kovácsné Dobos Szilvia;2020.05.01;2020.06.30;Varroda 4;;Varroda 4;70001
 087263608;Kovácsné Dobos Szilvia;2020.07.01;;Varroda 5;;Varroda 4;70001
-087623233;Kovácsné Erdei Anita;;;;;Szegh. MEO.;78000
+087623233;Kovácsné Erdei Anita;;;;2024.08.07;Szegh. MEO.;78000
 076814530;Kovácsné Gurmai Terézia;2017.09.05;2020.06.30;Varroda 4;;Varroda 4;70001
 076814530;Kovácsné Gurmai Terézia;2020.07.01;2022.09.30;Varroda 2;;Varroda 4;70001
 076814530;Kovácsné Gurmai Terézia;2022.10.01;2024.01.02;Varroda 5;;Varroda 4;70001
@@ -1566,7 +1578,8 @@
 068450559;Kuzma Lászlóné;2009.05.01;2009.06.30;Varroda 6;2012.10.31;Varroda 3;70001
 068450559;Kuzma Lászlóné;2009.07.01;2012.02.29;Varroda 3;2012.10.31;Varroda 3;70001
 068450559;Kuzma Lászlóné;2012.03.01;;Varroda 6;2012.10.31;Varroda 3;70001
-091001357;Kürti Szilvia;2022.02.14;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+091001357;Kürti Szilvia;2022.02.14;2024.08.31;Varroda 11;;Varroda 11;70001
+091001357;Kürti Szilvia;2024.09.01;;Varroda 3;;Varroda 11;70001
 068387828;Lacházi Pálné;;;;2006.04.28;Varroda;70001
 107218870;Laczkó Veronika;;;;2006.06.30;Ipari tanulók;63100
 081667792;Laczóné Badics Veronika;;;;2006.10.26;Üzlet Gyõr;65306
@@ -1619,8 +1632,8 @@
 070868810;Lengyel Károly Ferencné;2019.10.01;;Varroda 3;2020.08.13;Varroda 6;70001
 092426799;Lengyel Krisztina;;;;2009.06.25;Ipari tanulók;63100
 081133477;Lengyelné Magyar Veronika Tünde;;;;2023.10.01;Szegh. Bér.;61120
-092036990;Lengyelné Nyárfádi Erzsébet;;;;;Szegh. Csomagoló;73000
-086472739;Lengyelné Sütõ Ágnes;;;;;Szegh. MEO.;78000
+092036990;Lengyelné Nyárfádi Erzsébet;;;;;Tart.távol.;700011
+086472739;Lengyelné Sütõ Ágnes;;;;2024.06.12;Szegh. MEO.;78000
 076799484;Lengyelné Tapodi Ilona;2014.09.01;;Varroda 6;2015.07.23;Varroda 6;70001
 084638218;Létai Ibolya;;;;2007.11.06;Varroda;70001
 044299200;Létai Miklós;;;;2011.08.02;Ipari tanulók;63100
@@ -1680,7 +1693,7 @@
 081154308;Málik Mária;;;;2018.08.28;Vállpánt.készítés;72000
 087685462;Mándoki Andrea;2008.09.15;;Tart.távol.;2018.04.16;Tart.távol.;700011
 094446045;Marhásné Széll Enikõ Julianna;2013.06.17;;Varroda 3;2013.09.04;Varroda 3;70001
-029120341;Márki Zoltán;;;;;Dévaványa.ált;61200
+029120341;Márki Zoltán;;;;2024.08.19;Szegh.ált.;61100
 080746384;Márkusné Csabai Ildikó;2008.01.01;2015.08.31;Varroda 4;2017.10.04;Varroda 4;70001
 080746384;Márkusné Csabai Ildikó;2015.09.01;;Varroda 5;2017.10.04;Varroda 4;70001
 071383503;Márkusné Medveczky Piroska;;;;2012.09.30;Felina Mintabolt;65307
@@ -1693,8 +1706,9 @@
 090896345;Marton Katalin;2011.01.10;2014.08.31;Dévaványa teljesítménybéres;2020.09.19;Dévaványa teljesítménybéres;70002
 090896345;Marton Katalin;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;2020.09.19;Dévaványa teljesítménybéres;70002
 090896345;Marton Katalin;2020.07.01;;Dévaványa teljesítménybéres;2020.09.19;Dévaványa teljesítménybéres;70002
-080645751;Marton Lajosné;2009.07.06;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-080645751;Marton Lajosné;2014.09.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+080645751;Marton Lajosné;2009.07.06;2014.08.31;Varroda 5;;Varroda 5;70001
+080645751;Marton Lajosné;2014.09.01;2024.08.31;Varroda 11;;Varroda 5;70001
+080645751;Marton Lajosné;2024.09.01;;Varroda 4;;Varroda 5;70001
 073266325;Marton Sándorné;2008.01.01;;Varroda 5;2009.05.11;Varroda 5;70001
 083508147;Márton Anikó;;;;2007.07.20;Varroda;70001
 087176021;Mata Csabáné;;;;2010.12.29;Tart.távol.;700011
@@ -1712,9 +1726,7 @@
 045232165;Megyesi Richárd;2013.07.29;;Szegh. Csomagoló;2013.08.16;Szegh. Csomagoló;73000
 083310748;Mesterházy Cecília;;;;;BESZERZÉS;61135
 090788909;Mészár Katalin Kitti;;;;2007.09.24;Varroda;70001
-089009824;Mészár Margit;2008.06.23;2016.07.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-089009824;Mészár Margit;2016.08.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-089009824;Mészár Margit;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+089009824;Mészár Margit;2024.11.20;;Varroda 3;;Varroda 3;70001
 086858678;Mészáros Aliz;2008.01.01;2012.05.31;Varroda 5;2012.12.31;Varroda 5;70001
 086858678;Mészáros Aliz;2012.06.01;2012.09.30;Varroda 6;2012.12.31;Varroda 5;70001
 086858678;Mészáros Aliz;2012.10.01;;Varroda 5;2012.12.31;Varroda 5;70001
@@ -1730,11 +1742,11 @@
 041988798;Mészáros József;;;;2011.03.04;Szabászat;71001
 073821777;Mészáros Józsefné;2008.01.01;2009.12.31;Varroda 3;2012.12.14;Varroda 3;70001
 073821777;Mészáros Józsefné;2010.01.01;;Varroda 1;2012.12.14;Varroda 3;70001
-080145309;Mészáros Józsefné;2008.01.01;2009.12.31;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-080145309;Mészáros Józsefné;2010.01.01;2018.10.31;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-080145309;Mészáros Józsefné;2018.11.01;2020.06.30;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-080145309;Mészáros Józsefné;2020.07.01;2024.03.13;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-080145309;Mészáros Józsefné;2024.03.14;;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+080145309;Mészáros Józsefné;2008.01.01;2009.12.31;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+080145309;Mészáros Józsefné;2010.01.01;2018.10.31;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+080145309;Mészáros Józsefné;2018.11.01;2020.06.30;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+080145309;Mészáros Józsefné;2020.07.01;2024.03.13;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+080145309;Mészáros Józsefné;2024.03.14;;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 024108487;Mészáros Lajos;;;;;Szegh. Log.;61130
 073936617;Mészáros Lajosné;2022.08.08;;Varroda 1;2022.08.08;Varroda 1;70001
 092855414;Mészáros Martina;;;;2008.07.11;Varroda;70001
@@ -1823,6 +1835,7 @@
 085042870;Nacsa Marianna;2020.05.01;2020.06.30;Szegh. Varroda;;Szegh. Varroda;68150
 085042870;Nacsa Marianna;2020.07.01;2021.01.31;Szegh. Varroda;;Szegh. Varroda;68150
 085042870;Nacsa Marianna;2021.02.01;;Szegh. Varroda;;Szegh. Varroda;68150
+082445203;Nádasdi Szilvia;2024.10.01;;Varroda 5;;Varroda 5;70001
 042672056;Nagy Ádám;;;;2008.07.04;Szegh. Log.;61130
 107392422;Nagy Ágnes;;;;2007.07.31;Szegh. Csomagoló;73000
 092603325;Nagy Alexandra;;;;2008.08.29;Varroda;70001
@@ -1852,6 +1865,7 @@
 087210839;Nagy Csabáné;2022.11.01;;Varroda 1;2024.03.09;Varroda 5;70001
 111966862;Nagy Ditta Mária;2017.10.02;;Varroda 5;2017.12.28;Varroda 5;70001
 092584130;Nagy Dóra;;;;2015.09.09;Varroda;70001
+115446492;Nagy Dóra;;;;2024.10.09;Varroda;70001
 093747442;Nagy Edit;;;;2012.06.13;Ipari tanulók;63100
 084908540;Nagy Edit;2008.01.01;2009.06.30;Tart.távol.;2019.02.20;Tart.távol.;700011
 084908540;Nagy Edit;2009.07.01;;Tart.távol.;2019.02.20;Tart.távol.;700011
@@ -1889,15 +1903,15 @@
 081598100;Nagy István Imréné;2005.09.12;;Varroda 5;2012.12.03;Varroda 5;70001
 067198508;Nagy Istvánné;2013.02.18;;Varroda 3;2013.06.30;Varroda 3;70001
 071452085;Nagy Istvánné;2008.01.01;;Varroda 5;2013.07.21;Varroda 5;70001
-074630150;Nagy Istvánné;2008.01.01;2009.04.30;Varroda 3;;Varroda 3;70001
-074630150;Nagy Istvánné;2009.05.01;2009.06.30;Varroda 6;;Varroda 3;70001
-074630150;Nagy Istvánné;2009.07.01;2009.12.31;Varroda 3;;Varroda 3;70001
-074630150;Nagy Istvánné;2010.01.01;2012.02.29;Varroda 1;;Varroda 3;70001
-074630150;Nagy Istvánné;2012.03.01;2012.09.30;Varroda 6;;Varroda 3;70001
-074630150;Nagy Istvánné;2012.10.01;2018.10.31;Varroda 1;;Varroda 3;70001
-074630150;Nagy Istvánné;2018.11.01;2020.04.30;Varroda 5;;Varroda 3;70001
-074630150;Nagy Istvánné;2020.05.01;2020.06.30;Varroda 1;;Varroda 3;70001
-074630150;Nagy Istvánné;2020.07.01;;Varroda 5;;Varroda 3;70001
+074630150;Nagy Istvánné;2008.01.01;2009.04.30;Varroda 3;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2009.05.01;2009.06.30;Varroda 6;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2009.07.01;2009.12.31;Varroda 3;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2010.01.01;2012.02.29;Varroda 1;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2012.03.01;2012.09.30;Varroda 6;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2012.10.01;2018.10.31;Varroda 1;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2018.11.01;2020.04.30;Varroda 5;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2020.05.01;2020.06.30;Varroda 1;2024.09.27;Varroda 3;70001
+074630150;Nagy Istvánné;2020.07.01;;Varroda 5;2024.09.27;Varroda 3;70001
 080653042;Nagy Jánosné;2018.07.02;;Szegh. MEO.;2020.04.30;Szegh. MEO.;78000
 078988862;Nagy Józsefné;2017.02.27;;Varroda 4;;Varroda 4;70001
 079166553;Nagy Józsefné;2010.09.06;2012.05.31;Varroda 5;2013.01.04;Varroda 5;70001
@@ -1922,12 +1936,12 @@
 092431481;Nagy Leila;2015.08.01;2020.08.31;Dévaványa teljesítménybéres;2020.10.26;Dévaványa teljesítménybéres;70002
 092431481;Nagy Leila;2020.09.01;;Dévaványa teljesítménybéres;2020.10.26;Dévaványa teljesítménybéres;70002
 093306964;Nagy Marianna;2013.09.02;;Szabászat;2013.09.06;Szabászat;71001
-087059627;Nagy Melinda;2008.01.01;2016.08.31;Szegh. Szabászat;;Szegh. Szabászat;68160
-087059627;Nagy Melinda;2016.09.01;2018.10.31;Szegh. Szabászat;;Szegh. Szabászat;68160
-087059627;Nagy Melinda;2018.11.01;2020.04.30;Szegh. Szabászat;;Szegh. Szabászat;68160
-087059627;Nagy Melinda;2020.05.01;2020.06.30;Szegh. Szabászat;;Szegh. Szabászat;68160
-087059627;Nagy Melinda;2020.07.01;2021.01.31;Szegh. Szabászat;;Szegh. Szabászat;68160
-087059627;Nagy Melinda;2021.02.01;;Szegh. Szabászat;;Szegh. Szabászat;68160
+087059627;Nagy Melinda;2008.01.01;2016.08.31;Szegh. Varroda;;Szegh. Varroda;68150
+087059627;Nagy Melinda;2016.09.01;2018.10.31;Szegh. Varroda;;Szegh. Varroda;68150
+087059627;Nagy Melinda;2018.11.01;2020.04.30;Szegh. Varroda;;Szegh. Varroda;68150
+087059627;Nagy Melinda;2020.05.01;2020.06.30;Szegh. Varroda;;Szegh. Varroda;68150
+087059627;Nagy Melinda;2020.07.01;2021.01.31;Szegh. Varroda;;Szegh. Varroda;68150
+087059627;Nagy Melinda;2021.02.01;;Szegh. Varroda;;Szegh. Varroda;68150
 081338397;Nagy Mihály Istvánné;2008.01.01;;Varroda 3;2012.06.28;Varroda 3;70001
 089764936;Nagy Piroska;;;;2006.06.30;Ipari tanulók;63100
 043007659;Nagy Richárd  Zoltán;;;;2007.07.20;Szabászat;71001
@@ -1952,14 +1966,16 @@
 085364170;Nagyné Dajka Tünde;2014.04.01;2020.04.30;Varroda 2;2022.11.25;Varroda 3;70001
 085364170;Nagyné Dajka Tünde;2020.05.01;2020.06.30;Varroda 5;2022.11.25;Varroda 3;70001
 085364170;Nagyné Dajka Tünde;2020.07.01;;Varroda 1;2022.11.25;Varroda 3;70001
-079535115;Nagyné Ecsedi Ágnes;2010.07.14;2013.01.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2013.02.01;2014.03.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2014.04.01;2017.10.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2017.11.01;2018.10.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2018.11.01;2020.04.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2020.05.01;2020.06.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2020.07.01;2022.05.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
-079535115;Nagyné Ecsedi Ágnes;2022.06.01;;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
+079535115;Nagyné Ecsedi Ágnes;2010.07.14;2013.01.31;Varroda 5;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2013.02.01;2014.03.31;Varroda 3;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2014.04.01;2017.10.31;Varroda 2;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2017.11.01;2018.10.31;Varroda 1;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2018.11.01;2020.04.30;Varroda 2;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2020.05.01;2020.06.30;Varroda 4;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2020.07.01;2022.05.31;Varroda 1;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2022.06.01;2024.06.30;Varroda 0 üres;;Varroda 5;70001
+079535115;Nagyné Ecsedi Ágnes;2024.07.01;;Varroda 1;;Varroda 5;70001
+081147038;Nagyné Eke Andrea;2024.10.01;;Varroda 4;;Varroda 4;70001
 069834459;Nagyné Fekete Mária;2008.01.01;2009.12.31;Varroda 3;2011.10.27;Varroda 3;70001
 069834459;Nagyné Fekete Mária;2010.01.01;;Varroda 1;2011.10.27;Varroda 3;70001
 087115394;Nagyné Füredi Ildikó;;;;2006.05.23;Tart.távol.;700011
@@ -1971,7 +1987,7 @@
 086654779;Nagyné Vincze Andrea;;;;2006.01.08;Tart.távol.;700011
 079830812;Nagyné Virág Mónika;;;;2016.08.28;Szegh. Varroda;68150
 043172401;Nagy-Vaszil József;;;;2014.06.26;Szegh.ált.;61100
-093120139;Nánási-Bíró Ildikó;;;;;Szegh. MEO.;78000
+093120139;Nánási-Bíró Ildikó;;;;;Tart.távol.;700011
 083417933;Nánási-Bíró Ildikó;;;;2006.11.30;Szabászat;71001
 079461755;Nekita Attiláné;;;;2010.08.18;Tart.távol.;700011
 076535271;Nemes Miklósné;;;;2006.02.06;Varroda;70001
@@ -1983,6 +1999,8 @@
 075941240;Németh Lászlóné;2008.01.01;2015.08.31;Varroda 4;;Varroda 4;70001
 075941240;Németh Lászlóné;2015.09.01;;Varroda 3;;Varroda 4;70001
 082321336;Németh Tünde;;;;;Szegh. Varroda;68150
+083668843;Németh Viktorné;2020.05.01;2021.01.31;Vállpánt.készítés;;Vállpánt.készítés;72000
+083668843;Németh Viktorné;2021.02.01;;Vállpánt.készítés;;Vállpánt.készítés;72000
 074941814;Némethné Pásztor Éva;;;;2007.05.30;Varroda;70001
 085838112;Némethné Rimaszombati Anikó;;;;2010.05.26;Tart.távol.;700011
 076892334;Németi Ildikó;1992.01.01;2020.06.30;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
@@ -2012,7 +2030,7 @@
 084048381;Nyiri Tünde;;;;2007.03.29;Varroda;70001
 078356070;Nyíri Imréné;2019.02.11;;Dévaványa teljesítménybéres;2019.09.25;Dévaványa teljesítménybéres;70002
 040623791;Nyíri István;;;;2020.03.08;Szegh. Log.;61130
-080080268;Nyíri Józsefné;;;;;Szegh.ált.;61100
+080080268;Nyíri Józsefné;;;;2024.08.14;Szegh.ált.;61100
 071718598;Nyíri Tiborné;;;;2017.02.28;Vállpánt.készítés;72000
 085583544;Obsitos Csabáné;2016.02.15;;Varroda 5;2016.04.21;Varroda 5;70001
 088224527;Ócsai Eszter;;;;2006.06.30;Ipari tanulók;63100
@@ -2043,7 +2061,7 @@
 078472484;Oláhné Hõgyes Ágnes;;;;2006.03.17;Varroda;70001
 075361464;Olasz Imréné;;;;2008.01.28;Varroda;70001
 079799438;Oncsik Pálné;;;;2007.08.13;Varroda;70001
-093396064;Opauszki Eszter;;;;;Szegh. MEO.;78000
+093396064;Opauszki Eszter;;;;2024.08.07;Szegh. MEO.;78000
 075154114;Orbán Istvánné;;;;2016.09.09;Vállpánt.készítés;72000
 081921713;Orbánné Barna Hajnalka Katalin;2008.01.01;2015.08.31;Varroda 3;;Varroda 3;70001
 081921713;Orbánné Barna Hajnalka Katalin;2015.09.01;2020.04.30;Varroda 2;;Varroda 3;70001
@@ -2071,7 +2089,7 @@
 109625429;Ötvös Adrienn;;;;2017.09.05;Varroda;70001
 083417115;Pádár Klára;;;;2023.10.31;Szegh.ált.;61100
 093576316;Pákozdi Tünde Kinga;2013.07.22;;Varroda 7;2013.08.23;Varroda 7;70001
-119981221;Pál Dorina;2023.09.01;;Varroda 1;;Varroda 1;70001
+119981221;Pál Dorina;2023.09.01;;Varroda 1;2024.06.06;Varroda 1;70001
 080441436;Pál Mónika;;;;2014.09.01;Varroda;70001
 080237709;Pálfi Ágnes Katalin;2008.01.01;;Tart.távol.;2012.10.15;Tart.távol.;700011
 080547978;Pálfi Ferencné;2008.07.01;2014.03.31;Varroda 2;;Varroda 2;70001
@@ -2102,8 +2120,6 @@
 086607658;Pap Anikó Mária;2020.05.01;;Varroda 3;2020.08.03;Varroda 5;70001
 092982794;Pap Barbara;2013.07.08;;Szegh. Csomagoló;2013.07.26;Szegh. Csomagoló;73000
 107733649;Pap Bence;2013.09.02;;Szegh. Log.;2013.09.13;Szegh. Log.;61130
-083668843;Pap Ferencné;2020.05.01;2021.01.31;Vállpánt.készítés;;Vállpánt.készítés;72000
-083668843;Pap Ferencné;2021.02.01;;Vállpánt.készítés;;Vállpánt.készítés;72000
 071590042;Pap Ferencné;2015.07.13;2015.08.31;Varroda 5;2017.03.28;Varroda 5;70001
 071590042;Pap Ferencné;2015.09.01;;Varroda 4;2017.03.28;Varroda 5;70001
 043727276;Pap Gergõ;;;;2008.07.04;Szabászat;71001
@@ -2181,9 +2197,10 @@
 089727753;Pappné Metz Tímea;2014.04.01;2015.12.31;Varroda 6;;Varroda 1;70001
 089727753;Pappné Metz Tímea;2016.01.01;2020.06.30;Varroda 3;;Varroda 1;70001
 089727753;Pappné Metz Tímea;2020.07.01;;Varroda 2;;Varroda 1;70001
-081704044;Pappné Nagy Gizella;2006.01.16;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-081704044;Pappné Nagy Gizella;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-081704044;Pappné Nagy Gizella;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+081704044;Pappné Nagy Gizella;2006.01.16;2014.08.31;Varroda 1;;Varroda 1;70001
+081704044;Pappné Nagy Gizella;2014.09.01;2020.06.30;Varroda 13;;Varroda 1;70001
+081704044;Pappné Nagy Gizella;2020.07.01;2024.08.31;Varroda 11;;Varroda 1;70001
+081704044;Pappné Nagy Gizella;2024.09.01;;Varroda 4;;Varroda 1;70001
 088792945;Pardi Andrea;;;;2007.08.10;Szegh. Csomagoló;73000
 073182474;Pardi Jánosné;2016.02.15;2016.04.30;Varroda 7;2016.11.09;Varroda 7;70001
 073182474;Pardi Jánosné;2016.05.01;;Varroda 4;2016.11.09;Varroda 7;70001
@@ -2229,15 +2246,15 @@
 080085782;Patainé Fábián Éva;;;;2006.07.10;Tart.távol.;700011
 074496118;Patainé Karajos Ilona;;;;2016.05.19;Vállpánt.készítés;72000
 075871118;Patainé Tóth Anikó;;;;;Szegh. Csomagoló;73000
-084699361;Patkós Zoltánné;2008.03.03;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084699361;Patkós Zoltánné;2014.09.01;2015.05.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084699361;Patkós Zoltánné;2015.06.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-084699361;Patkós Zoltánné;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+084699361;Patkós Zoltánné;2008.03.03;2014.08.31;Varroda 3;2024.08.31;Varroda 3;70001
+084699361;Patkós Zoltánné;2014.09.01;2015.05.31;Varroda 12;2024.08.31;Varroda 3;70001
+084699361;Patkós Zoltánné;2015.06.01;2020.06.30;Varroda 13;2024.08.31;Varroda 3;70001
+084699361;Patkós Zoltánné;2020.07.01;;Varroda 11;2024.08.31;Varroda 3;70001
 092737381;Pável Ildikó;;;;2016.07.15;Vállpánt.készítés;72000
 109359140;Pék Katalin Eszter;2015.06.01;;Varroda 1;2015.10.31;Varroda 1;70001
 074987629;Pengõ Jánosné;2008.07.01;;Varroda 1;2015.11.13;Varroda 1;70001
 111230439;Pénzes Enikõ Erzsébet;;;;2016.06.03;Ipari tanulók;63100
-081110432;Pénzes Péterné;;;;;Szegh. MEO.;78000
+081110432;Pénzes Péterné;;;;2024.06.12;Szegh. MEO.;78000
 080237871;Pénzes Zoltánné;;;;2006.07.12;Varroda;70001
 073253723;Pénzesné Juhász Sára;;;;2020.09.24;Szegh. Csomagoló;73000
 082045528;Perczel Ildikó;;;;2009.09.30;Üzlet Gyõr;65306
@@ -2281,6 +2298,7 @@
 087830710;Pirosné Nyitrai Éva;2014.04.01;2020.06.30;Varroda 2;2023.06.02;Varroda 3;70001
 087830710;Pirosné Nyitrai Éva;2020.07.01;;Varroda 1;2023.06.02;Varroda 3;70001
 044220921;Pocsai Balázs;;;;2022.09.23;Szegh.ált.;61100
+089351594;Pocsai Gyöngyi;;;;2024.11.21;BESZERZÉS;61135
 089212358;Pócsik Andrea;2020.05.01;;Vállpánt.készítés;2020.06.21;Vállpánt.készítés;72000
 077351285;Pokorádi Erika;;;;2013.01.31;Üzlet Obuda;65302
 084932860;Polgárné Kenderesi Anikó;2018.06.11;2018.10.31;Varroda 1;2020.08.30;Varroda 1;70001
@@ -2320,9 +2338,9 @@
 090343533;Putnoki Tamara;2016.01.01;2016.08.31;Dévaványa teljesítménybéres;2019.06.12;Dévaványa teljesítménybéres;70002
 090343533;Putnoki Tamara;2016.09.01;;Dévaványa teljesítménybéres;2019.06.12;Dévaványa teljesítménybéres;70002
 090020384;Rábai Éva;;;;2008.06.10;Szegh. Log.;61130
-075283649;Rábai Ferencné;2010.09.06;2012.09.30;Varroda 6;;Varroda 6;70001
-075283649;Rábai Ferencné;2012.10.01;2015.08.31;Varroda 5;;Varroda 6;70001
-075283649;Rábai Ferencné;2015.09.01;;Varroda 4;;Varroda 6;70001
+075283649;Rábai Ferencné;2010.09.06;2012.09.30;Varroda 6;2024.08.09;Varroda 6;70001
+075283649;Rábai Ferencné;2012.10.01;2015.08.31;Varroda 5;2024.08.09;Varroda 6;70001
+075283649;Rábai Ferencné;2015.09.01;;Varroda 4;2024.08.09;Varroda 6;70001
 071670751;Rábai Istvánné;;;;2007.03.30;Varroda;70001
 118333139;Rábai Petra;;;;2019.06.19;Szegh. Csomagoló;73000
 121657776;Rác Barbara;2022.08.22;;Varroda 1;;Varroda 1;70001
@@ -2342,7 +2360,7 @@
 077493312;Rácz Pálné;2020.07.01;;Varroda 2;;Varroda 3;70001
 069058691;Rácz Sándorné;;;;2008.03.15;Szegh. MEO.;78000
 078490431;Rácz Zoltánné;2022.02.01;;Varroda 1;2022.02.09;Varroda 1;70001
-110274797;Rádai Beatrix;;;;2014.09.30;Ipari tanulók;63100
+110274797;Rádai Beatrix;;;;2024.06.13;Varroda;70001
 074685129;Rádai Lászlóné;;;;2006.02.28;Varroda;70001
 089451175;Radics Ildikó;;;;2021.05.31;Tart.távol.;700011
 063577862;Radványi Csabáné;;;;2006.02.08;Varroda;70001
@@ -2400,7 +2418,7 @@
 105250186;Sándor Mihályné;2014.04.01;;Varroda 2;2018.12.31;Varroda 1;70001
 043879818;Sándor Tamás;;;;2008.07.04;Szegh. Log.;61130
 117360433;Sánta Alexandra;2021.11.23;;Varroda 3;2023.07.07;Varroda 3;70001
-088888233;Sánta Anita;;;;;Tart.távol.;700011
+088888233;Sánta Anita;;;;;Szegh. Szabászat;68160
 075643511;Sánta Dezsõné;2010.09.06;2012.02.29;Dévaványa teljesítménybéres;2023.01.14;Dévaványa teljesítménybéres;70002
 075643511;Sánta Dezsõné;2012.03.01;2012.10.31;Dévaványa teljesítménybéres;2023.01.14;Dévaványa teljesítménybéres;70002
 075643511;Sánta Dezsõné;2012.11.01;2015.08.31;Dévaványa teljesítménybéres;2023.01.14;Dévaványa teljesítménybéres;70002
@@ -2429,7 +2447,9 @@
 084117715;Serbán Istvánné;2020.07.01;2021.01.31;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
 084117715;Serbán Istvánné;2021.02.01;;Szegh. Gyárt. E.;;Szegh. Gyárt. E.;68120
 074822227;Sille Istvánné;;;;2007.12.31;Dévaványa teljesítménybéres;70002
-084656980;Sille Józsefné;2022.11.23;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+084656980;Sille Józsefné;2022.11.23;2024.08.31;Varroda 11;;Varroda 11;70001
+084656980;Sille Józsefné;2024.09.01;2024.09.30;Varroda 1;;Varroda 11;70001
+084656980;Sille Józsefné;2024.10.01;;Varroda 2;;Varroda 11;70001
 028822437;Simcsik András;;;;2012.01.29;Tart.távol.;700011
 091378626;Simcsik Anett;;;;2011.09.09;Szegh. Bér.;61120
 076248700;Simcsik Tiborné;1992.05.04;2015.08.31;Szegh. MEO.;2024.05.08;Szegh. MEO.;78000
@@ -2477,13 +2497,13 @@
 078910092;Somogyi Gergelyné;2014.09.01;2015.05.31;Dévaványa teljesítménybéres;2020.11.09;Dévaványa teljesítménybéres;70002
 078910092;Somogyi Gergelyné;2015.06.01;2020.06.30;Dévaványa teljesítménybéres;2020.11.09;Dévaványa teljesítménybéres;70002
 078910092;Somogyi Gergelyné;2020.07.01;;Dévaványa teljesítménybéres;2020.11.09;Dévaványa teljesítménybéres;70002
-076893984;Somogyi Mihályné;2008.07.01;2014.03.31;Varroda 2;;Varroda 2;70001
-076893984;Somogyi Mihályné;2014.04.01;2015.08.31;Varroda 6;;Varroda 2;70001
-076893984;Somogyi Mihályné;2015.09.01;2016.04.30;Varroda 7;;Varroda 2;70001
-076893984;Somogyi Mihályné;2016.05.01;2020.04.30;Varroda 5;;Varroda 2;70001
-076893984;Somogyi Mihályné;2020.05.01;2020.06.30;Varroda 4;;Varroda 2;70001
-076893984;Somogyi Mihályné;2020.07.01;;Varroda 5;;Varroda 2;70001
-115862481;Somogyi Patrícia;;;;;Szegh. Log.;61130
+076893984;Somogyi Mihályné;2008.07.01;2014.03.31;Varroda 2;2024.07.05;Varroda 2;70001
+076893984;Somogyi Mihályné;2014.04.01;2015.08.31;Varroda 6;2024.07.05;Varroda 2;70001
+076893984;Somogyi Mihályné;2015.09.01;2016.04.30;Varroda 7;2024.07.05;Varroda 2;70001
+076893984;Somogyi Mihályné;2016.05.01;2020.04.30;Varroda 5;2024.07.05;Varroda 2;70001
+076893984;Somogyi Mihályné;2020.05.01;2020.06.30;Varroda 4;2024.07.05;Varroda 2;70001
+076893984;Somogyi Mihályné;2020.07.01;;Varroda 5;2024.07.05;Varroda 2;70001
+115862481;Somogyi Patrícia;;;;;Tart.távol.;700011
 095677581;Somogyi Vivien Alma;2019.02.04;2020.04.30;Varroda 2;;Varroda 2;70001
 095677581;Somogyi Vivien Alma;2020.05.01;2020.09.30;Varroda 5;;Varroda 2;70001
 095677581;Somogyi Vivien Alma;2020.10.01;;Varroda 3;;Varroda 2;70001
@@ -2505,7 +2525,7 @@
 093612063;Suha Zoltánné;2013.05.13;2016.11.30;Tart.távol.;2022.06.08;Tart.távol.;700011
 093612063;Suha Zoltánné;2016.12.01;2021.01.31;Tart.távol.;2022.06.08;Tart.távol.;700011
 093612063;Suha Zoltánné;2021.02.01;;Tart.távol.;2022.06.08;Tart.távol.;700011
-116498793;Suki Vanessza;2022.05.11;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+116498793;Suki Vanessza;2022.05.11;;Dévaványa teljesítménybéres;2024.05.23;Dévaványa teljesítménybéres;70002
 078218769;Supel Lajosné;;;;2018.01.08;Varroda;70001
 093016306;Sutyinszkiné Szatmári Krisztina;;;;2022.11.07;Dévaványa teljesítménybéres;70002
 072142194;Süle Istvánné;;;;2008.05.14;Varroda;70001
@@ -2603,10 +2623,11 @@
 066649904;Szakácsi Zoltánné;2011.01.05;;Varroda 5;2011.03.30;Varroda 5;70001
 082491925;Szalai Erika;;;;2006.04.21;Varroda;70001
 081917619;Szalai Erika Ilona;;;;2006.09.04;Varroda;70001
-108092929;Szalainé Krajcsó Renáta;2021.04.19;;Varroda 1;;Varroda 1;70001
+108092929;Szalainé Krajcsó Renáta;2021.04.19;2024.05.31;Tart.távol.;;Tart.távol.;700011
+108092929;Szalainé Krajcsó Renáta;2024.06.01;;Tart.távol.;;Tart.távol.;700011
 081647167;Szalainé Szabó Margit;;;;2020.10.29;Szegh. Csomagoló;73000
 078924433;Szalóki Erzsébet;;;;2022.12.23;Szegh. Bér.;61120
-077869904;Szalóki Istvánné;;;;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+077869904;Szalóki Istvánné;;;;2024.08.11;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 087495894;Szalóki Judit;;;;2007.08.22;Varroda;70001
 035863740;Szalóki Sándor;;;;2020.07.21;Szegh. Csomagoló;73000
 069918207;Szalóki Sándorné;2012.01.04;;Varroda 5;2012.02.29;Varroda 5;70001
@@ -2643,9 +2664,10 @@
 077819679;Szarkáné Csüllög Ilona;2019.10.01;2020.04.30;Varroda 2;;Varroda 6;70001
 077819679;Szarkáné Csüllög Ilona;2020.05.01;2020.06.30;Varroda 5;;Varroda 6;70001
 077819679;Szarkáné Csüllög Ilona;2020.07.01;;Varroda 2;;Varroda 6;70001
-081874516;Szarkáné Tóth Irén;2006.09.04;2014.05.31;Dévaványa Varroda;;Dévaványa Varroda;68500
-081874516;Szarkáné Tóth Irén;2014.06.01;2014.08.31;Dévaványa Varroda;;Dévaványa Varroda;68500
-081874516;Szarkáné Tóth Irén;2014.09.01;;Dévaványa Varroda;;Dévaványa Varroda;68500
+081874516;Szarkáné Tóth Irén;2006.09.04;2014.05.31;Varroda 5;;Varroda 5;70001
+081874516;Szarkáné Tóth Irén;2014.06.01;2014.08.31;Varroda 1;;Varroda 5;70001
+081874516;Szarkáné Tóth Irén;2014.09.01;2024.08.31;Varroda 11;;Varroda 5;70001
+081874516;Szarkáné Tóth Irén;2024.09.01;;Varroda 3;;Varroda 5;70001
 084021537;Szarvas Katalin;;;;2007.03.06;Varroda;70001
 073564841;Szász Gyuláné;;;;2013.11.30;Szegh. Csomagoló;73000
 078529258;Szász Jánosné;;;;2011.09.08;Dévaványa teljesítménybéres;70002
@@ -2733,7 +2755,8 @@
 092651838;Szilágyi Krisztina;2012.11.01;2015.08.31;Tart.távol.;;Tart.távol.;700011
 092651838;Szilágyi Krisztina;2015.09.01;2020.04.30;Tart.távol.;;Tart.távol.;700011
 092651838;Szilágyi Krisztina;2020.05.01;2020.06.30;Tart.távol.;;Tart.távol.;700011
-092651838;Szilágyi Krisztina;2020.07.01;;Tart.távol.;;Tart.távol.;700011
+092651838;Szilágyi Krisztina;2020.07.01;2024.12.05;Tart.távol.;;Tart.távol.;700011
+092651838;Szilágyi Krisztina;2024.12.06;;Tart.távol.;;Tart.távol.;700011
 075810876;Szilágyi Lászlóné;2008.09.15;2008.10.31;Varroda 1;2024.03.11;Varroda 1;70001
 075810876;Szilágyi Lászlóné;2008.11.01;2010.01.31;Varroda 5;2024.03.11;Varroda 1;70001
 075810876;Szilágyi Lászlóné;2010.02.01;2013.10.31;Varroda 1;2024.03.11;Varroda 1;70001
@@ -2748,6 +2771,7 @@
 091942933;Szilágyiné Sándor Katalin;2016.01.04;2020.04.30;Varroda 2;2020.10.15;Varroda 2;70001
 091942933;Szilágyiné Sándor Katalin;2020.05.01;2020.06.30;Varroda 2;2020.10.15;Varroda 2;70001
 091942933;Szilágyiné Sándor Katalin;2020.07.01;;Varroda 1;2020.10.15;Varroda 2;70001
+038612633;Szili Géza;;;;;Szegh.TMK;61150
 088513315;Szimilkó Mónika;;;;2006.06.20;Varroda;70001
 080860196;Szivákné Nagy Ibolya;2013.06.17;2015.08.31;Varroda 5;2016.07.03;Varroda 5;70001
 080860196;Szivákné Nagy Ibolya;2015.09.01;;Varroda 4;2016.07.03;Varroda 5;70001
@@ -2843,11 +2867,13 @@
 075872634;Tarjányi Tiborné;2014.09.01;;Dévaványa teljesítménybéres;2020.07.01;Dévaványa teljesítménybéres;70002
 095655598;Tarkó Petra;;;;2012.11.19;Ipari tanulók;63100
 085684696;Tarr Zsoltné;;;;2016.08.29;Tart.távol.;700011
-114363789;Tarsoly Ágnes;2023.10.03;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+114363789;Tarsoly Ágnes;2023.10.03;2024.08.31;Varroda 11;;Varroda 11;70001
+114363789;Tarsoly Ágnes;2024.09.01;;Varroda 2;;Varroda 11;70001
 092653021;Tarsoly Andrea;;;;2008.08.01;Varroda;70001
 089038211;Tarsoly Éva;2019.03.04;;Dévaványa teljesítménybéres;2019.03.29;Dévaványa teljesítménybéres;70002
 114364281;Tarsolyné Smiri Zsanett;2023.04.24;;Dévaványa teljesítménybéres;2023.05.10;Dévaványa teljesítménybéres;70002
 084585112;Tasi Lászlóné;;;;2006.05.19;Varroda;70001
+109321561;Tasiné Földi Klaudia;;;;2024.10.21;Varroda;70001
 025906884;Tasnádi Károly Zsigmond;;;;2008.03.06;Szegh. Log.;61130
 078085916;Tasnádi Károly Zsigmondné;2008.01.01;2015.08.31;Varroda 5;;Varroda 5;70001
 078085916;Tasnádi Károly Zsigmondné;2015.09.01;;Varroda 4;;Varroda 5;70001
@@ -2858,9 +2884,9 @@
 075252306;Tatár Gyuláné;2008.01.01;2020.04.30;Varroda 3;2020.10.29;Varroda 3;70001
 075252306;Tatár Gyuláné;2020.05.01;;Varroda 2;2020.10.29;Varroda 3;70001
 093418717;Tatár Judit;;;;2011.04.04;Ipari tanulók;63100
-079318817;Tatár Lászlóné;1992.01.01;2014.03.31;Szegh. Statisztikai  MEO.;;Szegh. Statisztikai  MEO.;78001
-079318817;Tatár Lászlóné;2014.04.01;2021.01.31;Szegh. Statisztikai  MEO.;;Szegh. Statisztikai  MEO.;78001
-079318817;Tatár Lászlóné;2021.02.01;;Szegh. Statisztikai  MEO.;;Szegh. Statisztikai  MEO.;78001
+079318817;Tatár Lászlóné;1992.01.01;2014.03.31;Szegh. MEO.;;Szegh. MEO.;78000
+079318817;Tatár Lászlóné;2014.04.01;2021.01.31;Szegh. MEO.;;Szegh. MEO.;78000
+079318817;Tatár Lászlóné;2021.02.01;;Szegh. MEO.;;Szegh. MEO.;78000
 083219737;Tatár Marianna;2008.01.01;2009.06.30;Varroda 6;;Varroda 6;70001
 083219737;Tatár Marianna;2009.07.01;2016.01.31;Varroda 5;;Varroda 6;70001
 083219737;Tatár Marianna;2016.02.01;2020.04.30;Varroda 3;;Varroda 6;70001
@@ -2966,13 +2992,14 @@
 092421268;Tóth Mónika Erzsébet;2020.05.01;2021.01.31;Szegh.ált.;;Szegh.ált.;61100
 092421268;Tóth Mónika Erzsébet;2021.02.01;;Szegh.ált.;;Szegh.ált.;61100
 108418970;Tóth Nikolett;2013.05.27;;Szegh. Csomagoló;2013.06.14;Szegh. Csomagoló;73000
+121171603;Tóth Noémi;2024.07.01;;Varroda 5;;Varroda 5;70001
 079851509;Tóth Rita;;;;2006.06.27;Varroda;70001
 022599672;Tóth Sándor;;;;2020.07.05;Szegh.ált.;61100
 073059264;Tóth Sándorné;;;;2015.11.08;Szegh. Szabászat;68160
 073900623;Tóth Sándorné;;;;2008.01.25;Szabászat;71001
 072542800;Tóth Sándorné;;;;2006.07.18;Varroda;70001
-076989241;Tóth Sándorné;2020.06.01;2021.01.31;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
-076989241;Tóth Sándorné;2021.02.01;;Minõségellenõrzõ csoport Anyagbevizsgáló;;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+076989241;Tóth Sándorné;2020.06.01;2021.01.31;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.07.12;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
+076989241;Tóth Sándorné;2021.02.01;;Minõségellenõrzõ csoport Anyagbevizsgáló;2024.07.12;Minõségellenõrzõ csoport Anyagbevizsgáló;61133
 090094493;Tóth Veronika;;;;2015.07.10;Szabászat;71001
 110161806;Tóth Vivien;2017.10.02;2017.10.31;Varroda 4;2017.11.30;Varroda 4;70001
 110161806;Tóth Vivien;2017.11.01;;Varroda 5;2017.11.30;Varroda 4;70001
@@ -2988,12 +3015,12 @@
 077897387;Tóthné Fülöp Ildikó;2015.09.01;2020.04.30;Varroda 4;;Varroda 5;70001
 077897387;Tóthné Fülöp Ildikó;2020.05.01;2020.06.30;Varroda 2;;Varroda 5;70001
 077897387;Tóthné Fülöp Ildikó;2020.07.01;;Varroda 4;;Varroda 5;70001
-077892021;Tóthné Jónás Anna Mária;2008.01.01;2009.04.30;Varroda 3;;Varroda 3;70001
-077892021;Tóthné Jónás Anna Mária;2009.05.01;2009.06.30;Varroda 6;;Varroda 3;70001
-077892021;Tóthné Jónás Anna Mária;2009.07.01;2014.03.31;Varroda 3;;Varroda 3;70001
-077892021;Tóthné Jónás Anna Mária;2014.04.01;2020.04.30;Varroda 2;;Varroda 3;70001
-077892021;Tóthné Jónás Anna Mária;2020.05.01;2020.06.30;Varroda 5;;Varroda 3;70001
-077892021;Tóthné Jónás Anna Mária;2020.07.01;;Varroda 1;;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2008.01.01;2009.04.30;Varroda 3;2024.08.12;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2009.05.01;2009.06.30;Varroda 6;2024.08.12;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2009.07.01;2014.03.31;Varroda 3;2024.08.12;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2014.04.01;2020.04.30;Varroda 2;2024.08.12;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2020.05.01;2020.06.30;Varroda 5;2024.08.12;Varroda 3;70001
+077892021;Tóthné Jónás Anna Mária;2020.07.01;;Varroda 1;2024.08.12;Varroda 3;70001
 084117791;Tóthné Kovács Katalin;2022.04.05;;Varroda 1;;Varroda 1;70001
 075431675;Tóthné Nagy Emília;;;;2018.09.10;Szegh. MEO.;78000
 078461453;Tóthné Szekerczés Erzsébet Ilona;2011.12.13;2012.02.29;Varroda 5;2013.02.01;Varroda 5;70001
@@ -3010,9 +3037,10 @@
 079971007;Tõkés Sándorné;2018.10.15;2020.04.30;Varroda 5;2020.08.08;Varroda 5;70001
 079971007;Tõkés Sándorné;2020.05.01;2020.06.30;Varroda 1;2020.08.08;Varroda 5;70001
 079971007;Tõkés Sándorné;2020.07.01;;Varroda 2;2020.08.08;Varroda 5;70001
-080779463;Törõcsikné Vass Tünde;2006.01.16;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-080779463;Törõcsikné Vass Tünde;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-080779463;Törõcsikné Vass Tünde;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+080779463;Törõcsikné Vass Tünde;2006.01.16;2014.08.31;Varroda 3;;Varroda 3;70001
+080779463;Törõcsikné Vass Tünde;2014.09.01;2020.06.30;Varroda 13;;Varroda 3;70001
+080779463;Törõcsikné Vass Tünde;2020.07.01;2024.08.31;Varroda 11;;Varroda 3;70001
+080779463;Törõcsikné Vass Tünde;2024.09.01;;Varroda 4;;Varroda 3;70001
 080648123;Török Andrea;;;;2013.12.31;Vállpánt.készítés;72000
 084644770;Török Annamária;2011.09.12;2015.08.31;Varroda 5;;Varroda 5;70001
 084644770;Török Annamária;2015.09.01;2020.04.30;Varroda 4;;Varroda 5;70001
@@ -3071,7 +3099,7 @@
 072916429;Vad Tiborné;;;;2006.08.05;Varroda;70001
 041081693;Vad Zsolt;;;;2007.11.23;Szegh. Log.;61130
 091156426;Vadász Kitti;;;;2007.07.06;Szabászat;71001
-120991121;Vadász-Filippovits Natália;2021.06.04;;Tart.távol.;;Tart.távol.;700011
+120991121;Vadász-Filippovits Natália;2021.06.04;;Tart.távol.;2024.05.13;Tart.távol.;700011
 117994016;Vágner Szilvia;;;;2018.04.19;Ipari tanulók;63100
 119074020;Vágó Flóra;;;;2018.07.13;Szegh. Log.;61130
 079023656;Vágóné Csétai Eszter;2011.09.12;;Varroda 3;2012.04.21;Varroda 3;70001
@@ -3139,9 +3167,10 @@
 076571488;Vas Mária Magdolna;2021.02.01;;Szegh.ált.;2022.05.21;Szegh.ált.;61100
 093673446;Vasné Balog Anita;2023.03.13;2023.06.30;Tart.távol.;;Tart.távol.;700011
 093673446;Vasné Balog Anita;2023.07.01;;Tart.távol.;;Tart.távol.;700011
-077374835;Vass Eszter;2006.01.01;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-077374835;Vass Eszter;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-077374835;Vass Eszter;2020.07.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+077374835;Vass Eszter;2006.01.01;2014.08.31;Vállpánt.készítés;;Vállpánt.készítés;72000
+077374835;Vass Eszter;2014.09.01;2020.06.30;Vállpánt.készítés;;Vállpánt.készítés;72000
+077374835;Vass Eszter;2020.07.01;2024.08.31;Vállpánt.készítés;;Vállpánt.készítés;72000
+077374835;Vass Eszter;2024.09.01;;Vállpánt.készítés;;Vállpánt.készítés;72000
 042654827;Vass József;;;;2017.06.15;Szegh. Log.;61130
 074512546;Vass Józsefné;;;;2023.09.30;Szegh. Varroda;68150
 074347986;Vass Károlyné;2022.01.11;;Varroda 4;2022.02.14;Varroda 4;70001
@@ -3152,8 +3181,7 @@
 084018849;Vasváriné Vig Mónika;2020.05.01;2021.01.31;Szegh. Log.;;Szegh. Log.;61130
 084018849;Vasváriné Vig Mónika;2021.02.01;;Szegh. Log.;;Szegh. Log.;61130
 108583186;Vaszkó Alex;;;;2014.08.15;Dévaványa.ált;61200
-073707439;Vaszkó Imréné;2006.05.02;2014.08.31;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
-073707439;Vaszkó Imréné;2014.09.01;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+073707439;Vaszkó Imréné;2024.11.01;;Varroda 1;;Varroda 1;70001
 085596892;Végh Andrea;;;;2006.04.10;Varroda;70001
 079337005;Veres Mónika Szilvia;;;;2013.01.31;Ferenc krt-i.bolt;65301
 092794412;Veress Mária;2011.10.18;;Varroda 5;2015.11.12;Varroda 5;70001
@@ -3165,9 +3193,9 @@
 080338820;Vig Imréné;2013.10.01;2014.03.31;Varroda 2;2017.06.24;Varroda 1;70001
 080338820;Vig Imréné;2014.04.01;2015.12.31;Varroda 6;2017.06.24;Varroda 1;70001
 080338820;Vig Imréné;2016.01.01;;Varroda 5;2017.06.24;Varroda 1;70001
-076387984;Víg Erika;2014.09.01;2015.12.31;Dévaványa Varroda;;Dévaványa Varroda;68500
-076387984;Víg Erika;2016.01.01;2021.01.31;Dévaványa Varroda;;Dévaványa Varroda;68500
-076387984;Víg Erika;2021.02.01;;Dévaványa Varroda;;Dévaványa Varroda;68500
+076387984;Víg Erika;2014.09.01;2015.12.31;Szegh. Varroda;;Szegh. Varroda;68150
+076387984;Víg Erika;2016.01.01;2021.01.31;Szegh. Varroda;;Szegh. Varroda;68150
+076387984;Víg Erika;2021.02.01;;Szegh. Varroda;;Szegh. Varroda;68150
 076728163;Víg Imréné;2016.06.13;;Varroda 4;2016.06.30;Varroda 4;70001
 068929709;Vigh Emil Bálintné;;;;2018.12.31;Üzemvezetõ Dévaványa;61210
 087396203;Vígh Ibolya;;;;2015.08.31;Tart.távol.;700011
@@ -3192,7 +3220,7 @@
 081298893;Zámbori Gáborné;2011.01.10;;Varroda 1;2012.04.18;Varroda 1;70001
 073137168;Zavada Pálné;2018.01.08;2020.04.30;Varroda 5;2020.06.21;Varroda 5;70001
 073137168;Zavada Pálné;2020.05.01;;Varroda 2;2020.06.21;Varroda 5;70001
-090501775;Zellerné Nyiri Tünde;2022.09.19;;Dévaványa teljesítménybéres;;Dévaványa teljesítménybéres;70002
+090501775;Zellerné Nyiri Tünde;2022.09.19;;Varroda 11;2024.08.21;Varroda 11;70001
 075411260;Zrena Istvánné;;;;2007.02.07;Dévaványa teljesítménybéres;70002
 081376395;Zrena Zoltánné;2006.05.02;2014.08.31;Dévaványa teljesítménybéres;2023.01.19;Dévaványa teljesítménybéres;70002
 081376395;Zrena Zoltánné;2014.09.01;2020.06.30;Dévaványa teljesítménybéres;2023.01.19;Dévaványa teljesítménybéres;70002
@@ -3221,7 +3249,7 @@
 092926309;Zsila Viktória;2013.06.25;;Szabászat;2013.07.12;Szabászat;71001
 088379964;Zsíros Emese;;;;2022.08.22;Tart.távol.;700011
 089053418;Zsombok Anita;;;;2011.12.09;Dévaványa teljesítménybéres;70002
-043177372;Zsombok Dávid Attila;;;;;Szegh. Log.;61130
+043177372;Zsombok Dávid Attila;;;;;Szegh. Csomagoló;73000
 106503825;Zsombok Imréné;2008.09.15;;Varroda 3;2009.07.30;Varroda 3;70001
 082102199;Zsombok Tiborné;2008.01.01;2009.04.30;Varroda 5;2015.02.08;Varroda 5;70001
 082102199;Zsombok Tiborné;2009.05.01;2009.06.30;Varroda 6;2015.02.08;Varroda 5;70001
