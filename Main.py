@@ -193,8 +193,11 @@ def click_button_export():
         {'WorkHours': 'sum', 'OtherHours': 'sum', 'OverHours': 'sum', 'AbsenceHours': 'sum'})
     summaryworkingmonth = summaryworkingmonth.sort_values(['Name', 'Datum'])
     # Populate the WorkHours column with 8 hours if there are hours in the OverHours column
-    # summaryworkingmonth.loc[((summaryworkingmonth.WorkHours==0) & (summaryworkingmonth.OverHours>0)), 'WorkHours'] = 8
-    # summaryworkingmonth.loc[((summaryworkingmonth.AbsenceType.str.contains('szabadság', case=False))), 'WorkHours'] = 8
+    summaryworkingmonth.loc[
+        (summaryworkingmonth.AbsenceType.str.contains('egyéb bentlét', case=False)), 'WorkHours'] = 8
+    summaryworkingmonth.loc[
+        (summaryworkingmonth.AbsenceType.str.contains('egyéb bentlét', case=False)), 'NormaMinutes'] = 8013
+    # Populate the AbsenceDays column with 1 day if there are no payments for that day
     summaryworkingmonth.loc[(summaryworkingmonth.AbsenceType.str.contains('Táppénz', case=False)), 'AbsenceDays'] = 1
     summaryworkingmonth.loc[
         (summaryworkingmonth.AbsenceType.str.contains('nem fizetett', case=False)), 'AbsenceDays'] = 1
@@ -203,6 +206,7 @@ def click_button_export():
         ((summaryworkingmonth.AbsenceHours > 0) & (summaryworkingmonth.OverHours > 0)), 'AbsenceHours'] = 0
 
     workingtableforreports = summaryworkingmonth.copy()
+
     # Copying the table for further application in reports
     numberofemployees = summaryworkingmonth.copy()
 
@@ -309,11 +313,11 @@ def click_button_export():
                 & (row[1]['AvgEfficiencyFactor'] >= float(80))):
             worktableresult.at[row[0], 'KAP'] = line_for_kap_sum / 2
 
+    worktableresult = worktableresult.sort_values(['UnitWork', 'Name', 'Category'])
     workingtableforreportssum = worktableresult.copy()
 
     # Write the obtained result of the main result table into an Excel file for checking
     try:
-        worktableresult = worktableresult.sort_values(['Name', 'UnitWork', 'Category'])
         worktableresult.to_excel('data/monthly_supplements_' + curentdatestr + '.xlsx',
                                  index=False,
                                  columns=['Name', 'UnitWork', 'TAJCode', 'Category', 'NormaMinutes', 'WorkHours',
