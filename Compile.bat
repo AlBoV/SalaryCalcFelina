@@ -1,1 +1,0 @@
-pyinstaller --icon SalaryCalc.ico --onefile main.py
