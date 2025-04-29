@@ -13,6 +13,8 @@ from tkinter import *
 
 from tkinter import filedialog
 
+import configparser
+
 
 # Service procedure to get end of month by date
 def last_day_of_month(any_day):
@@ -369,7 +371,7 @@ def click_button_export():
         worktableresultforNBKifiz['StartFrom'] = firstdayofmonth.strftime("%Y.%m.%d.")
         worktableresultforNBKifiz['StartTill'] = lastdayofmonth.strftime("%Y.%m.%d.")
 
-        worktableresultforNBKifiz.to_csv('//10.3.1.1/bér/import/NBkifiz.csv',
+        worktableresultforNBKifiz.to_csv(NBkifizPath+'NBkifiz.csv',
                                          index=False,
                                          header=False,
                                          sep=';',
@@ -379,10 +381,10 @@ def click_button_export():
                                          decimal=',',
                                          float_format='%.2f')
         messagebox.showinfo(title="Success",
-                            message="Files was been successfully saved in '//10.3.1.1/bér/import/NBkifiz.csv'!")
+                            message="Files was been successfully saved in '"+NBkifizPath+"NBkifiz.csv'!")
     except:
         messagebox.showerror(title="Error",
-                             message="File can't be saved in '//10.3.1.1/bér/import/NBkifiz.csv'!."
+                             message="File can't be saved in '"+NBkifizPath+"NBkifiz.csv'!."
                                      "\nThe file is probably already in use or no access to this catalog.")
 
 
@@ -498,7 +500,7 @@ def click_button_reports():
 
     folder_path = os.path.dirname(__file__)  + '/data/HtmlTable.html'
     if platform.system() == "Windows":
-        os.startfile(folder_path)
+        os.startfile('data/HtmlTable.html')
     else:
         opener = "open" if sys.platform == "darwin" else "xdg-open"
         subprocess.call([opener, folder_path])
@@ -832,12 +834,12 @@ def click_button_reports_4():
 
 # Button to Create a button for Individual performance percentages / month "Egyéni teljesítményszázalékok / hó"
 def click_button_reports_5():
-    global workingtableforreports
+    global workingtableforreportssum
     global workingtime
     global filtredworktable
     global EmployeesWithCategory
 
-    if workingtableforreports.empty:
+    if workingtableforreportssum.empty:
         messagebox.showerror(title="Error",
                              message="No data! Please first perform the steps to read data and send data to Nexon!")
         return
@@ -845,43 +847,44 @@ def click_button_reports_5():
     currentdate = cal.get_date()
     currentmonth = currentdate.strftime("%Y-%m")
 
-    workingmonthcopy = workingtime.copy()
-    workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
-    workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
+    workingmonthcopy = workingtableforreportssum.copy()
+    #workingmonthcopy = workingtime.copy()
+    #workingmonthcopy['ChangeBy'] = workingmonthcopy['ChangeBy'].fillna('No driver')
+    #workingmonthcopy['TAJCode'] = workingmonthcopy['TAJCode'].astype(str)
     # Translate the WorkHours,OtherHours,OverHours,AbsenceHours  column to the string value for further useage
-    workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
-    workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
-    workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
-    workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
-    workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
-    workingmonthcopy['AbsenceDays'] = 0
+    #workingmonthcopy['WorkHours'] = workingmonthcopy['WorkHours'].str.replace(',', '.')
+    #workingmonthcopy['OtherHours'] = workingmonthcopy['OtherHours'].str.replace(',', '.')
+    #workingmonthcopy['OverHours'] = workingmonthcopy['OverHours'].str.replace(',', '.')
+    #workingmonthcopy['AbsenceHours'] = workingmonthcopy['AbsenceHours'].str.replace(',', '.')
+    #workingmonthcopy['AbsenceType'] = workingmonthcopy['AbsenceType'].fillna("")
+    #workingmonthcopy['AbsenceDays'] = 0
 
     # Convert column values to a float
-    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
-        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
-    workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
-        ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
+    #workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+    #    ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].astype(float)
+    #workingmonthcopy[['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']] = workingmonthcopy[
+    #    ['WorkHours', 'OtherHours', 'OverHours', 'AbsenceHours', 'NormaMinutes']].fillna(0)
 
-    Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
-                                        suffixes=('', '_work'))
-    Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
+    #Perfomance_precentage = pandas.merge(workingmonthcopy, filtredworktable, how='inner', on='TAJCode',
+    #                                    suffixes=('', '_work'))
+    #Perfomance_precentage.sort_values(by=['UnitWork', 'Datum'])
 
-    PerfomancePercwntage_by_unit_taj = Perfomance_precentage.groupby(by=['UnitWork', 'TAJCode', 'Name', 'NormaMinutes'],
-        as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum'})
-    PerfomancePercwntage_by_unit_taj['WorkHours'] = (PerfomancePercwntage_by_unit_taj['WorkHours']
-                                                     + PerfomancePercwntage_by_unit_taj['OverHours']
-                                                     - PerfomancePercwntage_by_unit_taj['OtherHours'])
-    PerfomancePercwntage_by_unit_taj = PerfomancePercwntage_by_unit_taj.groupby(by=['UnitWork', 'TAJCode', 'Name'],
-        as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum', 'NormaMinutes': 'sum'})
-
+    #PerfomancePercwntage_by_unit_taj = Perfomance_precentage.groupby(by=['UnitWork', 'TAJCode', 'Name', 'NormaMinutes'],
+    #    as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum'})
+    #PerfomancePercwntage_by_unit_taj['WorkHours'] = (PerfomancePercwntage_by_unit_taj['WorkHours']
+    #                                                 + PerfomancePercwntage_by_unit_taj['OverHours']
+    #                                                 - PerfomancePercwntage_by_unit_taj['OtherHours'])
+    #PerfomancePercwntage_by_unit_taj = PerfomancePercwntage_by_unit_taj.groupby(by=['UnitWork', 'TAJCode', 'Name'],
+    #    as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum', 'NormaMinutes': 'sum'})
+    PerfomancePercwntage_by_unit_taj = workingtableforreportssum.copy()
     PerfomancePercwntage_by_unit_taj['evho'] = currentmonth
     PerfomancePercwntage_by_unit_taj['avgperfperc'] = round(PerfomancePercwntage_by_unit_taj['NormaMinutes']
                                                             / PerfomancePercwntage_by_unit_taj['WorkHours'] / 10, 2)
     PerfomancePercwntage_by_unit_taj['avgperfperc'] = PerfomancePercwntage_by_unit_taj['avgperfperc'].fillna(0)
-    PerfomancePercwntage_by_unit_taj_cat = pandas.merge(PerfomancePercwntage_by_unit_taj, EmployeesWithCategory,
-                                                        how='inner', on='TAJCode', suffixes=('', '_cat'))
+    #PerfomancePercwntage_by_unit_taj_cat = pandas.merge(PerfomancePercwntage_by_unit_taj, EmployeesWithCategory,
+    #                                                    how='inner', on='TAJCode', suffixes=('', '_cat'))
     try:
-        PerfomancePercwntage_by_unit_taj_cat.to_excel('data/egyéni_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
+        PerfomancePercwntage_by_unit_taj.to_excel('data/egyéni_teljesitmenyszazalekok_' + currentmonth + '.xlsx',
                                               index=False,
                                               header=['egység', 'hónap', 'taj', 'név', 'besorolas',
                                                       'teljóra', 'normaperc', 'idöbér', 'teljszáz'],
@@ -908,6 +911,10 @@ workingtableforreports = pandas.DataFrame()
 workingtableforreportssum = pandas.DataFrame()
 worktableresult = pandas.DataFrame()
 numberofemployees = pandas.DataFrame()
+
+config = configparser.ConfigParser()
+config.read('data/config.ini', encoding='utf-8-sig')
+NBkifizPath = config.get('Path', 'NBkifiz')
 
 # Create the main program window
 root = Tk()
