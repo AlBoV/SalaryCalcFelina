@@ -381,10 +381,10 @@ def click_button_export():
                                          decimal=',',
                                          float_format='%.2f')
         messagebox.showinfo(title="Success",
-                            message="Files was been successfully saved in '"+NBkifizPath+"NBkifiz.csv'!")
+                            message="Files was been successfully saved in "+NBkifizPath+"NBkifiz.csv")
     except:
         messagebox.showerror(title="Error",
-                             message="File can't be saved in '"+NBkifizPath+"NBkifiz.csv'!."
+                             message="File can't be saved in "+NBkifizPath+"NBkifiz.csv"
                                      "\nThe file is probably already in use or no access to this catalog.")
 
 
