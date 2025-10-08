@@ -1,5 +1,4 @@
 import pandas
-import tkinter
 import tkcalendar
 import datetime
 import numpy as np
@@ -244,9 +243,12 @@ def click_button_export():
     # Calculate the working hours in the WorkHours column using the formula
     worktableresult['WorkHours'] = worktableresult['WorkHours'] - worktableresult['OtherHours'] + worktableresult[
         'OverHours'] - worktableresult['AbsenceHours']
-    # ?alculate the value of efficiency coefficient by the formula (the formula is correct)
+    # calculate the value of efficiency coefficient by the formula (the formula is correct)
+    # 08.10.2025 https://verantis.atlassian.net/jira/servicedesk/projects/VHS/queues/custom/4/VHS-131
+    # previous 8 hour working time will be reduced to 7 hours and 40 minutes
+    # That's why was added this coefficient (7*60+40) 460 / (8*60) 480
     worktableresult['AvgEfficiencyFactor'] = round(
-        worktableresult['NormaMinutes'] / (worktableresult['WorkHours']) / 10, 2)
+        worktableresult['NormaMinutes'] / (worktableresult['WorkHours']) * 460/480 / 10, 2)
     worktableresult['AvgEfficiencyFactor'] = worktableresult['AvgEfficiencyFactor'].fillna(0)
 
     # Merge the tables of working result and user-defined usage parameters by UnitWork column
@@ -439,8 +441,9 @@ def filling_line(linedata, textdata: str):
         textdata = textdata.replace('{{Hours}}', str('8'))
         textdata = textdata.replace('{{PerfHours}}', str(linedata[1]['WorkHours'] - linedata[1]['OtherHours']))
         if linedata[1]['WorkHours'] - linedata[1]['OtherHours'] != 0:
-            Procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours'] - linedata[1]['OtherHours']) / 10,
-                            2)
+            #Procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours'] - linedata[1]['OtherHours']) / 10,
+            #                2)
+            Procent = round(linedata[1]['NormaMinutes'] / (linedata[1]['WorkHours']) * 460/480 / 10, 2)
         else:
             Procent = ''
 
@@ -811,8 +814,9 @@ def click_button_reports_4():
     Perfomance_precentage_by_unit = Perfomance_precentage.groupby(by=['UnitWork'], as_index=False).agg(
         {'WorkHours': 'sum', 'NormaMinutes': 'sum', 'OtherHours': 'sum'})
     Perfomance_precentage_by_unit['evho'] = currentmonth
+    # 08.10.2025 https://verantis.atlassian.net/jira/servicedesk/projects/VHS/queues/custom/4/VHS-131
     Perfomance_precentage_by_unit['avgperfperc'] = round(Perfomance_precentage_by_unit['NormaMinutes']
-                                                        / Perfomance_precentage_by_unit['WorkHours'] / 10, 2)
+                                                        / Perfomance_precentage_by_unit['WorkHours'] * 460/480 / 10, 2)
     Perfomance_precentage_by_unit['avgperfperc'] = Perfomance_precentage_by_unit['avgperfperc'].fillna(0)
 
     try:
@@ -878,8 +882,9 @@ def click_button_reports_5():
     #    as_index=False).agg({'WorkHours': 'sum', 'OverHours': 'sum', 'OtherHours': 'sum', 'NormaMinutes': 'sum'})
     PerfomancePercwntage_by_unit_taj = workingtableforreportssum.copy()
     PerfomancePercwntage_by_unit_taj['evho'] = currentmonth
+    # 08.10.2025 https://verantis.atlassian.net/jira/servicedesk/projects/VHS/queues/custom/4/VHS-131
     PerfomancePercwntage_by_unit_taj['avgperfperc'] = round(PerfomancePercwntage_by_unit_taj['NormaMinutes']
-                                                            / PerfomancePercwntage_by_unit_taj['WorkHours'] / 10, 2)
+                                                    / PerfomancePercwntage_by_unit_taj['WorkHours'] * 460/480 / 10, 2)
     PerfomancePercwntage_by_unit_taj['avgperfperc'] = PerfomancePercwntage_by_unit_taj['avgperfperc'].fillna(0)
     #PerfomancePercwntage_by_unit_taj_cat = pandas.merge(PerfomancePercwntage_by_unit_taj, EmployeesWithCategory,
     #                                                    how='inner', on='TAJCode', suffixes=('', '_cat'))
